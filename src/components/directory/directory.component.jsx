@@ -5,14 +5,14 @@ import { createStructuredSelector } from 'reselect';
 import DirectoryItem from '../directory-item/directory-item.component';
 import { selectFamilies } from '../../redux/directory/directory.selectors';
 
-import './directory.styles.scss';
+import { DirectoryContainer } from './directory.styles';
 
 const Directory = ({ families }) => (
-  <div className='directory'>
+  <DirectoryContainer>
     {families.map(({ id, ...otherFamilyProps }) => (
-        <DirectoryItem key={id} {...otherFamilyProps} />
+        <DirectoryItem key={id} {...otherFamilyProps} isDirectoryItem />
       ))}
-  </div>
+  </DirectoryContainer>
 );
 
 const mapStateToProps = createStructuredSelector({
