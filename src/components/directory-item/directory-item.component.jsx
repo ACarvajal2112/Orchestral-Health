@@ -5,7 +5,7 @@ import { MenuItemContainer } from './directory-item.styles';
 
 const DirectoryItem = ({ title, name, urlLink, imgUrl, history, match, ...otherProps }) => (
   <MenuItemContainer 
-    onClick={() => history.push(`${match.url}catalog/${urlLink}`)}
+    onClick={() => history.push(`${match.url}shop/${urlLink}`)}
     {...otherProps}>
     <div
       className='background-image'

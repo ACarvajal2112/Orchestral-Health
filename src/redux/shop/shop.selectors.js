@@ -12,3 +12,9 @@ export const selectFamily = (familyUrlParam) =>
     selectCatalog,
     catalog => catalog[familyUrlParam]
   );
+
+// convert catalog data into array for preview
+export const selectCatalogForPreview = createSelector(
+  selectCatalog,
+  catalog => catalog ? Object.keys(catalog).map(key => catalog[key]) : []
+);

@@ -1,9 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-const CatalogOverview = () => (
+import FamilyPreview from '../family-preview/family-preview.component';
+import { selectCatalogForPreview } from '../../redux/shop/shop.selectors';
+
+const CatalogOverview = ({ catalog }) => (
   <div className='catalog-overview'>
-    <h1>Catalog Overview!</h1>
+    {catalog.map(({ id, ...otherFamilyProps }) => (
+      <FamilyPreview key={id} {...otherFamilyProps}/>
+    ))}
   </div>
 );
 
-export default CatalogOverview;
+const mapStateToProps = createStructuredSelector({
+  catalog: selectCatalogForPreview
+});
+
+export default connect(mapStateToProps)(CatalogOverview);
