@@ -1,13 +1,13 @@
 const DIRECTORY_DATA = [
   {
-    id: 2,
+    id: 1,
     title: 'brass',
-     urlLink: 'brass',
+    urlLink: 'brass',
     imgUrl: 
       'https://europe.yamaha.com/en/files/20151125_Yamaha33294_1200x480_41db2ad9be57988c81f12f22222ee959.jpg'
   },
   {
-    id: 1,
+    id: 2,
     title: 'woodwind',
     urlLink: 'woodwind',
     imgUrl: 

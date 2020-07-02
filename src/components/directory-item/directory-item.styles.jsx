@@ -15,12 +15,13 @@ const directoryItemStyles = css`
 
 const familyOverviewStyles = css`
   height: 250px;
+
 `;
 
 const getButtonStyles = props => 
   props.isDirectoryItem ? directoryItemStyles : familyOverviewStyles;
 
-export const DirectoryItemContainer = styled.div`
+export const MenuItemContainer = styled.div`
   border: 1px solid black;
   display: flex;
   justify-content: center;

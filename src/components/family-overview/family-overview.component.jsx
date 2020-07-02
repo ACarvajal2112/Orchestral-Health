@@ -4,16 +4,20 @@ import { connect } from 'react-redux';
 import DirectoryItem from '../directory-item/directory-item.component';
 import { selectFamily } from '../../redux/shop/shop.selectors';
 
+import { FamilyPreviewContainer } from './family-overview.styles';
+
 const FamilyOverview = ({ family }) => {
   console.log(family);
   const { title, instruments } = family;
   return (
-    <div className='family-preview'>
-      <h1>{title}</h1>
-      {instruments.map(({ id, ...otherInstrumentsProps }) => (
-        <DirectoryItem key={id} {...otherInstrumentsProps} />
-      ))}
-    </div>
+    <FamilyPreviewContainer>
+      <h1 className='title'>{title}</h1>
+      <div className='family-preview-grid'>
+        {instruments.map(({ id, ...otherInstrumentsProps }) => (
+          <DirectoryItem key={id} {...otherInstrumentsProps} isFamilyOverviewItem />
+        ))}
+      </div>
+    </FamilyPreviewContainer>
   ) 
 };
 

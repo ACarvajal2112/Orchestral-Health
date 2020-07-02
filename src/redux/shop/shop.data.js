@@ -26,13 +26,18 @@ const SHOP_DATA = {
     ]
   },
   woodwind: {
-    id: 1,
+    id: 2,
     title: 'woodwind',
     instruments: [
       {
         id: 1,
         name: 'flutes',
         imgUrl: 'https://wallpaperaccess.com/full/1262535.jpg'
+      },
+      {
+        id: 4,
+        name: 'saxophones',
+        imgUrl: 'https://asunow.asu.edu/sites/default/files/saxophone-1920.jpg'
       },
       {
         id: 2,
@@ -44,11 +49,6 @@ const SHOP_DATA = {
         name: 'oboes',
         imgUrl: 'https://www.yamaha.com/en/musical_instrument_guide/common/images/oboe/play_main.jpg'
       },
-      {
-        id: 4,
-        name: 'saxophones',
-        imgUrl: 'https://asunow.asu.edu/sites/default/files/saxophone-1920.jpg'
-      }
     ]
   },
   strings: {

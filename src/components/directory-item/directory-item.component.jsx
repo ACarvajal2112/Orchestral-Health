@@ -1,11 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { DirectoryItemContainer } from './directory-item.styles';
+import { MenuItemContainer } from './directory-item.styles';
 
 const DirectoryItem = ({ title, name, urlLink, imgUrl, history, match, ...otherProps }) => (
-  <DirectoryItemContainer 
-    onClick={() => history.push(`${match.url}${urlLink}`)}
+  <MenuItemContainer 
+    onClick={() => history.push(`${match.url}catalog/${urlLink}`)}
     {...otherProps}>
     <div
       className='background-image'
@@ -15,7 +15,7 @@ const DirectoryItem = ({ title, name, urlLink, imgUrl, history, match, ...otherP
       <span className='title'>{title ? title : name}</span>
       <span className='subtitle'>VIEW</span>
     </div>
-  </DirectoryItemContainer>
+  </MenuItemContainer>
 );
 
 export default withRouter(DirectoryItem);
