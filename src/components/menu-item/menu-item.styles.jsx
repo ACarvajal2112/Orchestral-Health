@@ -1,12 +1,6 @@
 import styled, { css } from 'styled-components';
 
 const directoryItemStyles = css`
-  
-  & {
-    mid-width: 30%;
-    height: 300px;
-  }
-
   &:first-child {
     grid-column-start: 1;
     grid-column-end: 3;
@@ -15,6 +9,7 @@ const directoryItemStyles = css`
 
 const familyOverviewStyles = css`
   height: 250px;
+  margin-bottom: 5px;
 `;
 
 const getButtonStyles = props => 
@@ -31,8 +26,16 @@ export const MenuItemContainer = styled.div`
     cursor: pointer;
 
     & .background-image {
+      opacity: 0.8;
       transform: scale(1.1);
       transition: transform 6s ease-out;
+    }
+
+    & .content {
+      opacity: 0.9;
+      -webkit-box-shadow: 10px 10px 21px 0px rgba(77,77,77,1);
+      -moz-box-shadow: 10px 10px 21px 0px rgba(77,77,77,1);
+      box-shadow: 10px 10px 21px 0px rgba(77,77,77,1);
     }
   }
 
@@ -47,6 +50,7 @@ export const MenuItemContainer = styled.div`
     height: 90px;
     padding: 0 25px;
     background-color: white;
+    border: 1px solid #262626;
     opacity: 0.7;
     display: flex;
     flex-direction: column;
