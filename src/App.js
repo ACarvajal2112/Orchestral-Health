@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import HomePage from './pages/home-page/home-page.component';
@@ -41,6 +41,7 @@ class App extends React.Component {
     });
   }
 
+  // close subscription when component is unmounted to prevent memory leaks
   componentWillUnmount() {
     this.unsubscribeFromFirebaseAuth();
   }
@@ -48,14 +49,12 @@ class App extends React.Component {
   render() {
     return (
       <div className='app'>
-        <BrowserRouter>
         <Header />
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
           <Route path='/signin' component={SignInSignUpPage} />
         </Switch>
-      </BrowserRouter>
     </div>
     )
   };
