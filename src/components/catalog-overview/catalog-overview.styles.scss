@@ -1,0 +1,16 @@
+.title-nav {
+  width: 60%;
+  margin-left: auto; margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+
+  .title-nav-option a {
+    text-decoration: none;
+  }
+
+  .title-nav-option:not(:last-child)::after {
+    font-family: 'Font Awesome 5 Pro';
+    content: '\f8cf';
+    padding-left: 30px;
+  }
+}

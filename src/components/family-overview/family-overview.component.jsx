@@ -10,7 +10,7 @@ const FamilyOverview = ({ family }) => {
   const { title, instruments } = family;
   return (
     <FamilyOverviewContainer>
-      <h1 className='title'>{title}</h1>
+      <h1 className='title'>{title.toUpperCase()}</h1>
       {instruments.map(({ id, ...otherInstrumentsProps }) => (
         <MenuItem key={id} {...otherInstrumentsProps} isFamilyOverviewItem />
       ))}
