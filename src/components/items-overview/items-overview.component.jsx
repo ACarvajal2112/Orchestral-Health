@@ -8,10 +8,10 @@ import { selectItemsForPreview } from '../../redux/shop/shop.selectors';
 
 import './items-overview.styles.scss';
 
-const ItemsOverview = ({ match, items }) => (
+const ItemsOverview = ({ items }) => (
   <div className='items-overview'>
-    {items.map(({ id, ...otherItemProps }) => (
-      <Item key={id} {...otherItemProps} />
+    {items.map(item => (
+      <Item key={item.id} item={item} />
     ))}
   </div>
 );

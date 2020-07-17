@@ -436,19 +436,19 @@ const SHOP_DATA = {
             id: 49,
             name: 'petite',
             price: 4000,
-            imgUrl: 'https://www.steinwaynaples.com/wp-content/uploads/2014/02/WG48a.jpg'
+            imgUrl: 'https://www.lindebladpiano.com/img/_files/george%20steck%20145376%20f2.jpg'
           },
           {
             id: 50,
             name: 'medium',
             price: 13000,
-            imgUrl: 'https://www.jimlaabsmusicstore.com/wp-content/plugins/wp-easycart-data/products/pics1/Music_6dec93d406f482ed93d5aa140f0dea62.png'
+            imgUrl: 'https://antiquepianoshop.com/wp-content/uploads/2017/10/IMG_6769.jpg'
           },
           {
             id: 51,
             name: 'parlor',
             price: 54000,
-            imgUrl: "https://upload.wikimedia.org/wikipedia/commons/9/97/Steinway_%26_Sons_concert_grand_piano,_model_D-274,_manufactured_at_Steinway's_factory_in_Hamburg,_Germany_cropped.jpg"
+            imgUrl: 'https://www.chuppspianos.com/wp-content/uploads/2016/01/Steinway-Model-A-Grand-Piano-Interior.jpg'
           }
         ]
       },

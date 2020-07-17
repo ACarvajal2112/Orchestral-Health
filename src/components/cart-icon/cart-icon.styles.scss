@@ -5,6 +5,10 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  
+  &:hover {
+    cursor: pointer;
+  }
 
   .incrementer {
     position: absolute;
