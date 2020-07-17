@@ -2,15 +2,30 @@
   width: 60%;
   margin-left: auto; margin-right: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 
-  .title-nav-option a {
-    text-decoration: none;
+  .title-nav-option {
+    flex: 1;
+    display: flex;
+    text-align: center;
+
+    & a {
+      flex: 1;
+      justify-self: flex-start;
+      text-decoration: none;
+    }
   }
 
+  // every option in nav besides last child will have icon after
   .title-nav-option:not(:last-child)::after {
     font-family: 'Font Awesome 5 Pro';
     content: '\f8cf';
-    padding-left: 30px;
+    flex: 1;
+  }
+
+  // add empty content after last child to maintain spacing of flex-items 
+  .title-nav-option:last-child::after {
+    content: '';
+    flex: 1;
   }
 }
