@@ -3,19 +3,13 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import FamilyPreview from '../family-preview/family-preview.component';
-import { selectCatalogForPreview } from '../../redux/shop/shop.selectors';
+import NavMenu from '../nav-menu/nav-menu.component';
 
-import './catalog-overview.styles.scss';
+import { selectCatalogForPreview } from '../../redux/shop/shop.selectors';
 
 const CatalogOverview = ({ catalog }) => (
   <div className='catalog-overview'>
-    <div className='title-nav'>
-      {catalog.map(({ id, title }) => (
-        <div key={id} className='title-nav-option'>
-          <a href={`#${title}`}>{title}</a>
-        </div>
-      ))}
-    </div>
+    <NavMenu navItems={catalog} />
     {catalog.map(({ id, ...otherFamilyProps }) => (
       <FamilyPreview key={id} {...otherFamilyProps}/>
     ))}

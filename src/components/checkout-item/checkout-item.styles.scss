@@ -1,0 +1,27 @@
+.checkout-item {
+  width: 80%;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  & > div {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .product-img {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .remove i {
+      cursor: pointer;
+  }
+}

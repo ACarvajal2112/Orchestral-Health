@@ -7,6 +7,7 @@ import HomePage from './pages/home-page/home-page.component';
 import Header from './components/header/header.component';
 import ShopPage from './pages/shop-page/shop-page.component';
 import SignInSignUpPage  from './pages/sign-in-sign-up/sign-in-sign-up.component';
+import CheckoutPage from './pages/checkout-page/checkout-page.component';
 
 import {
   auth,
@@ -56,6 +57,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
+          <Route exact path='/checkout' component={CheckoutPage} />
           {currentUser ? (
             <Redirect to='/'/>
           ) : (
