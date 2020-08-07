@@ -27,10 +27,8 @@ const getButtonStyles = props => {
 }
 
 export const CustomButtonContainer = styled.button`
-  box-sizing: border-box;
   text-align: center;
   padding: 10px 5px;
-  box-sizing: border-box;
   width: 50%;
   text-transform: uppercase;
   cursor: pointer;
@@ -39,5 +37,4 @@ export const CustomButtonContainer = styled.button`
   align-items: center;
 
   ${getButtonStyles}
-  
 `;

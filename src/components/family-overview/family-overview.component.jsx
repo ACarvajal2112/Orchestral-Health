@@ -21,6 +21,7 @@ const FamilyOverview = ({ family }) => {
           {...otherInstrumentsProps} 
           isFamilyOverviewItem />
       ))}
+      <NavMenu navItems={instruments} isFooter />
     </FamilyOverviewContainer>
   )
 };

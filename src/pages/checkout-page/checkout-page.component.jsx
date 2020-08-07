@@ -36,6 +36,9 @@ const CheckoutPage = ({ cartItems, totalPrice, history }) => (
         {cartItems.map(item => (
           <CheckoutItem key={item.id} item={item} />
         ))}
+        <div className='items-total'>
+          <span>Total: ${totalPrice}</span>
+        </div>
       </div>
     ) : (
       <div className='no-items-container'>
@@ -45,9 +48,6 @@ const CheckoutPage = ({ cartItems, totalPrice, history }) => (
         </span> to browse the catalog.
       </div>
     )}
-    <div className='items-total'>
-      <span>Total: ${totalPrice}</span>
-    </div>
   </div>
 );
 

@@ -1,0 +1,72 @@
+.instructor-availability {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid purple;
+  width: 75%;
+
+  .days-of-week {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .times-list {
+    display: flex;
+    flex-direction: row;
+
+    & > div {
+      flex: 1;
+    }
+  }
+}
+
+
+
+
+// .available-times {
+//   position: relative;
+//   flex: 2;
+
+//   & .day {
+//     font-weight: bold;
+
+//     /* Calendar icon - solid */
+//     &::before {
+//       font-family: 'Font Awesome 5 Pro';
+//       font-weight: 900;
+//       font-size: 125%;
+//       content: '\f073';
+//       position: absolute;
+//       left: -39px;
+//     }
+//   }
+
+//   & ul {
+//     list-style-type: none;
+//     margin-top: 6px;
+//     margin-left: 10px;
+//     display: relative;
+
+//     /* Clock icon - solid */
+//     &::before {
+//       font-family: 'Font Awesome 5 Pro';
+//       font-weight: 900;
+//       font-size: 125%;
+//       content: '\f017';
+//       position: absolute;
+//       left: -40px;
+//     }
+
+//     /* Music Note icon - solid */
+//     & > li::before {
+//       font-family: 'Font Awesome 5 Pro';
+//       font-weight: 900;
+//       content: '\f8cf';
+//     }
+
+//     & li span {
+//       padding-left: 8px;
+//     }
+//   }
+// }

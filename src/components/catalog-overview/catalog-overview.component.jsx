@@ -13,6 +13,7 @@ const CatalogOverview = ({ catalog }) => (
     {catalog.map(({ id, ...otherFamilyProps }) => (
       <FamilyPreview key={id} {...otherFamilyProps}/>
     ))}
+    <NavMenu navItems={catalog} isFooter />
   </div>
 );
 

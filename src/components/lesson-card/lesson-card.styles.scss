@@ -1,0 +1,58 @@
+.lesson-card {
+  margin: 10px auto 0 30px;
+  height: 200px;
+  width: 90%;
+  display: flex;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .lesson-img {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex: 1;
+  }
+
+  .content {
+    padding-left: 0.5rem;
+    flex: 2;
+
+    & span {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    & span:last-of-type {
+      margin-bottom: 20px;
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .instructor {
+      margin-left: 6px;
+    }
+
+    .content-footer {
+      width: 100%;
+      padding-right: 0.5rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    button {
+      display: inline-block;
+      width: 10rem;
+
+      &:first-of-type {
+        margin-right: 8px;
+      }
+    }
+  }
+}
