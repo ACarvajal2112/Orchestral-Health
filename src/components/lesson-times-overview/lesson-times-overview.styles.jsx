@@ -1,14 +1,8 @@
-import styled, { css } from 'styled-components';
-
-const LessonTimesContentHeaderStyles = css`
-  text-align: center;
-  font-weight: bold;
-  color: white;
-`;
+import styled from 'styled-components';
 
 export const LessonTimesOverviewContainer = styled.div`
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 25px;
   left: 25%;
   display: flex;
   flex-direction: column;
@@ -18,6 +12,13 @@ export const LessonTimesOverviewContainer = styled.div`
   background: white;
   border: 1px solid black;
   padding-bottom: 35px;
+  z-index: 10001;
+
+  .register-btn {
+    width: 75%;
+    margin-top: 6px;
+    text-align: right;
+  }
 `;
 
 export const LessonTimesHeader = styled.div`
@@ -54,4 +55,14 @@ export const HeaderSubtitle = styled.div`
     letter-spacing: 1px;
     justify-content: center;
   }
+`;
+
+export const LessonTimesOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 1000;
 `;

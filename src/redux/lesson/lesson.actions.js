@@ -1,11 +1,8 @@
 import LessonActionTypes from './lesson.types';
 
-export const toggleLessonHidden = () => ({
-  type: LessonActionTypes.TOGGLE_LESSON_HIDDEN
-});
-
-export const setLessonHidden = () => ({
-  type: LessonActionTypes.SET_LESSON_HIDDEN
+export const toggleLessonHidden = isHidden => ({
+  type: LessonActionTypes.TOGGLE_LESSON_HIDDEN,
+  payload: isHidden
 });
 
 export const setLessonData = lessonData => ({

@@ -9,36 +9,43 @@ import {
   toggleLessonHidden
 } from '../../redux/lesson/lesson.actions';
 
-import './lesson-card.styles.scss';
+import {
+  LessonCardContainer, /* div */
+  LessonImgContainer, /* div */
+  ContentContainer, /* div */
+  TitleContainer, /* span */
+  InstructorContainer, /* span */
+  DescriptionContainer, /* span */
+  SeeTimesContainer /* div */
+} from './lessons-card.styles';
 
-const LessonCard = ({ id, imgUrl, title, name, description, availabilities, dispatch }) => (
-  <div className='lesson-card'>
-    <div 
-      className='lesson-img'
+const LessonCard = ({ title, instructor: { id, imgUrl, name, description, availabilities }, dispatch }) => (
+  <LessonCardContainer>
+    <LessonImgContainer
       style={{
         backgroundImage: `url(${imgUrl})`
       }}
     />
-    <div className='content'>
-      <span className='title'>{title}</span>
-      <span className='instructor'><i>{name}</i></span>
-      <span className='description'>{description}</span>
-      <div className='content-footer'>
+    <ContentContainer>
+      <TitleContainer>{title}</TitleContainer>
+      <InstructorContainer><i>{name}</i></InstructorContainer>
+      <DescriptionContainer>{description}</DescriptionContainer>
+      <SeeTimesContainer>
         <CustomButton 
           onClick={() => {
             dispatch(
               setLessonData({
                 title, 
-                availabilities}
-              )
+                availabilities
+              })
             );
             dispatch(setDefaultDayOfWeek(id));
-            dispatch(toggleLessonHidden());
+            dispatch(toggleLessonHidden(null));
           }}
         >SEE TIMES</CustomButton> 
-      </div>  
-    </div>
-  </div>
+      </SeeTimesContainer>  
+    </ContentContainer>
+  </LessonCardContainer>
 );
 
 export default connect()(LessonCard);

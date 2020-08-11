@@ -7,20 +7,17 @@ const footerNavStyles = css`
   transition: all 0.5s;
 `;
 
-const isScrolledNavAnimationStyles = css`
+const isScrolledAnimationStyles = css`
   transform: translateY(-50px);
 `;
 
+// if component is a footer, styles will position component off screen
+const getFooterNavStyles = props => 
+  props.isFooter ? footerNavStyles : '';
 
-const getFooterNavStyles = props => {
-  console.log('props.isFooter ? ', props.isFooter);
-  return props.isFooter ? footerNavStyles : '';
-};
-
-const getScrolledNavStyles = props => {
-  console.log('props.isScrolled', props.isScrolled);
-  return props.isScrolled ? isScrolledNavAnimationStyles : '';
-};
+// if header nav is scrolled past, footer will translate onto screen
+const getScrolledNavStyles = props => 
+  props.isScrolled ? isScrolledAnimationStyles : '';
 
 
 export const NavMenuContainer = styled.div`
@@ -32,11 +29,10 @@ export const NavMenuContainer = styled.div`
   background: white;
 
   ${getFooterNavStyles}
-
   ${getScrolledNavStyles}
 `;
 
-export const NavMenuOption = styled.div`
+export const NavMenuOptionContainer = styled.div`
   flex: 1;
   display: flex;
   text-align: center;
@@ -47,14 +43,14 @@ export const NavMenuOption = styled.div`
     text-decoration: none;
   }
 
-  // every option in nav besides last child will have icon after
+  /* every link in nav besides last child will have icon after */
   &:not(:last-child)::after {
     font-family: 'Font Awesome 5 Pro';
     content: '\f8cf';
     flex: 1;
   }
 
-  // add empty content after last child to maintain spacing of flex-items 
+  /* add empty content after last child to maintain spacing of flex-items */
   &:last-child::after {
     content: '';
     flex: 1;

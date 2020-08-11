@@ -23,15 +23,18 @@ export const selectCatalogForPreview = createSelector(
 export const selectInstruments = (familyUrlParam) =>
   createSelector(
     [selectFamily(familyUrlParam)],
-    family => family.instruments
+    family => family ? family.instruments : null
   );
 
 // select items based on family and instrument url params
 export const selectItems = (familyUrlParam, instrumentId) =>
   createSelector(
     [selectInstruments(familyUrlParam)],
-    instruments => instruments.find(instrument => instrument.name === instrumentId).items
-  );
+    instruments => 
+      instruments
+      ? instruments.find(instrument => instrument.name === instrumentId).items
+      : null
+);
 
 export const selectItemsForPreview = (familyUrlParam, instrumentId) =>
   createSelector(

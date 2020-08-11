@@ -13,7 +13,7 @@ const FamilyOverview = ({ family }) => {
   return (
     <FamilyOverviewContainer>
       <NavMenu navItems={instruments} />
-      <h1 className='title'>{title.toUpperCase()}</h1>
+      <h1>{title.toUpperCase()}</h1>
       {instruments.map(({ id, ...otherInstrumentsProps }) => (
         <MenuItem 
           key={id} 

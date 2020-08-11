@@ -1,59 +1,20 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import CheckoutItem from '../../components/checkout-item/checkout-item.component';
+import CheckoutOverview from '../../components/checkout-overview/checkout-overview.component';
+import NoCheckoutItems from '../../components/no-checkout-items/no-checkout-items.component';
 
-import { 
-  selectCartItems,
-  selectTotalPrice
-} from '../../redux/cart/cart.selectors';
+import { selectCartItems } from '../../redux/cart/cart.selectors';
 
-import './checkout-page.styles.scss';
-
-const CheckoutPage = ({ cartItems, totalPrice, history }) => (
+const CheckoutPage = ({ cartItems }) => (
   <div className='checkout-page'>
-    {cartItems.length ? (
-      <div className='checkout-container'>
-        <div className='checkout-header'>
-          <div className='header-block'>
-            <span>Product</span>
-          </div>
-          <div className='header-block'>
-            <span>Description</span>
-          </div>
-          <div className='header-block'>
-            <span>Quantity</span>
-          </div>
-          <div className='header-block'>
-            <span>Price</span>
-          </div>
-          <div className='header-block'>
-            <span>Remove</span>
-          </div>
-        </div>
-        {cartItems.map(item => (
-          <CheckoutItem key={item.id} item={item} />
-        ))}
-        <div className='items-total'>
-          <span>Total: ${totalPrice}</span>
-        </div>
-      </div>
-    ) : (
-      <div className='no-items-container'>
-        <h2>There are no items in your cart!</h2>
-        <span className='custom-link' onClick={() => history.push('/shop')}>
-          Click here
-        </span> to browse the catalog.
-      </div>
-    )}
+    {cartItems.length ? <CheckoutOverview cartItems={cartItems}/> : <NoCheckoutItems />}
   </div>
 );
 
 const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems,
-  totalPrice: selectTotalPrice
+  cartItems: selectCartItems
 });
 
-export default withRouter(connect(mapStateToProps)(CheckoutPage));
+export default connect(mapStateToProps)(CheckoutPage);

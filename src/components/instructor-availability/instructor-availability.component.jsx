@@ -5,37 +5,50 @@ import { createStructuredSelector } from 'reselect';
 import CustomButton from '../custom-button/custom-button.component';
 
 import { updateDayOfWeek } from '../../redux/lesson/lesson.actions';
-import { selectDayOfWeek } from '../../redux/lesson/lesson.selectors';
+import { 
+  selectDayOfWeek,
+  selectAvailabileTimesByDay,
+  selectAvailabilityByWeek
+} from '../../redux/lesson/lesson.selectors';
 
 import './instructor-availability.styles.scss';
 
-const InstructorAvailability = ({ dispatch, dayOfWeekSelected }) => (
-
-      <div className='instructor-availability'> 
-        <div className='days-of-week'>
-          <CustomButton onClick={() => dispatch(updateDayOfWeek('Mon'))}>Mon</CustomButton>
-          <CustomButton onClick={() => dispatch(updateDayOfWeek('Tue'))}>Tue</CustomButton>
-          <CustomButton onClick={() => dispatch(updateDayOfWeek('Wed'))}>Wed</CustomButton>
-          <CustomButton onClick={() => dispatch(updateDayOfWeek('Thu'))}>Thu</CustomButton>
-          <CustomButton onClick={() => dispatch(updateDayOfWeek('Fri'))}>Fri</CustomButton>
-          <CustomButton onClick={() => dispatch(updateDayOfWeek('Sat'))}>Sat</CustomButton>
-          <CustomButton onClick={() => dispatch(updateDayOfWeek('Sun'))}>Sun</CustomButton>
-        </div>
-        <div className='times-list'>
-          <div>{dayOfWeekSelected}</div>
-          <div>
-            <strong>8am - 10am</strong>
-            <input type='checkbox' />
-          </div>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <button>Register</button>
-        </div>
+const InstructorAvailability = ({ dayOfWeekSelected, availableTimes, availableDays, dispatch }) => (
+  <div className='instructor-availability'> 
+    <div className='days-menu-btns'>
+      {availableDays.map(({ day, isAvailable }) => (
+        <CustomButton
+          disabled={!isAvailable}
+          onClick={() => dispatch(updateDayOfWeek(`${day}`))}
+          style={isAvailable ? {background: 'lightblue'} : null}
+      >{day.slice(0,3)}</CustomButton>
+      ))}
+    </div>
+    <div className='times-list'>
+      <div className='day-of-week'>
+        {dayOfWeekSelected}
       </div>
+      <div className='available-times'>
+        {availableTimes.map(({ id, time }) => 
+          <span key={id}>{time}</span>
+        )}
+      </div>
+    </div>
+    <div className='registration-overview'>
+      <div className='registration'>
+        Registration status
+      </div>
+      <div>
+        <span className='registration-status'>Not Registered</span>
+      </div>
+    </div>
+  </div>
 );
 
 const mapStateToProps = createStructuredSelector({
-  dayOfWeekSelected: selectDayOfWeek
+  dayOfWeekSelected: selectDayOfWeek,
+  availableTimes: selectAvailabileTimesByDay,
+  availableDays: selectAvailabilityByWeek
 });
 
 export default connect(mapStateToProps)(InstructorAvailability);

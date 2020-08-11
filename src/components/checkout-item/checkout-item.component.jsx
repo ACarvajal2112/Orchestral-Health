@@ -1,31 +1,37 @@
 import React from 'react';
-
-import './checkout-item.styles.scss';
 import { connect } from 'react-redux';
 
 import { removeItemFromCart } from '../../redux/cart/cart.actions'
 
+import {
+  CheckoutItemContainer, /* div */
+  DescriptionContainer, /* div */
+  QuantityContainer, /* div */
+  ProductImgContainer, /* div */
+  PriceContainer, /* div */
+  RemoveContainer /* div */
+} from './checkout-item.styles';
+
 const CheckoutItem = ({ item, removeItem }) => {
   const { name, price, quantity, imgUrl } = item;
   return (
-    <div className='checkout-item'>
-    <div 
-      className='product-img' 
+    <CheckoutItemContainer>
+    <ProductImgContainer
       style={{ backgroundImage: `url(${imgUrl})` }} 
     />
-    <div className='description'>
+    <DescriptionContainer>
       <span>{name}</span>
-    </div>
-    <div className='quantity'>
+    </DescriptionContainer>
+    <QuantityContainer>
       <span>{quantity}</span>
-    </div>
-    <div className='price'>
+    </QuantityContainer>
+    <PriceContainer>
       <span>${price * quantity}</span>
-    </div>
-    <div className='remove'>
+    </PriceContainer>
+    <RemoveContainer>
       <i className='fad fa-times' onClick={() => removeItem(item)} />
-    </div>
-  </div>
+    </RemoveContainer>
+  </CheckoutItemContainer>
   )
 };
 

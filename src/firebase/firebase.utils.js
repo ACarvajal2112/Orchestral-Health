@@ -38,6 +38,52 @@ export const createUserDocument = async (userAuth, additionalData) => {
   return userDocRef;
 };
 
+export const convertDirectorySnapshotToMap = collectionSnap => {
+  const transformedCollection = collectionSnap.docs.map(doc => {
+    const { title, imgUrl } = doc.data();
+
+    return {
+      id: doc.id,
+      urlLink: encodeURI(title.toLowerCase()),
+      title,
+      imgUrl
+    }
+  });
+  return transformedCollection;
+};
+
+export const convertShopSnapshotToMap = collectionSnap => {
+  let shopDataMap = {};
+  collectionSnap.docs.map(doc => {
+
+    const { title } = doc.data();
+
+    let currentShopObj = {
+      id: doc.id,
+      title,
+      instruments: []
+    };
+
+    doc.ref
+      .collection('instruments')
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.docs.forEach(doc => {
+          const { name, imgUrl, items } = doc.data();
+          currentShopObj.instruments.push({
+            id: doc.id,
+            name,
+            imgUrl,
+            items
+          });
+        })
+      });
+      shopDataMap[title] = currentShopObj;
+      return currentShopObj;
+    });
+    return shopDataMap;
+};
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();

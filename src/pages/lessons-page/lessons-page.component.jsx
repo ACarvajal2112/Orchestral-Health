@@ -6,14 +6,14 @@ import LessonTimesOverview from '../../components/lesson-times-overview/lesson-t
 import LessonCard from '../../components/lesson-card/lesson-card.component';
 
 import { 
-  selectInstructors,
+  selectLessons,
   selectToggleLessonHidden,
   selectLessonData
 } from '../../redux/lesson/lesson.selectors';
 
-import { setLessonHidden } from '../../redux/lesson/lesson.actions';
+import { toggleLessonHidden } from '../../redux/lesson/lesson.actions';
 
-import './lessons-page.styles.scss';
+import { LessonsPageContainer } from './lessons-page.styles';
 
 class LessonsPage extends React.Component {
   constructor(props) {
@@ -23,26 +23,26 @@ class LessonsPage extends React.Component {
   componentDidMount() {
     const { dispatch, isHidden } = this.props;
     if (!isHidden) {
-      dispatch(setLessonHidden());
+      dispatch(toggleLessonHidden(true));
     }
   }
-
+  
   render() {
-    const { instructors, isHidden, lessonTimesData } = this.props;
+    const { lessons, isHidden, lessonTimesData } = this.props;
     return (
-      <div className='lessons-page'>
+      <LessonsPageContainer>
         <h1>Lessons</h1>
-        {instructors.map(({ ...otherInstructorProps }) => (
-          <LessonCard key={otherInstructorProps.id} {...otherInstructorProps} />
+        {lessons.map(({ id, ...otherLessonProps }) => (
+          <LessonCard key={id} {...otherLessonProps} />
         ))}
         { !isHidden ? ( <LessonTimesOverview {...lessonTimesData} /> ) : null }
-      </div>
+      </LessonsPageContainer>
     )
   }
 };
 
 const mapStateToProps = createStructuredSelector({
-  instructors: selectInstructors,
+  lessons: selectLessons,
   isHidden: selectToggleLessonHidden,
   lessonTimesData: selectLessonData
 });

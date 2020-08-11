@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import MenuItem from '../menu-item/menu-item.component';
-import { selectFamiliesForPreview } from '../../redux/directory/directory.selectors';
+
+import { selectFamilies } from '../../redux/directory/directory.selectors';
 
 import { DirectoryContainer } from './directory.styles';
 
@@ -16,7 +17,7 @@ const Directory = ({ families }) => (
 );
 
 const mapStateToProps = createStructuredSelector({
-  families: selectFamiliesForPreview
+  families: selectFamilies
 });
 
 export default connect(mapStateToProps)(Directory);

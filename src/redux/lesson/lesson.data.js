@@ -11,27 +11,54 @@ const LESSONS_DATA = [
           id: 1,
           day: 'Tuesday',
           times: [
-            '8am - 9am',
-            '9am - 10am',
-            '11am - 12pm'
+            {
+              id: 1,
+              time: '8am - 9am'
+            },
+            {
+              id: 2,
+              time: '9am - 10am'
+            },
+            {
+              id: 3,
+              time: '11am - 12pm'
+            }
           ]
         },
         {
           id: 2,
           day: 'Wednesday',
           times: [
-            '2:30pm - 3:30pm',
-            '4pm - 5pm',
-            '5pm - 6pm'
+            {
+              id: 4,
+              time: '2:30pm - 3:30pm'
+            },
+            {
+              id: 5,
+              time: '4pm - 5pm'
+            },
+            {
+              id: 6,
+              time: '5pm - 6pm'
+            }
           ]
         },
         {
           id: 3,
           day: 'Friday',
           times: [
-            '11am - 12am',
-            '12pm - 1pm',
-            '1pm - 2pm'
+            {
+              id: 7,
+              time: '11am - 12am'
+            },
+            {
+              id: 8,
+              time: '12pm - 1pm'
+            },
+            {
+              id: 9,
+              time: '1pm - 2pm'
+            }
           ]
         }
       ]
@@ -58,12 +85,5 @@ const LESSONS_DATA = [
     }
   }
 ];
-  // {
-  //   id: 3,
-  //   name: 'Randy Ronaldoson',
-  //   description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates assumenda omnis temporibus iste rem fugiat, debitis qui, doloremque nihil, alias molestiae pariatur quaerat harum ullam perferendis hic fuga quia quisquam?',
-  //   title: 'Classical Guitar',
-  //   imgUrl: 'https://fromthetop.org/wp-content/uploads/parsasabet_guitar_351.jpg'
-  // }
 
 export default LESSONS_DATA;

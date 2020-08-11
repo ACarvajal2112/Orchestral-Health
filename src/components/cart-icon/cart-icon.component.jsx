@@ -5,15 +5,17 @@ import { createStructuredSelector } from 'reselect';
 import { selectItemCount } from '../../redux/cart/cart.selectors';
 import { toggleCartHidden } from '../../redux/cart/cart.actions';
 
-import './cart-icon.styles.scss';
+import {
+  CartIconContainer, /* div */
+  IncrementerContainer /* span */
+} from './cart-icon.styles';
 
 const CartIcon = ({ itemCount, dispatch }) => (
-  <div 
-    className='cart-icon' 
+  <CartIconContainer
     onClick={() => dispatch(toggleCartHidden())}>
       <i className='fal fa-shopping-cart fa-3x'></i>
-      <span className='incrementer'>{itemCount}</span>
-  </div>
+      <IncrementerContainer>{itemCount}</IncrementerContainer>
+  </CartIconContainer>
 );
 
 const mapStateToProps = createStructuredSelector({

@@ -1,6 +1,9 @@
 import LESSONS_DATA from './lesson.data';
 import LessonActionTypes from './lesson.types';
-import { setDefaultDayOfWeek } from './lesson.util';
+import { 
+  setDefaultDayOfWeek,
+  toggleLessonHidden 
+} from './lesson.util';
 
 const INITIAL_STATE = {
   lessons: LESSONS_DATA,
@@ -14,12 +17,7 @@ const lessonReducer = (state = INITIAL_STATE, action) => {
     case LessonActionTypes.TOGGLE_LESSON_HIDDEN:
       return { 
         ...state,
-        hidden: !state.hidden
-      };
-    case LessonActionTypes.SET_LESSON_HIDDEN:
-      return {
-        ...state,
-        hidden: true
+        hidden: toggleLessonHidden(state.hidden, action.payload)
       };
     case LessonActionTypes.SET_LESSON_DATA:
       return {
@@ -32,7 +30,6 @@ const lessonReducer = (state = INITIAL_STATE, action) => {
         dayOfWeek: setDefaultDayOfWeek(state.lessons, action.payload)
       };
     case LessonActionTypes.UPDATE_DAY_OF_WEEK:
-      console.log(action.payload);
       return {
         ...state,
         dayOfWeek: action.payload

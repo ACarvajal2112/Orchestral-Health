@@ -1,8 +1,18 @@
-/* returns the first available day of the week based on instructor ID and availability */
+import CustomButton from '../../components/custom-button/custom-button.component';
+
+// if value is present, set hidden to given value, otherwise toggle current value
+export const toggleLessonHidden = (isHidden, value) => 
+  value ? value : !isHidden;
+
+// returns the first available day of the week based on instructor ID and availability
 export const setDefaultDayOfWeek = (lessons, instructorId) => {
+  const selectedInstructor = getInstructor(lessons, instructorId);
+  return selectedInstructor.availabilities[0].day
+};
+
+export const getInstructor = (lessons, instructorId) => {
   const instructors = getAllInstructors(lessons);
-  const selectedInstructor = instructors.find(instructor => instructor.id === instructorId);
-    return selectedInstructor.availabilities[0].day.slice(0,3)
+  return instructors.find(instructor => instructor.id === instructorId);
 };
 
 export const getAllInstructors = lessons => 
@@ -10,3 +20,5 @@ export const getAllInstructors = lessons =>
     accumulatedInstructors.push(lesson.instructor);
     return accumulatedInstructors;
   }, []);
+
+

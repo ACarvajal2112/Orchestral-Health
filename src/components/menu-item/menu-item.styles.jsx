@@ -38,38 +38,37 @@ export const MenuItemContainer = styled.div`
       box-shadow: 10px 10px 21px 0px rgba(77,77,77,1);
     }
   }
-
-  .background-image {
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    background-size: cover;
-  }
-
-  .content {
-    height: 90px;
-    padding: 0 25px;
-    background-color: white;
-    border: 1px solid #262626;
-    opacity: 0.7;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-
-    .title {
-      font-size: 22px;
-      font-weight: bold;
-      margin-bottom: 4px;
-      text-transform: uppercase;
-    }
-
-    .subtitle {
-      font-weight: lighter;
-      font-size: 16px;
-    }
-  }
-
   ${getButtonStyles}
+`;
+
+export const BackgroundImageContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+`;
+
+export const ContentContainer = styled.div`
+  height: 90px;
+  padding: 0 25px;
+  background-color: white;
+  border: 1px solid #262626;
+  opacity: 0.7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+`;
+
+export const TitleContainer = styled.span`
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+`;
+
+export const SubtitleContainer = styled.span`
+  font-weight: lighter;
+  font-size: 16px;
 `;

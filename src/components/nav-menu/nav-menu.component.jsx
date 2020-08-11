@@ -1,11 +1,9 @@
 import React from 'react';
 
 import { 
-  NavMenuContainer,
-  NavMenuOption
+  NavMenuContainer, /* div */
+  NavMenuOptionContainer /* div */
 } from './nav-menu.styles';
-
-import './nav-menu.styles.scss';
 
 class NavMenu extends React.Component {
   constructor(props) {
@@ -17,6 +15,7 @@ class NavMenu extends React.Component {
     this.handleScroll = this.handleScroll.bind(this);
   }
 
+  // if nav menu is a footer, add scroll event listener
   componentDidMount() {
     const { isFooter } = this.props;
     if (isFooter) {
@@ -30,9 +29,9 @@ class NavMenu extends React.Component {
     }
   }
 
+  // if user scrolls past header nav, set scrolled to true.
   handleScroll = () => {
-    // check whether window is scrolled past header nav
-    const scrollTop = window.scrollY < 113;
+    const scrollTop = window.scrollY < 112;
     if (!scrollTop) {
       this.setState({ scrolled: true });
     }
@@ -46,9 +45,9 @@ class NavMenu extends React.Component {
     return (
       <NavMenuContainer isScrolled={this.state.scrolled} {...otherProps} >
         {navItems.map(({ id, title, name }) => (
-          <NavMenuOption key={id} >
+          <NavMenuOptionContainer key={id} >
             <a href={`#${title ? title : name}`}>{title ? title : name}</a>
-          </NavMenuOption>
+          </NavMenuOptionContainer>
         ))}
       </NavMenuContainer>
     )
