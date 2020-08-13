@@ -24,6 +24,11 @@ export const selectLessonData = createSelector(
   lesson => lesson.data
 );
 
+export const selectLessonTitle = createSelector(
+  [selectLessonData],
+  lessonData => lessonData.title
+);
+
 export const selectAvailabilities = createSelector(
   [selectLessonData],
   lessonData => lessonData.availabilities

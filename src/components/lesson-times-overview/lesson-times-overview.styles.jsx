@@ -13,12 +13,20 @@ export const LessonTimesOverviewContainer = styled.div`
   border: 1px solid black;
   padding-bottom: 35px;
   z-index: 10001;
+`;
 
-  .register-btn {
-    width: 75%;
-    margin-top: 6px;
-    text-align: right;
-  }
+export const CloseOverlay = styled.span`
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+  font-size: 150%;
+  cursor: pointer;
+`;
+
+export const RegisterButtonContainer = styled.div`
+  width: 75%;
+  margin-top: 6px;
+  text-align: right;
 `;
 
 export const LessonTimesHeader = styled.div`

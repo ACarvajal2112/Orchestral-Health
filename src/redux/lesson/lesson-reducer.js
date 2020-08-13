@@ -5,7 +5,7 @@ import {
   toggleLessonHidden 
 } from './lesson.util';
 
-const INITIAL_STATE = {
+const INITIAL_STATE = { 
   lessons: LESSONS_DATA,
   hidden: true,
   data: {},

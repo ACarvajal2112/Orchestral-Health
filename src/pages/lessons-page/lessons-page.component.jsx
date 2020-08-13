@@ -16,9 +16,6 @@ import { toggleLessonHidden } from '../../redux/lesson/lesson.actions';
 import { LessonsPageContainer } from './lessons-page.styles';
 
 class LessonsPage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   
   componentDidMount() {
     const { dispatch, isHidden } = this.props;

@@ -13,6 +13,7 @@ const config = {
   measurementId: "G-S48NGMPEG8"
 };
 
+
 export const createUserDocument = async (userAuth, additionalData) => {
   // only store user in DB if userAuth object is returned - user signed in
   if (!userAuth) return;
@@ -38,50 +39,47 @@ export const createUserDocument = async (userAuth, additionalData) => {
   return userDocRef;
 };
 
-export const convertDirectorySnapshotToMap = collectionSnap => {
-  const transformedCollection = collectionSnap.docs.map(doc => {
+export const convertDirectorySnapshotToMap = directorySnap => 
+  directorySnap.docs.map(doc => {
     const { title, imgUrl } = doc.data();
-
     return {
       id: doc.id,
       urlLink: encodeURI(title.toLowerCase()),
       title,
       imgUrl
-    }
+    };
   });
-  return transformedCollection;
-};
 
 export const convertShopSnapshotToMap = collectionSnap => {
-  let shopDataMap = {};
-  collectionSnap.docs.map(doc => {
+  const shopDataMap = {};
+  collectionSnap.docs.forEach(shopDoc => {
 
-    const { title } = doc.data();
+    const { title } = shopDoc.data();
 
-    let currentShopObj = {
-      id: doc.id,
+    shopDataMap[title] = {
+      id: shopDoc.id,
       title,
       instruments: []
     };
 
-    doc.ref
+    /* use current 'shop' doc reference to query nested 'instruments' collection,
+       add each instrument doc to instruments array */
+    shopDoc.ref
       .collection('instruments')
       .get()
-      .then((querySnapshot) => {
-        querySnapshot.docs.forEach(doc => {
-          const { name, imgUrl, items } = doc.data();
-          currentShopObj.instruments.push({
-            id: doc.id,
+      .then((querySnapshot) => 
+        querySnapshot.docs.forEach(instrumentsDoc => {
+          const { name, imgUrl, items } = instrumentsDoc.data();
+          shopDataMap[title].instruments.push({
+            id: instrumentsDoc.id,
             name,
             imgUrl,
             items
-          });
+          })
         })
-      });
-      shopDataMap[title] = currentShopObj;
-      return currentShopObj;
-    });
-    return shopDataMap;
+      );
+  });
+  return shopDataMap;
 };
 
 firebase.initializeApp(config);

@@ -1,0 +1,40 @@
+.registration-status {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  margin-top: 6px;
+  padding: 4px 0;
+
+  & > div {
+    width: 50%;
+  }
+
+  /* Pencil icon - solid */
+  &::before {
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 900;
+    font-size: 150%;
+    content: '\f040';
+    position: absolute;
+    left: -40px;
+  }
+
+  .registration {
+    display: flex;
+    justify-content: flex-end;
+    font-weight: bold;
+    padding-right: 4rem;
+  }
+
+  .registered {
+    background: red;
+    color: white;
+    border-radius: 4px;
+  }
+
+  .not-registered {
+    background: green;
+    color: white;
+    border-radius: 4px;
+  }
+}

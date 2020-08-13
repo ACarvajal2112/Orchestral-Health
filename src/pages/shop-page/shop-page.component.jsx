@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 import { withRouter, Route } from 'react-router-dom';
 
 import CatalogOverview from '../../components/catalog-overview/catalog-overview.component';
@@ -9,8 +8,6 @@ import ItemsOverview from '../../components/items-overview/items-overview.compon
 import WithSpinner from '../../components/with-spinner/with-spinner.component';
 
 import { firestore, convertShopSnapshotToMap } from '../../firebase/firebase.utils';
-
-import { selectCatalogForPreview } from '../../redux/shop/shop.selectors';
 
 import { updateShopData } from '../../redux/shop/shop.actions';
 

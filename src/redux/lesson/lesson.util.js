@@ -1,5 +1,3 @@
-import CustomButton from '../../components/custom-button/custom-button.component';
-
 // if value is present, set hidden to given value, otherwise toggle current value
 export const toggleLessonHidden = (isHidden, value) => 
   value ? value : !isHidden;
