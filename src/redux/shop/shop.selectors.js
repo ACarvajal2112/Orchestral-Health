@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-const selectShop = (state) => state.shop;
+const selectShop = state => state.shop;
 
 export const selectCatalog = createSelector(
   [selectShop],
@@ -41,3 +41,8 @@ export const selectItemsForPreview = (familyUrlParam, instrumentId) =>
     [selectItems(familyUrlParam, instrumentId)],
     items => items ? Object.keys(items).map(key => items[key]) : []
   );
+
+export const selectIsShopDataFetching = createSelector(
+  [selectShop],
+  shop => shop.isFetching
+);
