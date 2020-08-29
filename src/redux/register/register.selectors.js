@@ -11,3 +11,8 @@ export const selectLessonsPerWeek = createSelector(
   [registerSelector],
   register => register.lessonsPerWeek
 );
+
+export const selectLessonsFromRegister = createSelector(
+  [registerSelector],
+  register => register.lessons
+);

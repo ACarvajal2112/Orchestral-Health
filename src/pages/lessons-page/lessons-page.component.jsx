@@ -2,46 +2,38 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import LessonTimesOverview from '../../components/lesson-times-overview/lesson-times-overview.component';
-import LessonCard from '../../components/lesson-card/lesson-card.component';
+import LessonsOverview from '../../components/lessons-overview/lessons-overview.component';
+import WithSpinner from '../../components/with-spinner/with-spinner.component';
 
-import { 
-  selectLessons,
-  selectToggleLessonHidden,
-  selectLessonData
-} from '../../redux/lesson/lesson.selectors';
+import { selectIsLessonDataFetching } from '../../redux/lesson/lesson.selectors';
+import { fetchLessonDataStartAsync } from '../../redux/lesson/lesson.actions';
 
-import { toggleLessonHidden } from '../../redux/lesson/lesson.actions';
-
-import { LessonsPageContainer } from './lessons-page.styles';
+const LessonsOverviewWithSpinner = WithSpinner(LessonsOverview);
 
 class LessonsPage extends React.Component {
   
   componentDidMount() {
-    const { dispatch, isHidden } = this.props;
-    if (!isHidden) {
-      dispatch(toggleLessonHidden(true));
-    }
+    const { fetchLessonDataStartAsync } = this.props;
+    fetchLessonDataStartAsync();
   }
   
   render() {
-    const { lessons, isHidden, lessonTimesData } = this.props;
+    const { isLessonDataFetching } = this.props;
     return (
-      <LessonsPageContainer>
-        <h1>Lessons</h1>
-        {lessons.map(({ id, ...otherLessonProps }) => (
-          <LessonCard key={id} {...otherLessonProps} />
-        ))}
-        { !isHidden ? ( <LessonTimesOverview {...lessonTimesData} /> ) : null }
-      </LessonsPageContainer>
+      <LessonsOverviewWithSpinner isLoading={isLessonDataFetching} />
     )
   }
 };
 
 const mapStateToProps = createStructuredSelector({
-  lessons: selectLessons,
-  isHidden: selectToggleLessonHidden,
-  lessonTimesData: selectLessonData
+  isLessonDataFetching: selectIsLessonDataFetching
 });
 
-export default connect(mapStateToProps)(LessonsPage);
+const mapDispatchToProps = dispatch => ({
+  fetchLessonDataStartAsync: () => dispatch(fetchLessonDataStartAsync())
+});
+
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(LessonsPage);

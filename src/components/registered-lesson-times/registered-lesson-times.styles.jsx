@@ -3,18 +3,29 @@ import styled from 'styled-components';
 export const RegisteredLessonTimesContainer = styled.div`
   display: flex;
   flex-direction: row;
+  position: relative;
   margin-top: 6px;
   padding: 4px 0;
 
   & > div {
     width: 50%;
   }
+
+  /* Calendar Check icon - solid */
+  &::before {
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 900;
+    font-size: 150%;
+    content: '\f274';
+    position: absolute;
+    left: -40px;
+  }
 `;
 
-export const LessonTimesHeaderContainer = styled.div`
+export const LessonTimesHeader = styled.div`
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-items: top;
   padding-right: 4rem;
   font-weight: bold;
 `;

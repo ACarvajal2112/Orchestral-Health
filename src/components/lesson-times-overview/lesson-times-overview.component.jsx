@@ -23,7 +23,7 @@ class LessonTimesOverview extends React.Component {
   };
 
   render() {
-    const { title, availabilities, dispatch } = this.props; 
+    const { title, availabilities } = this.props; 
     return ReactDom.createPortal(
       <LessonTimesOverlay>
         <LessonTimesOverviewContainer>
@@ -38,7 +38,9 @@ class LessonTimesOverview extends React.Component {
           </LessonTimesHeader>
           <InstructorAvailability availabilities={availabilities} />
           <RegisterButtonContainer>
-            <button onClick={() => dispatch()}>Register</button>
+            <button onClick={() => console.log('TO BE CONFIRMED')}>
+              Confirm Registration
+            </button>
             &nbsp;
             <button onClick={this.handleCloseOverlay}>Cancel</button>
           </RegisterButtonContainer>

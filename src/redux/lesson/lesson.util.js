@@ -4,12 +4,15 @@ export const toggleLessonHidden = (isHidden, value) =>
 
 // returns the first available day of the week based on instructor ID and availability
 export const setDefaultDayOfWeek = (lessons, instructorId) => {
-  const selectedInstructor = getInstructor(lessons, instructorId);
+  const lessonsArray = convertLessonObjectToArray(lessons);
+  console.log({ lessonsArray })
+  const selectedInstructor = getInstructor(lessonsArray, instructorId);
   return selectedInstructor.availabilities[0].day
 };
 
 export const getInstructor = (lessons, instructorId) => {
   const instructors = getAllInstructors(lessons);
+  console.log({ instructors })
   return instructors.find(instructor => instructor.id === instructorId);
 };
 
@@ -18,5 +21,10 @@ export const getAllInstructors = lessons =>
     accumulatedInstructors.push(lesson.instructor);
     return accumulatedInstructors;
   }, []);
+
+
+export const convertLessonObjectToArray = lessons => 
+  Object.keys(lessons).map(key => lessons[key]);
+
 
 

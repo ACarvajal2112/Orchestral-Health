@@ -8,6 +8,11 @@ export const selectLessons = createSelector(
   lesson => lesson.lessons
 );
 
+export const selectLessonsForPreview = createSelector(
+  [selectLessons],
+  lessons => lessons ? Object.keys(lessons).map(key => lessons[key]) : []
+);
+
 // return array of instructors reduced from each lesson object
 export const selectInstructors = createSelector(
   [selectLessons],
@@ -68,4 +73,9 @@ export const selectAvailabilityByWeek = createSelector(
       });
       return availabilityArr;
     }, [])
+);
+
+export const selectIsLessonDataFetching = createSelector(
+  [lessonSelector],
+  lesson => lesson.isFetching
 );

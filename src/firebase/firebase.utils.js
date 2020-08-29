@@ -50,6 +50,51 @@ export const convertDirectorySnapshotToMap = directorySnap =>
     };
   });
 
+export const convertLessonSnapshotToMap = lessonSnap => {
+  const lessonDataMap = {};
+  lessonSnap.docs.forEach(lessonDoc => {
+
+    const { title } = lessonDoc.data();
+
+    lessonDataMap[title] = {
+      id: lessonDoc.id,
+      title,
+      instructor: {}
+    }
+
+    lessonDoc.ref
+      .collection('instructor')
+      .get()
+      .then(instructorSnap => {
+        instructorSnap.docs.forEach(instructorDoc => {
+          const { name, description, imgUrl } = instructorDoc.data();
+          lessonDataMap[title].instructor = {
+            id: instructorDoc.id,
+            name, 
+            description, 
+            imgUrl,
+            availabilities: []
+          };
+
+          instructorDoc.ref
+            .collection('availabilities')
+            .get()
+            .then(availabilitiesSnap => {
+              availabilitiesSnap.docs.forEach(availabilityDoc => {
+                const { day, times } = availabilityDoc.data();
+                lessonDataMap[title].instructor.availabilities.push({
+                  id: availabilityDoc.id,
+                  day,
+                  times
+                });
+              })
+            })
+        })
+      });
+  });
+  return lessonDataMap;
+};
+
 export const convertShopSnapshotToMap = collectionSnap => {
   const shopDataMap = {};
   collectionSnap.docs.forEach(shopDoc => {
@@ -62,7 +107,7 @@ export const convertShopSnapshotToMap = collectionSnap => {
       instruments: []
     };
 
-    /* use current 'shop' doc reference to query nested 'instruments' collection,
+    /* use current 'shop' collection reference to query nested 'instruments' collection,
        add each instrument doc to instruments array */
     shopDoc.ref
       .collection('instruments')

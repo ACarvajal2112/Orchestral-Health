@@ -10,9 +10,7 @@ import { updateDayOfWeek } from '../../redux/lesson/lesson.actions';
 
 import { DaysMenuContainer } from './days-menu.styles';
 
-const DaysMenu = ({ availableDays, dispatch }) => {
-  console.log({availableDays});
-  return (
+const DaysMenu = ({ availableDays, dispatch }) => (
   <DaysMenuContainer>
     {availableDays.map(({ day, isAvailable }) => (
       <CustomButton
@@ -25,8 +23,7 @@ const DaysMenu = ({ availableDays, dispatch }) => {
       </CustomButton>
     ))}
   </DaysMenuContainer>
-  )
-};
+);
 
 const mapStateToProps = createStructuredSelector({
   availableDays: selectAvailabilityByWeek

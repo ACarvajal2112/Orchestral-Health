@@ -1,50 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import Directory from '../../components/directory/directory.component';
 import WithSpinner from '../../components/with-spinner/with-spinner.component';
 
-import { updateDirectory } from '../../redux/directory/directory.actions';
-
-import { firestore, convertDirectorySnapshotToMap } from '../../firebase/firebase.utils';
+import { selectIsDirectoryDataFetching } from '../../redux/directory/directory.selectors';
+import { fetchDirectoryDataStartAsync } from '../../redux/directory/directory.actions';
 
 const DirectoryWithSpinner = WithSpinner(Directory);
 
 class HomePage extends React.Component {
 
-  state = {
-    loading: true
-  };
-
-  unsubscribeFromSnapshot = null;
-
   componentDidMount() {
-    const { updateDirectory } = this.props;
-    const collectionRef = firestore.collection('directory');
-    this.unsubscribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
-      const directoryMap = convertDirectorySnapshotToMap(snapshot);
-      updateDirectory(directoryMap);
-      this.setState({ loading: false });
-    });
-  }
-
-  componentWillUnmount() {
-    this.unsubscribeFromSnapshot();
+    const { fetchDirectoryDataStartAsync } = this.props;
+    fetchDirectoryDataStartAsync();
   }
 
   render() {
-    const { loading } = this.state;
+    const { isDirectoryDataFetching } = this.props;
     return (
       <div className='home-page'>
-        <DirectoryWithSpinner isLoading={loading} />
+        <DirectoryWithSpinner isLoading={isDirectoryDataFetching} />
     </div>
     )
   }
 };
 
-const mapDispatchToProps = dispatch => ({
-  updateDirectory: directoryMap => 
-    dispatch(updateDirectory(directoryMap))
+const mapStateToProps = createStructuredSelector({
+  isDirectoryDataFetching: selectIsDirectoryDataFetching
 });
 
-export default connect(null, mapDispatchToProps)(HomePage);
+const mapDispatchToProps = dispatch => ({
+  fetchDirectoryDataStartAsync: () => dispatch(fetchDirectoryDataStartAsync())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

@@ -2,10 +2,12 @@ import { createSelector } from 'reselect';
 
 const selectDirectory = state => state.directory;
 
+export const selectIsDirectoryDataFetching = createSelector(
+  [selectDirectory],
+  directory => directory.isFetching
+);
+
 export const selectFamilies = createSelector(
   [selectDirectory],
-  directory => {
-    console.log('DIRECTORY', directory);
-    return directory.families;
-  }
+  directory => directory.families ? directory.families : []
 );

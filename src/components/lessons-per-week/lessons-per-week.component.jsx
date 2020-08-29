@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 
 import CustomButton from '../custom-button/custom-button.component';
 
-import { updateLessonsPerWeek } from '../../redux/register/register.actions';
-
 import {
   LessonsPerWeekContainer,
   LessonsPerWeekHeader,
@@ -17,10 +15,10 @@ const LessonsPerWeek = ({ dispatch }) => (
       Lessons / Week
     </LessonsPerWeekHeader>
     <OptionsContainer>
-      <CustomButton onClick={() => dispatch(updateLessonsPerWeek(1))}>1</CustomButton>
-      <CustomButton onClick={() => dispatch(updateLessonsPerWeek(2))}>2</CustomButton>
-      <CustomButton onClick={() => dispatch(updateLessonsPerWeek(3))}>3</CustomButton>
-      <CustomButton onClick={() => dispatch(updateLessonsPerWeek(4))}>4</CustomButton>
+      <CustomButton>1</CustomButton>
+      <CustomButton>2</CustomButton>
+      <CustomButton>3</CustomButton>
+      <CustomButton>4</CustomButton>
     </OptionsContainer>
   </LessonsPerWeekContainer>
 );
