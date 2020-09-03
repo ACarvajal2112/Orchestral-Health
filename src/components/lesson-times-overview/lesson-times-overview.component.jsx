@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { connect } from 'react-redux';
 
 import InstructorAvailability from  '../instructor-availability/instructor-availability.component';
 
@@ -23,7 +22,7 @@ class LessonTimesOverview extends React.Component {
   };
 
   render() {
-    const { title, availabilities } = this.props; 
+    const { title } = this.props; 
     return ReactDom.createPortal(
       <LessonTimesOverlay>
         <LessonTimesOverviewContainer>
@@ -36,7 +35,7 @@ class LessonTimesOverview extends React.Component {
               <i className='fad fa-long-arrow-left' />
             </HeaderSubtitle>
           </LessonTimesHeader>
-          <InstructorAvailability availabilities={availabilities} />
+          <InstructorAvailability />
           <RegisterButtonContainer>
             <button onClick={() => console.log('TO BE CONFIRMED')}>
               Confirm Registration
@@ -51,4 +50,4 @@ class LessonTimesOverview extends React.Component {
   }
 }
 
-export default connect()(LessonTimesOverview);
+export default LessonTimesOverview;

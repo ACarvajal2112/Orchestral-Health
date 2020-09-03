@@ -14,6 +14,11 @@ export const incrementLessonsPerWeek = () => ({
   type: RegisterActionTypes.INCREMENT_LESSONS_PER_WEEK
 });
 
+export const addLessonToPending = lessonToAdd => ({
+  type: RegisterActionTypes.ADD_LESSON_TO_PENDING,
+  payload: lessonToAdd
+});
+
 export const addLessonAndUpdateRegister = lessonToAdd => {
   return dispatch => {
     dispatch(incrementLessonsPerWeek());

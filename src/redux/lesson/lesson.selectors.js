@@ -1,5 +1,7 @@
 import { createSelector } from 'reselect';
-import { getAllInstructors } from './lesson.util';
+
+import { selectLessonsFromPending } from '../register/register.selectors';
+import { getPendingTimesByDay } from '../register/register.util';
 
 const lessonSelector = state => state.lesson;
 
@@ -11,12 +13,6 @@ export const selectLessons = createSelector(
 export const selectLessonsForPreview = createSelector(
   [selectLessons],
   lessons => lessons ? Object.keys(lessons).map(key => lessons[key]) : []
-);
-
-// return array of instructors reduced from each lesson object
-export const selectInstructors = createSelector(
-  [selectLessons],
-  lessons => getAllInstructors(lessons)
 );
 
 export const selectToggleLessonHidden = createSelector(
@@ -44,6 +40,8 @@ export const selectDayOfWeek = createSelector(
   lesson => lesson.dayOfWeek
 );
 
+/* return array of available times based on current lesson data and day of week
+   e.g. [ '12:30pm - 1:30pm, 1:30pm - 2:30pm ] */
 export const selectAvailabileTimesByDay = createSelector(
   [selectLessonData, selectDayOfWeek],
   (lessonData, dayOfWeek) => {
@@ -54,12 +52,31 @@ export const selectAvailabileTimesByDay = createSelector(
   }
 );
 
+/* compare available and pending lesson times to exclude any matches from being displayed
+   returns array of unique available lesson times */
+export const selectAvailableTimesForPreview = createSelector(
+  [selectAvailabileTimesByDay, selectDayOfWeek, selectLessonsFromPending],
+  (availableTimes, dayOfWeek, pendingLessons) => {
+    if (!pendingLessons.length) return availableTimes;
+    const pendingTimes = getPendingTimesByDay(pendingLessons, dayOfWeek);
+
+    return availableTimes.reduce((accumulatedTimes, availTime) => {
+
+      if (!pendingTimes.includes(availTime)) {
+        accumulatedTimes.push(availTime);
+      }
+
+      return accumulatedTimes;
+    }, []);
+  }
+);
+
 const DAYS_OF_THE_WEEK = [
   'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
 ];
 
-/* return array indicating which days the instructor is available 
-   e.g. { monday: false } */
+/* return array indicating instructor availability for each day of the week
+   e.g. { monday: false, tuesday: true, ... } */
 export const selectAvailabilityByWeek = createSelector(
   [selectAvailabilities],
   availabilities => 

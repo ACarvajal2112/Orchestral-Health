@@ -4,11 +4,10 @@ import { createStructuredSelector } from 'reselect';
 
 import { 
   selectDayOfWeek, 
-  selectAvailabileTimesByDay,
-  selectLessonTitle
+  selectLessonTitle, 
+  selectAvailableTimesForPreview 
 } from '../../redux/lesson/lesson.selectors';
-import { selectLessonsPerWeek } from '../../redux/register/register.selectors';
-import { addLessonAndUpdateRegister } from '../../redux/register/register.actions';
+import { addLessonToPending } from '../../redux/register/register.actions';
 
 import {
   LessonTimesListContainer, /* div */
@@ -17,7 +16,8 @@ import {
   AvailableTimeLabel /* span */
 } from './lesson-times-list.styles';
 
-const LessonTimesList = ({ dayOfWeek, availableTimes, title, lessonsPerWeek, dispatch }) => (
+const LessonTimesList = ({ dayOfWeek, title, availableTimes, dispatch }) => {
+  return (
   <LessonTimesListContainer>
     <DayOfWeekContainer>
       {dayOfWeek}
@@ -28,8 +28,7 @@ const LessonTimesList = ({ dayOfWeek, availableTimes, title, lessonsPerWeek, dis
           <AvailableTimeLabel 
             key={time}
             onClick={() => 
-              dispatch(addLessonAndUpdateRegister({
-                id: lessonsPerWeek,
+              dispatch(addLessonToPending({
                 title,
                 time,
                 dayOfWeek
@@ -42,13 +41,12 @@ const LessonTimesList = ({ dayOfWeek, availableTimes, title, lessonsPerWeek, dis
       ))}
     </AvailableTimesContainer>
   </LessonTimesListContainer>
-);
+)};
 
 const mapStateToProps = createStructuredSelector({
   dayOfWeek: selectDayOfWeek,
-  availableTimes: selectAvailabileTimesByDay,
   title: selectLessonTitle,
-  lessonsPerWeek: selectLessonsPerWeek
+  availableTimes: selectAvailableTimesForPreview
 });
 
 export default connect(mapStateToProps)(LessonTimesList);
