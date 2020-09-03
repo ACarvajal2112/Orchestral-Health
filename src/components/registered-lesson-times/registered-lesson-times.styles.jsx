@@ -33,3 +33,31 @@ export const LessonTimesHeader = styled.div`
 export const LessonTimesResults = styled.div`
   
 `;
+
+export const RegisteredTimeLabel = styled.span`
+  cursor: pointer;
+  position: relative;
+
+  /* Calendar icon - Regular */
+  &::before {
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 400;
+    content: '\f056';
+    position: absolute;
+    left: -24px;
+    top: 2px;
+    display: none;
+  }
+
+  &:hover {
+    font-weight: bold;
+  }
+
+  &:hover::before {
+    display: inline;
+  }
+
+  &:active::before {
+    color: red;
+  }
+`;

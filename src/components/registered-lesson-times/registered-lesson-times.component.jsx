@@ -2,39 +2,33 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectLessonsFromRegister } from '../../redux/register/register.selectors';
+import { selectLessonsFromPending } from '../../redux/register/register.selectors';
 import { selectLessonTitle } from '../../redux/lesson/lesson.selectors';
 
 import { 
   RegisteredLessonTimesContainer, /* div */
   LessonTimesHeader, /* div */
-  LessonTimesResults /* div */
+  LessonTimesResults, /* div */
+  RegisteredTimeLabel /* span */
 } from './registered-lesson-times.styles';
 
-const RegisteredLessonTimes = ({ registeredLessons, title }) => (
+const RegisteredLessonTimes = ({ pendingLessons, title }) => (
   <RegisteredLessonTimesContainer>
     <LessonTimesHeader>Registered Lesson Times</LessonTimesHeader>
     <LessonTimesResults>
-      {registeredLessons.length ? (
-        registeredLessons.map(({ id, dayOfWeek, times, dispatch }) => (
+      {pendingLessons.length ? (
+        pendingLessons.map(({ id, dayOfWeek, times, dispatch }) => (
           <div key={id}>
             <span key={dayOfWeek} style={{ fontWeight: 'bold' }}>
               {dayOfWeek}
             </span>
             {times.map(time => (
-              <span 
+              <RegisteredTimeLabel 
                 key={`${dayOfWeek}:${time}`}
                 style={{ display: 'block' }}
-                  // onClick={() => 
-                  //   dispatch(removeLessonAndUpdateRegister({
-                  //     title,
-                  //     time,
-                  //     dayOfWeek
-                  //   })
-                  // )}
               >
                 {time}
-              </span>
+              </RegisteredTimeLabel>
             ))}
             <br />
           </div>
@@ -50,7 +44,7 @@ const RegisteredLessonTimes = ({ registeredLessons, title }) => (
 );
 
 const mapStateToProps = createStructuredSelector({
-  registeredLessons: selectLessonsFromRegister,
+  pendingLessons: selectLessonsFromPending,
   title: selectLessonTitle 
 });
 

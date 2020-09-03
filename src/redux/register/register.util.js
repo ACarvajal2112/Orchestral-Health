@@ -23,5 +23,5 @@ export const addLessonToList = (currentLessons, lessonToAdd) => {
 
 export const getPendingTimesByDay = (pendingLessons, dayOfWeek) => {
   const lessonsByDay = pendingLessons.find(lesson => lesson.dayOfWeek === dayOfWeek);
-  return lessonsByDay.times;
+  return lessonsByDay ? lessonsByDay.times : [];
 };

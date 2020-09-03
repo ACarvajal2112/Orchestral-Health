@@ -29,6 +29,7 @@ const LessonTimesList = ({ dayOfWeek, title, availableTimes, dispatch }) => {
             key={time}
             onClick={() => 
               dispatch(addLessonToPending({
+                id: `${dayOfWeek}`,
                 title,
                 time,
                 dayOfWeek
