@@ -21,8 +21,8 @@ export const addLessonToList = (currentLessons, lessonToAdd) => {
    } ];
 };
 
-export const getPendingTimesByDay = (pendingLessons, dayOfWeek) => {
-  const lessonsByDay = pendingLessons.find(lesson => lesson.dayOfWeek === dayOfWeek);
+export const getTimesByDay = (lessons, dayOfWeek) => {
+  const lessonsByDay = lessons.find(lesson => lesson.dayOfWeek === dayOfWeek);
   return lessonsByDay ? lessonsByDay.times : [];
 };
 

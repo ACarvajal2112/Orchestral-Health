@@ -23,6 +23,3 @@ export const getAllInstructors = lessons =>
 
 export const convertLessonObjectToArray = lessons => 
   Object.keys(lessons).map(key => lessons[key]);
-
-
-

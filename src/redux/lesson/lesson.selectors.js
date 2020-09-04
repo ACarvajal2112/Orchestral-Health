@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
-import { selectLessonsFromPending } from '../register/register.selectors';
-import { getPendingTimesByDay } from '../register/register.util';
+import { selectLessonsFromPending, selectLessonsFromRegister } from '../register/register.selectors';
+import { getTimesByDay } from '../register/register.util';
 
 const lessonSelector = state => state.lesson;
 
@@ -52,17 +52,18 @@ export const selectAvailabileTimesByDay = createSelector(
   }
 );
 
-/* compare available and pending lesson times to exclude any matches from being displayed
+/* compare available, registered, and pending lesson times to exclude matches
    returns array of unique available lesson times */
 export const selectAvailableTimesForPreview = createSelector(
-  [selectAvailabileTimesByDay, selectDayOfWeek, selectLessonsFromPending],
-  (availableTimes, dayOfWeek, pendingLessons) => {
-    if (!pendingLessons.length) return availableTimes;
-    const pendingTimes = getPendingTimesByDay(pendingLessons, dayOfWeek);
+  [selectAvailabileTimesByDay, selectDayOfWeek, selectLessonsFromPending, selectLessonsFromRegister],
+  (availableTimes, dayOfWeek, pendingLessons, registeredLessons) => {
+    if (!pendingLessons.length && !registeredLessons.length) return availableTimes;
+    const pendingTimes = getTimesByDay(pendingLessons, dayOfWeek);
+    const registeredTimes = getTimesByDay(registeredLessons, dayOfWeek);
 
     return availableTimes.reduce((accumulatedTimes, availTime) => {
 
-      if (!pendingTimes.includes(availTime)) {
+      if (!pendingTimes.includes(availTime) && !registeredTimes.includes(availTime)) {
         accumulatedTimes.push(availTime);
       }
 

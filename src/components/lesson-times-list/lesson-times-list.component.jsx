@@ -23,23 +23,32 @@ const LessonTimesList = ({ dayOfWeek, title, availableTimes, dispatch }) => {
       {dayOfWeek}
     </DayOfWeekContainer>
     <AvailableTimesContainer>
-      {availableTimes.map(time => (
-        <div key={time}>
-          <AvailableTimeLabel 
-            key={time}
-            onClick={() => 
-              dispatch(addLessonToPending({
-                id: `${dayOfWeek}`,
-                title,
-                time,
-                dayOfWeek
-              }))
-            }
-          >
-            {time}
-          </AvailableTimeLabel>
+      {availableTimes.length ? (
+        availableTimes.map(time => (
+          <div key={time}>
+            <AvailableTimeLabel 
+              key={time}
+              onClick={() => 
+                dispatch(addLessonToPending({
+                  id: `${dayOfWeek}`,
+                  title,
+                  time,
+                  dayOfWeek
+                }))
+              }
+            >
+              {time}
+            </AvailableTimeLabel>
+          </div>
+        ))
+      ) : (
+        <div>
+          <span>Check another day for 
+            <span style={{ fontWeight: 'bold' }}> {title} </span> 
+            lesson availabilities!
+          </span>
         </div>
-      ))}
+      )}
     </AvailableTimesContainer>
   </LessonTimesListContainer>
 )};
