@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 
 import RegistrationStatus from '../registration-status/registration-status.component';
 import LessonsPerWeek from '../lessons-per-week/lessons-per-week.component';
-import RegisteredLessonTimes from '../registered-lesson-times/registered-lesson-times.component';
+import RegisteredLessonTimesOverview from '../registered-lesson-times-overview/registered-lesson-times-overview.component';
 
 import { selectRegisterStatus } from '../../redux/register/register.selectors';
 
@@ -14,7 +14,7 @@ const RegistrationOverview = () => (
   <RegistrationOverviewContainer>
     <RegistrationStatus />
     <LessonsPerWeek />
-    <RegisteredLessonTimes />
+    <RegisteredLessonTimesOverview />
   </RegistrationOverviewContainer>
 );
 

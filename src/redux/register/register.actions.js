@@ -41,3 +41,18 @@ export const removeLessonAndUpdateRegister = lessonToRemove => {
     dispatch(removeLessonFromRegister(lessonToRemove))
   };
 };
+
+export const registerPendingLessons = () => ({
+  type: RegisterActionTypes.REGISTER_PENDING_LESSONS
+});
+
+export const updateRegisteredStatus = () => ({
+  type: RegisterActionTypes.UPDATE_REGISTERED_STATUS
+});
+
+export const confirmLessonRegistration = () => {
+  return dispatch => {
+    dispatch(registerPendingLessons());
+    dispatch(updateRegisteredStatus());
+  }
+};

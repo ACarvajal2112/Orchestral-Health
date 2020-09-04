@@ -12,16 +12,23 @@ export const addLessonToList = (currentLessons, lessonToAdd) => {
     );
   };
   // otherwise return current lessons with the new lesson to be added
-  const { id, title, time, dayOfWeek } = lessonToAdd; 
+  const { id, title, time, times, dayOfWeek } = lessonToAdd; 
   return [ ...currentLessons, { 
     id,
     title,
     dayOfWeek,
-    times: [time],
+    times: times ? [...times] : [time],
    } ];
 };
 
 export const getPendingTimesByDay = (pendingLessons, dayOfWeek) => {
   const lessonsByDay = pendingLessons.find(lesson => lesson.dayOfWeek === dayOfWeek);
   return lessonsByDay ? lessonsByDay.times : [];
+};
+
+export const registerPendingLessons = (registeredLessons, pendingLessons) => {
+  pendingLessons.forEach(pendingLesson => {
+    registeredLessons = addLessonToList(registeredLessons, pendingLesson);
+  });
+  return registeredLessons;
 };

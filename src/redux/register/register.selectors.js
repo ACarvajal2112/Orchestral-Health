@@ -19,5 +19,5 @@ export const selectLessonsFromRegister = createSelector(
 
 export const selectLessonsFromPending = createSelector(
   [registerSelector],
-  register => register.pendingLessons ? register.pendingLessons : []
+  register => register.pendingLessons
 );

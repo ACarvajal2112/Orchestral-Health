@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const RegisteredLessonTimesContainer = styled.div`
+export const PendingLessonTimesContainer = styled.div`
   display: flex;
   flex-direction: row;
   position: relative;
@@ -12,7 +12,7 @@ export const RegisteredLessonTimesContainer = styled.div`
   }
 `;
 
-export const RegisteredTimesHeader = styled.div`
+export const PendingTimesHeader = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: top;

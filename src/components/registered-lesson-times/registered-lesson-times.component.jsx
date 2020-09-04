@@ -2,50 +2,48 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectLessonsFromPending } from '../../redux/register/register.selectors';
 import { selectLessonTitle } from '../../redux/lesson/lesson.selectors';
+import { selectLessonsFromRegister } from '../../redux/register/register.selectors';
 
 import { 
-  RegisteredLessonTimesContainer, /* div */
-  LessonTimesHeader, /* div */
-  LessonTimesResults, /* div */
-  RegisteredTimeLabel /* span */
+  RegisteredLessonTimesContainer, 
+  RegisteredTimesHeader,
+  RegisteredTimeLabel,
+  LessonTimesResults
 } from './registered-lesson-times.styles';
 
-const RegisteredLessonTimes = ({ pendingLessons, title }) => (
+const RegisteredLessonTimes = ({ title, registeredLessons }) => (
   <RegisteredLessonTimesContainer>
-    <LessonTimesHeader>Registered Lesson Times</LessonTimesHeader>
-    <LessonTimesResults>
-      {pendingLessons.length ? (
-        pendingLessons.map(({ id, dayOfWeek, times, dispatch }) => (
+    <RegisteredTimesHeader>Registered Lesson Times</RegisteredTimesHeader>
+    {registeredLessons.length ? (
+      <div>
+        {registeredLessons.map(({ id, dayOfWeek, times }) => (
           <div key={id}>
             <span key={dayOfWeek} style={{ fontWeight: 'bold' }}>
               {dayOfWeek}
             </span>
             {times.map(time => (
-              <RegisteredTimeLabel 
-                key={`${dayOfWeek}:${time}`}
-                style={{ display: 'block' }}
-              >
+              <RegisteredTimeLabel key={`${dayOfWeek}:${time}`}>
                 {time}
               </RegisteredTimeLabel>
             ))}
-            <br />
           </div>
-        ))
-      ) : (
-        <span>You are not registered for any 
-          <span style={{ fontWeight: 'bold' }}> {title} </span> 
-          lessons yet!
-        </span>
-      )}
-    </LessonTimesResults>
-  </RegisteredLessonTimesContainer>
-);
+        ))}
+      </div>
+     ) : (
+       <div>
+         <span>You are not yet registered for  
+           <span style={{ fontWeight: 'bold' }}> {title} </span> 
+           lessons!
+         </span>
+       </div>
+     )}
+    </RegisteredLessonTimesContainer> 
+  );
 
 const mapStateToProps = createStructuredSelector({
-  pendingLessons: selectLessonsFromPending,
-  title: selectLessonTitle 
+  title: selectLessonTitle,
+  registeredLessons: selectLessonsFromRegister
 });
 
 export default connect(mapStateToProps)(RegisteredLessonTimes);
