@@ -11,3 +11,8 @@ export const selectFamilies = createSelector(
   [selectDirectory],
   directory => directory.families ? directory.families : []
 );
+
+export const selectIsDirectoryLoaded = createSelector(
+  [selectDirectory],
+  directory => !!directory.families
+);

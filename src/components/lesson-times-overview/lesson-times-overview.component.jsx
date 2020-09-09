@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import InstructorAvailability from  '../instructor-availability/instructor-availability.component';
 
 import { toggleLessonHidden } from '../../redux/lesson/lesson.actions';
-import { selectLessonsFromPending } from '../../redux/register/register.selectors';
 import { confirmLessonRegistration } from '../../redux/register/register.actions';
 
 import { 
@@ -25,7 +24,7 @@ class LessonTimesOverview extends React.Component {
   };
 
   render() {
-    const { title, confirmLessonRegistration, pendingLessons } = this.props;
+    const { title, confirmLessonRegistration } = this.props;
     return ReactDom.createPortal(
       <LessonTimesOverlay>
         <LessonTimesOverviewContainer>
@@ -57,8 +56,7 @@ class LessonTimesOverview extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  confirmLessonRegistration: () => dispatch(confirmLessonRegistration()),
-  pendingLessons: selectLessonsFromPending
+  confirmLessonRegistration: () => dispatch(confirmLessonRegistration())
 }); 
 
 export default connect(null, mapDispatchToProps)(LessonTimesOverview);

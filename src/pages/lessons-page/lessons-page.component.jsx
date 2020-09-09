@@ -5,7 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import LessonsOverview from '../../components/lessons-overview/lessons-overview.component';
 import WithSpinner from '../../components/with-spinner/with-spinner.component';
 
-import { selectIsLessonDataFetching } from '../../redux/lesson/lesson.selectors';
+import { selectIsLessonDataFetching, selectIsLessonDataLoaded } from '../../redux/lesson/lesson.selectors';
 import { fetchLessonDataStartAsync } from '../../redux/lesson/lesson.actions';
 
 const LessonsOverviewWithSpinner = WithSpinner(LessonsOverview);
@@ -18,15 +18,16 @@ class LessonsPage extends React.Component {
   }
   
   render() {
-    const { isLessonDataFetching } = this.props;
+    const { isLessonDataLoaded } = this.props;
     return (
-      <LessonsOverviewWithSpinner isLoading={isLessonDataFetching} />
+      <LessonsOverviewWithSpinner isLoading={!isLessonDataLoaded} />
     )
   }
 };
 
 const mapStateToProps = createStructuredSelector({
-  isLessonDataFetching: selectIsLessonDataFetching
+  isLessonDataFetching: selectIsLessonDataFetching,
+  isLessonDataLoaded: selectIsLessonDataLoaded
 });
 
 const mapDispatchToProps = dispatch => ({

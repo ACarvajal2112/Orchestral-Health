@@ -46,3 +46,8 @@ export const selectIsShopDataFetching = createSelector(
   [selectShop],
   shop => shop.isFetching
 );
+
+export const selectIsCatalogLoaded = createSelector(
+  [selectShop],
+    shop => !!shop.catalog
+);

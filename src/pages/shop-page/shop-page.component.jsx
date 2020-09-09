@@ -9,7 +9,7 @@ import ItemsOverview from '../../components/items-overview/items-overview.compon
 import WithSpinner from '../../components/with-spinner/with-spinner.component';
 
 import { fetchShopDataStartAsync } from '../../redux/shop/shop.actions';
-import { selectIsShopDataFetching } from '../../redux/shop/shop.selectors';
+import { selectIsShopDataFetching, selectIsCatalogLoaded } from '../../redux/shop/shop.selectors';
 
 const CatalogOverviewWithSpinner = WithSpinner(CatalogOverview);
 const FamilyOverviewWithSpinner = WithSpinner(FamilyOverview);
@@ -23,25 +23,25 @@ class ShopPage extends React.Component {
   };
   
   render() {
-    const { match, isShopDataFetching } = this.props;
+    const { match, isCatalogLoaded } = this.props;
     return (
       <div className='shop-page'>
         <Route 
           exact 
           path={`${match.path}`} 
-          render={(props) => 
-            <CatalogOverviewWithSpinner isLoading={isShopDataFetching} {...props} />
+          render={(props) =>  
+            <CatalogOverviewWithSpinner isLoading={!isCatalogLoaded} {...props} />
           } />
         <Route 
           exact 
           path={`${match.path}/:familyId`} 
           render={(props) => (
-            <FamilyOverviewWithSpinner isLoading={isShopDataFetching} {...props} />
+            <FamilyOverviewWithSpinner isLoading={!isCatalogLoaded} {...props} />
           )} />
         <Route 
           path={`${match.path}/:familyId/:instrumentId`}
           render={(props) => (
-            <ItemsOverviewWithSpinner isLoading={isShopDataFetching} {...props} />
+            <ItemsOverviewWithSpinner isLoading={!isCatalogLoaded} {...props} />
           )} />
     </div>
     )
@@ -49,7 +49,8 @@ class ShopPage extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  isShopDataFetching: selectIsShopDataFetching
+  isShopDataFetching: selectIsShopDataFetching,
+  isCatalogLoaded: selectIsCatalogLoaded
 });
 
 const mapDispatchToProps = dispatch => ({

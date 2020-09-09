@@ -50,82 +50,28 @@ export const convertDirectorySnapshotToMap = directorySnap =>
     };
   });
 
-export const convertLessonSnapshotToMap = lessonSnap => {
-  const lessonDataMap = {};
-  lessonSnap.docs.forEach(lessonDoc => {
-
-    const { title } = lessonDoc.data();
-
-    lessonDataMap[title] = {
-      id: lessonDoc.id,
-      title,
-      instructor: {}
-    }
-
-    lessonDoc.ref
-      .collection('instructor')
-      .get()
-      .then(instructorSnap => {
-        instructorSnap.docs.forEach(instructorDoc => {
-          const { name, description, imgUrl } = instructorDoc.data();
-          lessonDataMap[title].instructor = {
-            id: instructorDoc.id,
-            name, 
-            description, 
-            imgUrl,
-            availabilities: []
-          };
-
-          instructorDoc.ref
-            .collection('availabilities')
-            .get()
-            .then(availabilitiesSnap => {
-              availabilitiesSnap.docs.forEach(availabilityDoc => {
-                const { day, times } = availabilityDoc.data();
-                lessonDataMap[title].instructor.availabilities.push({
-                  id: availabilityDoc.id,
-                  day,
-                  times
-                });
-              })
-            })
-        })
-      });
-  });
-  return lessonDataMap;
-};
-
-export const convertShopSnapshotToMap = collectionSnap => {
-  const shopDataMap = {};
-  collectionSnap.docs.forEach(shopDoc => {
-
-    const { title } = shopDoc.data();
-
-    shopDataMap[title] = {
+export const convertShopSnapshotToMap = collectionSnap => 
+  collectionSnap.docs.reduce((accumulatedShopMap, shopDoc) => {
+    const { title, instruments } = shopDoc.data();
+    accumulatedShopMap[title] = {
       id: shopDoc.id,
       title,
-      instruments: []
+      instruments
     };
+    return accumulatedShopMap;
+  }, {});
 
-    /* use current 'shop' collection reference to query nested 'instruments' collection,
-       add each instrument doc to instruments array */
-    shopDoc.ref
-      .collection('instruments')
-      .get()
-      .then((querySnapshot) => 
-        querySnapshot.docs.forEach(instrumentsDoc => {
-          const { name, imgUrl, items } = instrumentsDoc.data();
-          shopDataMap[title].instruments.push({
-            id: instrumentsDoc.id,
-            name,
-            imgUrl,
-            items
-          })
-        })
-      );
-  });
-  return shopDataMap;
-};
+export const convertLessonSnapshotToMap = lessonSnap => 
+  lessonSnap.docs.reduce((accumulatedLessonMap, lessonDoc) => {
+    const { title, instructor } = lessonDoc.data();
+    accumulatedLessonMap[title] = {
+      id: lessonDoc.id,
+      title,
+      instructor
+    };
+    return accumulatedLessonMap;
+  }, {});
+
 
 firebase.initializeApp(config);
 

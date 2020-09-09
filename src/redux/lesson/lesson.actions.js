@@ -39,14 +39,12 @@ export const fetchLessonDataStartAsync = () => {
   return dispatch => {
     const collectionRef = firestore.collection('lesson');
     dispatch(fetchLessonDataStart());
-      
+
     collectionRef
       .get()
       .then(snapshot => {
         const lessonMap = convertLessonSnapshotToMap(snapshot);
-        setTimeout(() => {
-          dispatch(fetchLessonDataSuccess(lessonMap));
-        }, 1000);
+        dispatch(fetchLessonDataSuccess(lessonMap));
       })
       .catch(error => dispatch(fetchLessonDataFailure(error)));
   }

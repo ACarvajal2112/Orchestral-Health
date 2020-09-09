@@ -8,8 +8,7 @@ import { selectLessonsFromRegister } from '../../redux/register/register.selecto
 import { 
   RegisteredLessonTimesContainer, 
   RegisteredTimesHeader,
-  RegisteredTimeLabel,
-  LessonTimesResults
+  RegisteredTimeLabel
 } from './registered-lesson-times.styles';
 
 const RegisteredLessonTimes = ({ title, registeredLessons }) => (

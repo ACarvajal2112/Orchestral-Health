@@ -97,3 +97,8 @@ export const selectIsLessonDataFetching = createSelector(
   [lessonSelector],
   lesson => lesson.isFetching
 );
+
+export const selectIsLessonDataLoaded = createSelector(
+  [lessonSelector],
+  lesson => !!lesson.lessons
+);

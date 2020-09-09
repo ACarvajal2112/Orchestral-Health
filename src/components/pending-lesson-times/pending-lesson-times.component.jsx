@@ -7,9 +7,7 @@ import {
   RegisteredTimeLabel /* span */
 } from './pending-lesson-times.styles';
 
-const PendingLessonTimes = ({ pendingLessons }) => {
-  console.log({pendingLessons})
-  return (
+const PendingLessonTimes = ({ pendingLessons }) => (
   <PendingLessonTimesContainer>
     <PendingTimesHeader>Pending Lesson Times</PendingTimesHeader>
     <LessonTimesResults>
@@ -27,6 +25,6 @@ const PendingLessonTimes = ({ pendingLessons }) => {
       ))}
     </LessonTimesResults>
   </PendingLessonTimesContainer>
-)};
+);
 
 export default PendingLessonTimes;

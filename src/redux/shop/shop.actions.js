@@ -24,9 +24,7 @@ export const fetchShopDataStartAsync = () => {
       .get()
       .then(snapshot => {
         const shopMap = convertShopSnapshotToMap(snapshot);
-        setTimeout(() => {
-          dispatch(fetchShopDataSuccess(shopMap));
-        }, 1000);
+        dispatch(fetchShopDataSuccess(shopMap));
       })
       .catch(error => dispatch(fetchShopDataFailure(error)));
   };

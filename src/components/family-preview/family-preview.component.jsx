@@ -11,7 +11,7 @@ const FamilyPreview = ({ title, instruments, match, history }) => (
     <div className='menu-items-preview'>
       {instruments.slice(0,4).map(({ id, name, ...otherInstrumentProps }) => (
         <MenuItem 
-          key={id}
+          key={name}
           onClick={() => history.push(`${match.path}/${title}/${name}`)} 
           name={name}
           {...otherInstrumentProps} 
