@@ -1,19 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 import { withRouter, Route } from 'react-router-dom';
 
-import CatalogOverview from '../../components/catalog-overview/catalog-overview.component';
-import FamilyOverview from '../../components/family-overview/family-overview.component';
-import ItemsOverview from '../../components/items-overview/items-overview.component';
-import WithSpinner from '../../components/with-spinner/with-spinner.component';
+import CatalogOverviewContainer from '../../components/catalog-overview/catalog-overview.container';
+import FamilyOverviewContainer from '../../components/family-overview/family-overview.container';
+import ItemsOverviewContainer from '../../components/items-overview/items-overview.container';
 
 import { fetchShopDataStartAsync } from '../../redux/shop/shop.actions';
-import { selectIsShopDataFetching, selectIsCatalogLoaded } from '../../redux/shop/shop.selectors';
-
-const CatalogOverviewWithSpinner = WithSpinner(CatalogOverview);
-const FamilyOverviewWithSpinner = WithSpinner(FamilyOverview);
-const ItemsOverviewWithSpinner = WithSpinner(ItemsOverview);
 
 class ShopPage extends React.Component {
 
@@ -23,40 +16,29 @@ class ShopPage extends React.Component {
   };
   
   render() {
-    const { match, isCatalogLoaded } = this.props;
+    const { match } = this.props;
     return (
       <div className='shop-page'>
         <Route 
           exact 
           path={`${match.path}`} 
-          render={(props) =>  
-            <CatalogOverviewWithSpinner isLoading={!isCatalogLoaded} {...props} />
-          } />
+          component={CatalogOverviewContainer}
+        />
         <Route 
           exact 
           path={`${match.path}/:familyId`} 
-          render={(props) => (
-            <FamilyOverviewWithSpinner isLoading={!isCatalogLoaded} {...props} />
-          )} />
+          component={FamilyOverviewContainer} />
         <Route 
           path={`${match.path}/:familyId/:instrumentId`}
-          render={(props) => (
-            <ItemsOverviewWithSpinner isLoading={!isCatalogLoaded} {...props} />
-          )} />
+          component={ItemsOverviewContainer}
+        />
     </div>
     )
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  isShopDataFetching: selectIsShopDataFetching,
-  isCatalogLoaded: selectIsCatalogLoaded
-});
-
 const mapDispatchToProps = dispatch => ({
   fetchShopDataStartAsync: () => dispatch(fetchShopDataStartAsync())
 });
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ShopPage)
-);
+export default withRouter(connect(null, mapDispatchToProps)(ShopPage));

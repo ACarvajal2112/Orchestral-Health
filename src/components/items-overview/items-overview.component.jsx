@@ -11,7 +11,7 @@ import { ItemsOverviewContainer } from './items-overview.styles';
 const ItemsOverview = ({ items }) => (
   <ItemsOverviewContainer>
     {items.map(item => (
-      <Item key={item.id} item={item} />
+      <Item key={item.name} item={item} />
     ))}
   </ItemsOverviewContainer>
 );
