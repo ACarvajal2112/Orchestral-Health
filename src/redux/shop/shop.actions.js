@@ -1,5 +1,4 @@
 import ShopActionTypes from './shop.types';
-import { firestore, convertShopSnapshotToMap } from '../../firebase/firebase.utils';
 
 export const fetchShopDataStart = () => ({
   type: ShopActionTypes.FETCH_SHOP_DATA_START
@@ -14,18 +13,3 @@ export const fetchShopDataFailure = errorMessage => ({
   type: ShopActionTypes.FETCH_SHOP_DATA_FAILURE,
   payload: errorMessage
 });
-
-export const fetchShopDataStartAsync = () => {
-  return dispatch => {
-    const collectionRef = firestore.collection('shop');
-    dispatch(fetchShopDataStart());
-
-    collectionRef
-      .get()
-      .then(snapshot => {
-        const shopMap = convertShopSnapshotToMap(snapshot);
-        dispatch(fetchShopDataSuccess(shopMap));
-      })
-      .catch(error => dispatch(fetchShopDataFailure(error)));
-  };
-};

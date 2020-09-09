@@ -6,13 +6,13 @@ import CatalogOverviewContainer from '../../components/catalog-overview/catalog-
 import FamilyOverviewContainer from '../../components/family-overview/family-overview.container';
 import ItemsOverviewContainer from '../../components/items-overview/items-overview.container';
 
-import { fetchShopDataStartAsync } from '../../redux/shop/shop.actions';
+import { fetchShopDataStart } from '../../redux/shop/shop.actions';
 
 class ShopPage extends React.Component {
 
   componentDidMount() {
-    const { fetchShopDataStartAsync } = this.props;
-    fetchShopDataStartAsync();
+    const { fetchShopDataStart } = this.props;
+    fetchShopDataStart();
   };
   
   render() {
@@ -38,7 +38,7 @@ class ShopPage extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchShopDataStartAsync: () => dispatch(fetchShopDataStartAsync())
+  fetchShopDataStart: () => dispatch(fetchShopDataStart())
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(ShopPage));

@@ -1,5 +1,4 @@
 import LessonActionTypes from './lesson.types';
-import { firestore, convertLessonSnapshotToMap } from '../../firebase/firebase.utils';
 
 export const toggleLessonHidden = isHidden => ({
   type: LessonActionTypes.TOGGLE_LESSON_HIDDEN,
@@ -34,18 +33,3 @@ export const fetchLessonDataFailure = errorMessage => ({
   type: LessonActionTypes.FETCH_LESSON_DATA_FAILURE,
   payload: errorMessage
 });
-
-export const fetchLessonDataStartAsync = () => {
-  return dispatch => {
-    const collectionRef = firestore.collection('lesson');
-    dispatch(fetchLessonDataStart());
-
-    collectionRef
-      .get()
-      .then(snapshot => {
-        const lessonMap = convertLessonSnapshotToMap(snapshot);
-        dispatch(fetchLessonDataSuccess(lessonMap));
-      })
-      .catch(error => dispatch(fetchLessonDataFailure(error)));
-  }
-};

@@ -6,15 +6,15 @@ import LessonsOverview from '../../components/lessons-overview/lessons-overview.
 import WithSpinner from '../../components/with-spinner/with-spinner.component';
 
 import { selectIsLessonDataFetching, selectIsLessonDataLoaded } from '../../redux/lesson/lesson.selectors';
-import { fetchLessonDataStartAsync } from '../../redux/lesson/lesson.actions';
+import { fetchLessonDataStart } from '../../redux/lesson/lesson.actions';
 
 const LessonsOverviewWithSpinner = WithSpinner(LessonsOverview);
 
 class LessonsPage extends React.Component {
   
   componentDidMount() {
-    const { fetchLessonDataStartAsync } = this.props;
-    fetchLessonDataStartAsync();
+    const { fetchLessonDataStart } = this.props;
+    fetchLessonDataStart();
   }
   
   render() {
@@ -31,7 +31,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchLessonDataStartAsync: () => dispatch(fetchLessonDataStartAsync())
+  fetchLessonDataStart: () => dispatch(fetchLessonDataStart())
 });
 
 export default connect(
