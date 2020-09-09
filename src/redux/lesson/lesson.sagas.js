@@ -1,4 +1,4 @@
-import { takeEvery, put } from 'redux-saga/effects';
+import { takeLatest, put } from 'redux-saga/effects';
 
 import LessonActionTypes from './lesson.types';
 
@@ -18,7 +18,7 @@ export function* fetchLessonDataStartAsync() {
 }
 
 export function* fetchLessonsDataStart() {
-  yield takeEvery(
+  yield takeLatest(
     LessonActionTypes.FETCH_LESSON_DATA_START,
     fetchLessonDataStartAsync
   );
