@@ -14,11 +14,11 @@ const FamilyOverview = ({ family }) => {
     <FamilyOverviewContainer>
       <NavMenu navItems={instruments} />
       <h1>{title.toUpperCase()}</h1>
-      {instruments.map(({ id, ...otherInstrumentsProps }) => (
+      {instruments.map(instrument => (
         <MenuItem 
-          key={id} 
-          id={otherInstrumentsProps.name} 
-          {...otherInstrumentsProps} 
+          key={instrument.name} 
+          id={instrument.name} 
+          {...instrument} 
           isFamilyOverviewItem />
       ))}
       <NavMenu navItems={instruments} isFooter />

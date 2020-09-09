@@ -7,7 +7,7 @@ import CatalogOverview from '../../components/catalog-overview/catalog-overview.
 import { selectIsCatalogLoaded } from '../../redux/shop/shop.selectors';
 
 const mapStateToProps = createStructuredSelector({
-  isCatalogLoaded: selectIsCatalogLoaded
+  isLoading: state => !selectIsCatalogLoaded(state)
 });
 
 const CatalogOverviewContainer = connect(mapStateToProps)(WithSpinner(CatalogOverview));

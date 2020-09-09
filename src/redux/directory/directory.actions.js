@@ -1,5 +1,4 @@
 import DirectoryActionTypes from './directory.types';
-import { firestore, convertDirectorySnapshotToMap } from '../../firebase/firebase.utils';
 
 export const fetchDirectoryDataStart = () => ({
   type: DirectoryActionTypes.FETCH_DIRECTORY_DATA_START

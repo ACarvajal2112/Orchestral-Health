@@ -14,7 +14,7 @@ class NavMenu extends React.Component {
     };
     this.handleScroll = this.handleScroll.bind(this);
   }
-
+  
   // if nav menu is a footer, add scroll event listener
   componentDidMount() {
     const { isFooter } = this.props;
@@ -44,8 +44,8 @@ class NavMenu extends React.Component {
     const { navItems, ...otherProps } = this.props;
     return (
       <NavMenuContainer isScrolled={this.state.scrolled} {...otherProps} >
-        {navItems.map(({ id, title, name }) => (
-          <NavMenuOptionContainer key={id} >
+        {navItems.map(({ title, name }) => (
+          <NavMenuOptionContainer key={title ? title : name} >
             <a href={`#${title ? title : name}`}>{title ? title : name}</a>
           </NavMenuOptionContainer>
         ))}

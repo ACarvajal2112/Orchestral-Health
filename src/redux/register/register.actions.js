@@ -50,9 +50,6 @@ export const updateRegisteredStatus = () => ({
   type: RegisterActionTypes.UPDATE_REGISTERED_STATUS
 });
 
-export const confirmLessonRegistration = () => {
-  return dispatch => {
-    dispatch(registerPendingLessons());
-    dispatch(updateRegisteredStatus());
-  }
-};
+export const confirmLessonRegistrationStart = () => ({
+  type: RegisterActionTypes.CONFIRM_LESSON_REGISTRATION
+});

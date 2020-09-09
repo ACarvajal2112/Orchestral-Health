@@ -7,10 +7,9 @@ import FamilyOverview from '../family-overview/family-overview.component';
 import { selectIsCatalogLoaded } from '../../redux/shop/shop.selectors';
 
 const mapStateToProps = createStructuredSelector({
-  isCatalogLoaded: selectIsCatalogLoaded
+  isLoading: state => !selectIsCatalogLoaded(state)
 });
 
 const FamilyOverviewContainer = connect(mapStateToProps)(WithSpinner(FamilyOverview));
 
 export default FamilyOverviewContainer;
-
