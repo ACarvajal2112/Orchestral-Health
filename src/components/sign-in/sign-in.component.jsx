@@ -5,7 +5,7 @@ import CustomButton from '../custom-button/custom-button.component';
 
 import FormInput from '../form-input/form-input.component';
 
-import { googleSignInStart } from '../../redux/user/user.actions';
+import { googleSignInStart, emailSignInStart } from '../../redux/user/user.actions';
 
 import { SignInContainer, ButtonsContainer } from './sign-in.styles';
 
@@ -24,6 +24,14 @@ class SignIn extends React.Component {
     this.setState({ [name]: value });
   };
 
+  handleSubmit = event => {
+    event.preventDefault();
+    const { emailSignInStart } = this.props;
+    const { email, password } = this.state;
+
+    emailSignInStart(email, password);
+  }
+
   render() {
     const { googleSignInStart } = this.props;
     return (
@@ -31,7 +39,7 @@ class SignIn extends React.Component {
         <h2>Already have an account?</h2>
         <span>Sign in with your email and password.</span>
         <br />
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <FormInput 
             type='email'
             name='email'
@@ -59,7 +67,8 @@ class SignIn extends React.Component {
 };
 
 const mapDispatchToProps = dispatch => ({
-  googleSignInStart: () => dispatch(googleSignInStart())
+  googleSignInStart: () => dispatch(googleSignInStart()),
+  emailSignInStart: (email, password) => dispatch(emailSignInStart({ email, password }))
 });
 
 export default connect(null, mapDispatchToProps)(SignIn);

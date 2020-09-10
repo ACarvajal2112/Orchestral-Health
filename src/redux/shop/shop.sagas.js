@@ -1,5 +1,5 @@
 // listens for every action of a specific type passed into it 
-import { takeLatest, call, put } from 'redux-saga/effects'; 
+import { takeLatest, all, call, put } from 'redux-saga/effects'; 
 
 import ShopActionTypes from './shop.types';
 
@@ -23,4 +23,8 @@ export function* fetchShopDataStart() {
     ShopActionTypes.FETCH_SHOP_DATA_START, 
     fetchShopDataAsync
   );
+}
+
+export function* shopSagas() {
+  yield all([call(fetchShopDataStart)])
 }

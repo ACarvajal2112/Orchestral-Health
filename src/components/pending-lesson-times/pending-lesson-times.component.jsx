@@ -1,4 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { selectLessonTitle } from '../../redux/lesson/lesson.selectors';
+import { updateRegisterRemovePending } from '../../redux/register/register.actions';
 
 import {
   PendingLessonTimesContainer, /* div */
@@ -7,7 +12,7 @@ import {
   RegisteredTimeLabel /* span */
 } from './pending-lesson-times.styles';
 
-const PendingLessonTimes = ({ pendingLessons }) => (
+const PendingLessonTimes = ({ pendingLessons, title, updateRegisterRemovePending }) => (
   <PendingLessonTimesContainer>
     <PendingTimesHeader>Pending Lesson Times</PendingTimesHeader>
     <LessonTimesResults>
@@ -17,7 +22,16 @@ const PendingLessonTimes = ({ pendingLessons }) => (
             {dayOfWeek}
           </span>
           {times.map(time => (
-            <RegisteredTimeLabel key={`${dayOfWeek}:${time}`}>
+            <RegisteredTimeLabel 
+              key={`${dayOfWeek}:${time}`}
+              onClick={() => 
+                updateRegisterRemovePending({
+                  title,
+                  dayOfWeek,
+                  time
+                })
+              }
+            >
               {time}
             </RegisteredTimeLabel>
           ))}
@@ -27,4 +41,12 @@ const PendingLessonTimes = ({ pendingLessons }) => (
   </PendingLessonTimesContainer>
 );
 
-export default PendingLessonTimes;
+const mapStateToProps = createStructuredSelector({
+  title: selectLessonTitle
+});
+
+const mapDispatchToProps = dispatch => ({
+  updateRegisterRemovePending: lesson => dispatch(updateRegisterRemovePending(lesson))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PendingLessonTimes);

@@ -1,8 +1,7 @@
 import LessonActionTypes from './lesson.types';
 
-export const toggleLessonHidden = isHidden => ({
-  type: LessonActionTypes.TOGGLE_LESSON_HIDDEN,
-  payload: isHidden
+export const toggleLessonHidden = () => ({
+  type: LessonActionTypes.TOGGLE_LESSON_HIDDEN
 });
 
 export const setLessonData = lessonData => ({
@@ -32,4 +31,17 @@ export const fetchLessonDataSuccess = lessonData => ({
 export const fetchLessonDataFailure = errorMessage => ({
   type: LessonActionTypes.FETCH_LESSON_DATA_FAILURE,
   payload: errorMessage
+});
+
+export const viewLessonTimes = lessonTimesParams => ({
+  type: LessonActionTypes.VIEW_LESSON_TIMES,
+  payload: lessonTimesParams
+});
+
+export const closeLessonTimes = () => ({
+  type: LessonActionTypes.CLOSE_LESSON_TIMES
+});
+
+export const clearLessonTimesData = () => ({
+  type: LessonActionTypes.CLEAR_LESSON_DATA
 });

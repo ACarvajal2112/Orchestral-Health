@@ -10,30 +10,16 @@ import {
   selectLessonsForPreview, 
   selectLessonData 
 } from '../../redux/lesson/lesson.selectors';
-import { toggleLessonHidden } from '../../redux/lesson/lesson.actions';
 
-class LessonsOverview extends React.Component {
-
-  componentDidMount() {
-    const { dispatch, isHidden } = this.props;
-    if (!isHidden) {
-      dispatch(toggleLessonHidden(true))
-    }
-  }
-  
-  render() {
-    const { lessons, isHidden, lessonTimesData} = this.props;
-    return (
-      <div className='lessons-overview'>
-      <h1>Lessons</h1>
-      {lessons.map(({ id, ...otherLessonProps }) => (
-        <LessonCard key={id} {...otherLessonProps} />
-      ))}
-      { !isHidden ? ( <LessonTimesOverview {...lessonTimesData} /> ) : null }
-    </div>
-    )
-  }
-};
+const LessonsOverview = ({ lessons, isHidden, lessonTimesData }) => (
+  <div className='lessons-overview'>
+    <h1>Lessons</h1>
+    {lessons.map(({ id, ...otherLessonProps }) => (
+      <LessonCard key={id} {...otherLessonProps} />
+    ))}
+    { !isHidden ? ( <LessonTimesOverview {...lessonTimesData} /> ) : null }
+  </div>
+);
 
 const mapStateToProps = createStructuredSelector({
   lessons: selectLessonsForPreview,

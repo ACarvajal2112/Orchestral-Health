@@ -1,5 +1,5 @@
 import RegisterActionTypes from './register.types';
-import { addLessonToList, registerPendingLessons } from './register.util';
+import { addLessonToList, removeLessonFromList, registerPendingLessons } from './register.util';
 
 const INITIAL_STATE = ({
   status: false,
@@ -19,6 +19,11 @@ const registerReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         pendingLessons: addLessonToList(state.pendingLessons, action.payload)
+      };
+    case RegisterActionTypes.REMOVE_LESSON_FROM_PENDING:
+      return {
+        ...state,
+        pendingLessons: removeLessonFromList(state.pendingLessons, action.payload)
       };
     case RegisterActionTypes.REGISTER_PENDING_LESSONS:
       return {

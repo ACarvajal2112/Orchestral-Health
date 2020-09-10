@@ -1,4 +1,4 @@
-import { takeLatest, put } from 'redux-saga/effects'
+import { all, call, takeLatest, put } from 'redux-saga/effects'
 
 import DirectoryActionTypes from './directory.types';
 
@@ -22,4 +22,8 @@ export function* fetchDirectoryDataStart() {
     DirectoryActionTypes.FETCH_DIRECTORY_DATA_START,
     fetchDirectoryDataStartAsync
   );
+}
+
+export function* directorySagas() {
+  yield all([call(fetchDirectoryDataStart)])
 }

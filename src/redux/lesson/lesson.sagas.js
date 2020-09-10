@@ -1,10 +1,17 @@
-import { takeLatest, put } from 'redux-saga/effects';
+import { all, call, takeLatest, put } from 'redux-saga/effects';
 
 import LessonActionTypes from './lesson.types';
 
 import { firestore, convertLessonSnapshotToMap } from '../../firebase/firebase.utils';
 
-import { fetchLessonDataSuccess, fetchLessonDataFailure } from './lesson.actions';
+import { 
+  fetchLessonDataSuccess, 
+  fetchLessonDataFailure, 
+  setLessonData, 
+  setDefaultDayOfWeek, 
+  toggleLessonHidden,
+  clearLessonTimesData
+} from './lesson.actions';
 
 export function* fetchLessonDataStartAsync() {
   try {
@@ -17,9 +24,42 @@ export function* fetchLessonDataStartAsync() {
   }
 }
 
+export function* viewLessonTimes({ payload: { lessonData, instructorId } }) {
+  yield put(setLessonData(lessonData));
+  yield put(setDefaultDayOfWeek(instructorId));
+  yield put(toggleLessonHidden());
+}
+
+export function* closeLessonTimes() {
+  yield put(clearLessonTimesData());
+  yield put(toggleLessonHidden());
+}
+
 export function* fetchLessonsDataStart() {
   yield takeLatest(
     LessonActionTypes.FETCH_LESSON_DATA_START,
     fetchLessonDataStartAsync
   );
+}
+
+export function* onViewLessonTimes() {
+  yield takeLatest(
+    LessonActionTypes.VIEW_LESSON_TIMES,
+    viewLessonTimes
+  );
+}
+
+export function* onCloseLessonTimes() {
+  yield takeLatest(
+    LessonActionTypes.CLOSE_LESSON_TIMES,
+    closeLessonTimes
+  );
+}
+
+export function* lessonSagas() {
+  yield all([
+    call(fetchLessonsDataStart), 
+    call(onViewLessonTimes),
+    call(onCloseLessonTimes)
+  ])
 }

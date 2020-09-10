@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 import InstructorAvailability from  '../instructor-availability/instructor-availability.component';
 
-import { toggleLessonHidden } from '../../redux/lesson/lesson.actions';
-import { confirmLessonRegistrationStart } from '../../redux/register/register.actions';
+import { closeLessonTimes } from '../../redux/lesson/lesson.actions';
+import { confirmLessonRegistration } from '../../redux/register/register.actions';
 
 import { 
   LessonTimesOverviewContainer, /* div */
@@ -19,12 +19,12 @@ import {
 class LessonTimesOverview extends React.Component {
 
   handleCloseOverlay = () => {
-    const { dispatch } = this.props;
-    dispatch(toggleLessonHidden());
+    const { closeLessonTimes } = this.props;
+    closeLessonTimes();
   };
 
   render() {
-    const { title, confirmLessonRegistrationStart } = this.props;
+    const { title, confirmLessonRegistration } = this.props;
     return ReactDom.createPortal(
       <LessonTimesOverlay>
         <LessonTimesOverviewContainer>
@@ -41,7 +41,7 @@ class LessonTimesOverview extends React.Component {
           <RegisterButtonContainer>
             <button
               onClick={() => {
-                confirmLessonRegistrationStart()
+                confirmLessonRegistration()
               }}>
               Confirm Registration
             </button>
@@ -56,7 +56,8 @@ class LessonTimesOverview extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  confirmLessonRegistrationStart: () => dispatch(confirmLessonRegistrationStart())
+  confirmLessonRegistration: () => dispatch(confirmLessonRegistration()),
+  closeLessonTimes: () => dispatch(closeLessonTimes())
 }); 
 
 export default connect(null, mapDispatchToProps)(LessonTimesOverview);

@@ -7,10 +7,12 @@ import NoCheckoutItems from '../../components/no-checkout-items/no-checkout-item
 
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 
+import { CheckoutPageContainer } from './checkout-page.styles';
+
 const CheckoutPage = ({ cartItems }) => (
-  <div className='checkout-page'>
+  <CheckoutPageContainer>
     {cartItems.length ? <CheckoutOverview cartItems={cartItems}/> : <NoCheckoutItems />}
-  </div>
+  </CheckoutPageContainer>
 );
 
 const mapStateToProps = createStructuredSelector({
