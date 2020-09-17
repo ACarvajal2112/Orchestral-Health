@@ -1,57 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { 
   NavMenuContainer, 
   NavMenuOptionContainer 
 } from './nav-menu.styles';
 
-class NavMenu extends React.Component {
-  constructor() {
-    super();
+const NavMenu = ({ isFooter, navItems, ...otherProps }) => {
 
-    this.state = {
-      scrolled: false
-    };
-    this.handleScroll = this.handleScroll.bind(this);
-  }
+  const [scrolled, setScrolled] = useState({ isScrolled: false });
   
   // if nav menu is a footer, add scroll event listener
-  componentDidMount() {
-    const { isFooter } = this.props;
+  useEffect(() => {
     if (isFooter) {
-      window.addEventListener('scroll', this.handleScroll);
+      window.addEventListener('scroll', handleScroll);
     }
-  }
-
-  componentWillUnmount() {
-    if (this.props.isFooter) {
-      window.removeEventListener('scroll', this.handleScroll);
+    return () => {
+      if (isFooter) {
+        window.removeEventListener('scroll', handleScroll);
+      }
     }
-  }
+  }, []);
 
   // if user scrolls past header nav, set scrolled to true.
-  handleScroll = () => {
+  const handleScroll = () => {
     const scrollTop = window.scrollY < 112;
     if (!scrollTop) {
-      this.setState({ scrolled: true });
+      setScrolled({ isScrolled: true });
     }
     else {
-      this.setState({ scrolled: false });
+      setScrolled({ isScrolled: false });
     }
   };
 
-  render() {
-    const { navItems, ...otherProps } = this.props;
-    return (
-      <NavMenuContainer isScrolled={this.state.scrolled} {...otherProps} >
-        {navItems.map(({ title, name }) => (
-          <NavMenuOptionContainer key={title ? title : name} >
-            <a href={`#${title ? title : name}`}>{title ? title : name}</a>
-          </NavMenuOptionContainer>
-        ))}
-      </NavMenuContainer>
-    )
-  }
+  const { isScrolled } = scrolled;
+  return (
+    <NavMenuContainer isScrolled={isScrolled} {...otherProps} isFooter={isFooter}>
+      {navItems.map(({ title, name }) => (
+        <NavMenuOptionContainer key={title ? title : name} >
+          <a href={`#${title ? title : name}`}>{title ? title : name}</a>
+        </NavMenuOptionContainer>
+      ))}
+    </NavMenuContainer>
+  )
 };
 
 export default NavMenu;

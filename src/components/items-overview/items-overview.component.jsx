@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Item from '../item/item.component';
@@ -23,4 +22,4 @@ const mapStateToProps = (state, ownProps) => ({
   )(state)
 });
 
-export default withRouter(connect(mapStateToProps)(ItemsOverview));
+export default connect(mapStateToProps)(ItemsOverview);

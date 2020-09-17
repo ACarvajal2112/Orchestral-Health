@@ -1,30 +1,37 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React from "react";
+import { useHistory, useRouteMatch } from "react-router-dom";
 
-import { 
+import {
   MenuItemContainer,
   BackgroundImageContainer,
   ContentContainer,
-  TitleContainer, 
-  SubtitleContainer
-} from './menu-item.styles';
+  TitleContainer,
+  SubtitleContainer,
+} from "./menu-item.styles";
 
-const MenuItem = ({ title, name, urlLink, imgUrl, history, match, ...otherProps }) => {
-  const path = otherProps.isDirectoryItem ? `${match.path}shop/${title}` : `${match.path}/${name}`;
-  return( 
-    <MenuItemContainer 
-      onClick={() => history.push(path)}
-      {...otherProps}>
+const MenuItem = ({ title, name, urlLink, imgUrl, ...otherProps }) => {
+  const history = useHistory();
+  const match = useRouteMatch();
+  const path = otherProps.isDirectoryItem
+    ? `${match.path}shop/${title}`
+    : `${match.path}/${name}`;
+
+  const handleClick = () => {
+    history.push(path);
+  };
+
+  return (
+    <MenuItemContainer onClick={() => handleClick()} {...otherProps}>
       <BackgroundImageContainer
-        className='background-image'
-        style={{backgroundImage: `url(${imgUrl})`}}
+        className="background-image"
+        style={{ backgroundImage: `url(${imgUrl})` }}
       />
-      <ContentContainer className='content'>
+      <ContentContainer className="content">
         <TitleContainer>{title ? title : name}</TitleContainer>
         <SubtitleContainer>VIEW</SubtitleContainer>
       </ContentContainer>
     </MenuItemContainer>
-  )
-}
+  );
+};
 
-export default withRouter(MenuItem);
+export default MenuItem;

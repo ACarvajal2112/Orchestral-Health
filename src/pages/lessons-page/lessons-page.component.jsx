@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -10,19 +10,15 @@ import { fetchLessonDataStart } from '../../redux/lesson/lesson.actions';
 
 const LessonsOverviewWithSpinner = WithSpinner(LessonsOverview);
 
-class LessonsPage extends React.Component {
-  
-  componentDidMount() {
-    const { fetchLessonDataStart } = this.props;
+const LessonsPage = ({ fetchLessonDataStart, isLessonDataLoaded }) => {
+
+  useEffect(() => {
     fetchLessonDataStart();
-  }
+  }, [fetchLessonDataStart]);
   
-  render() {
-    const { isLessonDataLoaded } = this.props;
-    return (
-      <LessonsOverviewWithSpinner isLoading={!isLessonDataLoaded} />
-    )
-  }
+  return (
+    <LessonsOverviewWithSpinner isLoading={!isLessonDataLoaded} />
+  )
 };
 
 const mapStateToProps = createStructuredSelector({

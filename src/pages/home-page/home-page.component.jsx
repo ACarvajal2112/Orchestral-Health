@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -10,22 +10,19 @@ import { fetchDirectoryDataStart } from '../../redux/directory/directory.actions
 
 const DirectoryWithSpinner = WithSpinner(Directory);
 
-class HomePage extends React.Component {
+const HomePage = ({ fetchDirectoryDataStart, isDirectoryLoaded }) => {
 
-  componentDidMount() {
-    const { fetchDirectoryDataStart } = this.props;
+  useEffect(() => {
     fetchDirectoryDataStart();
-  }
+  }, [fetchDirectoryDataStart]);
 
-  render() {
-    const { isDirectoryLoaded } = this.props;
-    return (
-      <div className='home-page'>
-        <DirectoryWithSpinner isLoading={!isDirectoryLoaded} />
+
+  return (
+    <div className='home-page'>
+      <DirectoryWithSpinner isLoading={!isDirectoryLoaded} />
     </div>
-    )
-  }
-};
+  );
+}
 
 const mapStateToProps = createStructuredSelector({
   isDirectoryLoaded: selectIsDirectoryLoaded

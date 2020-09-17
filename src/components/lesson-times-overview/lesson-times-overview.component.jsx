@@ -16,40 +16,36 @@ import {
   RegisterButtonContainer
 } from './lesson-times-overview.styles';
 
-class LessonTimesOverview extends React.Component {
+const LessonTimesOverview = ({ closeLessonTimes, title, confirmRegistration }) => {
 
-  handleCloseOverlay = () => {
-    const { closeLessonTimes } = this.props;
+  const handleCloseOverlay = () => {
     closeLessonTimes();
   };
 
-  render() {
-    const { title, confirmRegistration } = this.props;
-    return ReactDom.createPortal(
-      <LessonTimesOverlay>
-        <LessonTimesOverviewContainer>
-          <CloseOverlay onClick={this.handleCloseOverlay}>x</CloseOverlay>
-          <LessonTimesHeader> 
-            <h1>{title}</h1>
-            <HeaderSubtitle> 
-              <i className='fad fa-long-arrow-right' />
-              <span>Lesson Time Availability</span>
-              <i className='fad fa-long-arrow-left' />
-            </HeaderSubtitle>
-          </LessonTimesHeader>
-          <InstructorAvailability />
-          <RegisterButtonContainer>
-            <button onClick={() => {confirmRegistration()}}>
-              Confirm Registration
-            </button>
-            &nbsp;
-            <button onClick={this.handleCloseOverlay}>Cancel</button>
-          </RegisterButtonContainer>
-        </LessonTimesOverviewContainer>
-      </LessonTimesOverlay>,
-      document.getElementById('portal')
-    );
-  }
+  return ReactDom.createPortal(
+    <LessonTimesOverlay>
+      <LessonTimesOverviewContainer>
+        <CloseOverlay onClick={handleCloseOverlay}>x</CloseOverlay>
+        <LessonTimesHeader> 
+          <h1>{title}</h1>
+          <HeaderSubtitle> 
+            <i className='fad fa-long-arrow-right' />
+            <span>Lesson Time Availability</span>
+            <i className='fad fa-long-arrow-left' />
+          </HeaderSubtitle>
+        </LessonTimesHeader>
+        <InstructorAvailability />
+        <RegisterButtonContainer>
+          <button onClick={() => {confirmRegistration()}}>
+            Confirm Registration
+          </button>
+          &nbsp;
+          <button onClick={handleCloseOverlay}>Cancel</button>
+        </RegisterButtonContainer>
+      </LessonTimesOverviewContainer>
+    </LessonTimesOverlay>,
+    document.getElementById('portal')
+  );
 }
 
 const mapDispatchToProps = dispatch => ({
