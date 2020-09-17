@@ -3,25 +3,39 @@ import { all, call, takeLatest, put } from 'redux-saga/effects';
 import RegisterActionTypes from './register.types';
 
 import { 
-  registerPendingLessons, 
+  registerPendingLessons,
+  unregisterPendingLessons, 
   updateRegisteredStatus, 
-  addLessonToPending,
-  removeLessonFromPending,
+  addPendingRegistration,
+  addPendingUnregistration,
+  removePendingRegistration,
   incrementLessonsPerWeek,
-  decrementLessonsPerWeek
+  decrementLessonsPerWeek,
+  removePendingUnregistration
 } from './register.actions';
 
-export function* updateRegisterAddPending({ payload }) {
-  yield put(addLessonToPending(payload));
-  yield put(incrementLessonsPerWeek());
+export function* updateRegisterAddPending({ payload: { lessonToAdd, toRegister } }) {
+  if (toRegister) {
+    yield put(addPendingRegistration(lessonToAdd));
+    yield put(incrementLessonsPerWeek());
+  } else {
+    yield put(addPendingUnregistration(lessonToAdd));
+    yield put(decrementLessonsPerWeek());
+  }
 }
 
-export function* updateRegisterRemovePending({ payload }) {
-  yield put(removeLessonFromPending(payload));
-  yield put(decrementLessonsPerWeek());
+export function* updateRegisterRemovePending({ payload: { lessonToRemove, toRegister } }) {
+  if (toRegister) {
+    yield put(removePendingRegistration(lessonToRemove));
+    yield put(decrementLessonsPerWeek());
+  } else {
+    yield put(removePendingUnregistration(lessonToRemove));
+    yield put(decrementLessonsPerWeek());
+  }
 }
 
 export function* confirmLessonRegistration() {
+  yield put(unregisterPendingLessons());
   yield put(registerPendingLessons());
   yield put(updateRegisteredStatus());
 }
@@ -42,7 +56,7 @@ export function* onUpdateRegisterRemovePending() {
 
 export function* onConfirmLessonRegistration() {
   yield takeLatest(
-    RegisterActionTypes.CONFIRM_LESSON_REGISTRATION,
+    RegisterActionTypes.CONFIRM_REGISTRATION,
     confirmLessonRegistration
   );
 }
@@ -52,5 +66,5 @@ export function* registerSagas() {
     call(onConfirmLessonRegistration), 
     call(onUpdateRegisterAddPending),
     call(onUpdateRegisterRemovePending)
-  ])
+  ]);
 }

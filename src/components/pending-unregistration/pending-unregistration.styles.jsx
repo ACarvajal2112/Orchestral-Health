@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const PendingLessonTimesContainer = styled.div`
+export const PendingUnregistrationContainer = styled.div`
   display: flex;
   flex-direction: row;
   position: relative;
@@ -12,7 +12,7 @@ export const PendingLessonTimesContainer = styled.div`
   }
 `;
 
-export const PendingTimesHeader = styled.div`
+export const PendingUnregistrationHeader = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: top;
@@ -20,7 +20,7 @@ export const PendingTimesHeader = styled.div`
   font-weight: bold;
 `;
 
-export const RegisteredTimeLabel = styled.span`
+export const UnregistrationTimeLabel = styled.span`
   cursor: pointer;
   position: relative;
   display: block;
@@ -29,7 +29,7 @@ export const RegisteredTimeLabel = styled.span`
   &::before {
     font-family: 'Font Awesome 5 Pro';
     font-weight: 400;
-    content: '\f056';
+    content: '\f055';
     position: absolute;
     left: -24px;
     top: 2px;

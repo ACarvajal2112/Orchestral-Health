@@ -1,6 +1,10 @@
 import { createSelector } from 'reselect';
 
-import { selectLessonsFromPending, selectLessonsFromRegister } from '../register/register.selectors';
+import { 
+  selectPendingRegistration, 
+  selectLessonsFromRegister, 
+  selectPendingUnregistration 
+} from '../register/register.selectors';
 import { getTimesByDay } from '../register/register.util';
 
 const lessonSelector = state => state.lesson;
@@ -37,7 +41,7 @@ export const selectAvailabilities = createSelector(
 
 export const selectDayOfWeek = createSelector(
   [lessonSelector],
-  lesson => lesson.dayOfWeek
+  lesson => lesson.dayOfWeek 
 );
 
 /* return array of available times based on current lesson data and day of week
@@ -52,18 +56,25 @@ export const selectAvailabileTimesByDay = createSelector(
   }
 );
 
-/* compare available, registered, and pending lesson times to exclude matches
-   returns array of unique available lesson times */
+/* compare available against registered, to-register, and to-unregister lesson times.
+   return array of unique available lesson times for the dayOfWeek selected. */
 export const selectAvailableTimesForPreview = createSelector(
-  [selectAvailabileTimesByDay, selectDayOfWeek, selectLessonsFromPending, selectLessonsFromRegister],
-  (availableTimes, dayOfWeek, pendingLessons, registeredLessons) => {
-    if (!pendingLessons.length && !registeredLessons.length) return availableTimes;
+  [
+    selectAvailabileTimesByDay, 
+    selectDayOfWeek, 
+    selectPendingRegistration, 
+    selectLessonsFromRegister, 
+    selectPendingUnregistration
+  ],
+  (availableTimes, dayOfWeek, pendingLessons, registeredLessons, toUnregister) => {
+    if (!pendingLessons.length && !registeredLessons.length && !toUnregister.length) return availableTimes;
+    // isolate pending, registered, and unregistration times
     const pendingTimes = getTimesByDay(pendingLessons, dayOfWeek);
     const registeredTimes = getTimesByDay(registeredLessons, dayOfWeek);
+    const unregistrationTimes = getTimesByDay(toUnregister, dayOfWeek);
 
     return availableTimes.reduce((accumulatedTimes, availTime) => {
-
-      if (!pendingTimes.includes(availTime) && !registeredTimes.includes(availTime)) {
+      if (!pendingTimes.includes(availTime) && !registeredTimes.includes(availTime) && !unregistrationTimes.includes(availTime)) {
         accumulatedTimes.push(availTime);
       }
 

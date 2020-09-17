@@ -4,6 +4,8 @@ import LessonActionTypes from './lesson.types';
 
 import { firestore, convertLessonSnapshotToMap } from '../../firebase/firebase.utils';
 
+import { clearPendingData } from '../register/register.actions';
+
 import { 
   fetchLessonDataSuccess, 
   fetchLessonDataFailure, 
@@ -32,6 +34,7 @@ export function* viewLessonTimes({ payload: { lessonData, instructorId } }) {
 
 export function* closeLessonTimes() {
   yield put(clearLessonTimesData());
+  yield put(clearPendingData());
   yield put(toggleLessonHidden());
 }
 

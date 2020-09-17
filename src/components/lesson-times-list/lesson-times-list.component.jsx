@@ -10,14 +10,13 @@ import {
 import { updateRegisterAddPending } from '../../redux/register/register.actions';
 
 import {
-  LessonTimesListContainer, /* div */
-  DayOfWeekContainer, /* div */
-  AvailableTimesContainer, /* div */
-  AvailableTimeLabel /* span */
+  LessonTimesListContainer,
+  DayOfWeekContainer,
+  AvailableTimesContainer,
+  AvailableTimeLabel 
 } from './lesson-times-list.styles';
 
-const LessonTimesList = ({ dayOfWeek, title, availableTimes, updateRegisterAddPending }) => {
-  return (
+const LessonTimesList = ({ dayOfWeek, title, availableTimes, updateRegisterAddPending }) => (
   <LessonTimesListContainer>
     <DayOfWeekContainer>
       {dayOfWeek}
@@ -30,10 +29,12 @@ const LessonTimesList = ({ dayOfWeek, title, availableTimes, updateRegisterAddPe
               key={time}
               onClick={() => 
                 updateRegisterAddPending({
-                  id: `${dayOfWeek}`,
-                  title,
-                  time,
-                  dayOfWeek
+                  lessonToAdd: {
+                    title,
+                    times: [time],
+                    dayOfWeek
+                  },
+                  toRegister: true
                 })
               }
             >
@@ -51,7 +52,7 @@ const LessonTimesList = ({ dayOfWeek, title, availableTimes, updateRegisterAddPe
       )}
     </AvailableTimesContainer>
   </LessonTimesListContainer>
-)};
+);
 
 const mapStateToProps = createStructuredSelector({
   dayOfWeek: selectDayOfWeek,

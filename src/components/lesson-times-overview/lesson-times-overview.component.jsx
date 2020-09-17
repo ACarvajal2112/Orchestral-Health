@@ -5,15 +5,15 @@ import { connect } from 'react-redux';
 import InstructorAvailability from  '../instructor-availability/instructor-availability.component';
 
 import { closeLessonTimes } from '../../redux/lesson/lesson.actions';
-import { confirmLessonRegistration } from '../../redux/register/register.actions';
+import { confirmRegistration } from '../../redux/register/register.actions';
 
 import { 
-  LessonTimesOverviewContainer, /* div */
-  CloseOverlay, /* span */
+  LessonTimesOverviewContainer,
+  CloseOverlay, 
   LessonTimesOverlay,
-  LessonTimesHeader, /* div */
-  HeaderSubtitle, /* div */
-  RegisterButtonContainer /* div */
+  LessonTimesHeader,
+  HeaderSubtitle,
+  RegisterButtonContainer
 } from './lesson-times-overview.styles';
 
 class LessonTimesOverview extends React.Component {
@@ -24,7 +24,7 @@ class LessonTimesOverview extends React.Component {
   };
 
   render() {
-    const { title, confirmLessonRegistration } = this.props;
+    const { title, confirmRegistration } = this.props;
     return ReactDom.createPortal(
       <LessonTimesOverlay>
         <LessonTimesOverviewContainer>
@@ -39,10 +39,7 @@ class LessonTimesOverview extends React.Component {
           </LessonTimesHeader>
           <InstructorAvailability />
           <RegisterButtonContainer>
-            <button
-              onClick={() => {
-                confirmLessonRegistration()
-              }}>
+            <button onClick={() => {confirmRegistration()}}>
               Confirm Registration
             </button>
             &nbsp;
@@ -56,7 +53,7 @@ class LessonTimesOverview extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  confirmLessonRegistration: () => dispatch(confirmLessonRegistration()),
+  confirmRegistration: () => dispatch(confirmRegistration()),
   closeLessonTimes: () => dispatch(closeLessonTimes())
 }); 
 

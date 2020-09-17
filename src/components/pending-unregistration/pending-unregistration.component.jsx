@@ -5,24 +5,24 @@ import { createStructuredSelector } from 'reselect';
 import { selectLessonTitle } from '../../redux/lesson/lesson.selectors';
 import { updateRegisterRemovePending } from '../../redux/register/register.actions';
 
-import {
-  PendingLessonTimesContainer,
-  PendingTimesHeader,
-  RegisteredTimeLabel 
-} from './pending-lesson-times.styles';
+import { 
+  PendingUnregistrationContainer, 
+  PendingUnregistrationHeader, 
+  UnregistrationTimeLabel 
+} from './pending-unregistration.styles';
 
-const PendingLessonTimes = ({ pendingLessons, title, updateRegisterRemovePending }) => (
-  <PendingLessonTimesContainer>
-    <PendingTimesHeader>Pending Lesson Times</PendingTimesHeader>
+const PendingUnregistration = ({ pendingLessons, updateRegisterRemovePending }) => (
+  <PendingUnregistrationContainer>
+    <PendingUnregistrationHeader>Pending Unregistration</PendingUnregistrationHeader>
     <div>
-      {pendingLessons.map(({ dayOfWeek, times }) => (
+      {pendingLessons.map(({ dayOfWeek, times, title }) => (
         <div key={dayOfWeek}>
           <span key={dayOfWeek} style={{ fontWeight: 'bold' }}>
             {dayOfWeek}
           </span>
           {times.map(time => (
-            <RegisteredTimeLabel 
-              key={`${dayOfWeek}:${time}`}
+            <UnregistrationTimeLabel
+              key={`${dayOfWeek}:${time}`} 
               onClick={() => 
                 updateRegisterRemovePending({
                   lessonToRemove: {
@@ -30,17 +30,17 @@ const PendingLessonTimes = ({ pendingLessons, title, updateRegisterRemovePending
                     dayOfWeek,
                     times: [time]
                   },
-                  toRegister: true
+                  toRegister: false
                 })
               }
             >
               {time}
-            </RegisteredTimeLabel>
+            </UnregistrationTimeLabel>
           ))}
         </div>
       ))}
     </div>
-  </PendingLessonTimesContainer>
+  </PendingUnregistrationContainer>
 );
 
 const mapStateToProps = createStructuredSelector({
@@ -51,4 +51,4 @@ const mapDispatchToProps = dispatch => ({
   updateRegisterRemovePending: lesson => dispatch(updateRegisterRemovePending(lesson))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PendingLessonTimes);
+export default connect(mapStateToProps, mapDispatchToProps)(PendingUnregistration);

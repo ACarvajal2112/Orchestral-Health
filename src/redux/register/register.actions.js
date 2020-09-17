@@ -8,16 +8,16 @@ export const decrementLessonsPerWeek = () => ({
   type: RegisterActionTypes.DECREMENT_LESSONS_PER_WEEK
 });
 
+export const confirmRegistration = () => ({
+  type: RegisterActionTypes.CONFIRM_REGISTRATION
+});
+
 export const registerPendingLessons = () => ({
   type: RegisterActionTypes.REGISTER_PENDING_LESSONS
 });
 
-export const updateRegisteredStatus = () => ({
-  type: RegisterActionTypes.UPDATE_REGISTERED_STATUS
-});
-
-export const confirmLessonRegistration = () => ({
-  type: RegisterActionTypes.CONFIRM_LESSON_REGISTRATION
+export const unregisterPendingLessons = () => ({
+  type: RegisterActionTypes.UNREGISTER_PENDING_LESSONS
 });
 
 export const updateRegisterAddPending = lessonToAdd => ({
@@ -25,9 +25,24 @@ export const updateRegisterAddPending = lessonToAdd => ({
   payload: lessonToAdd
 });
 
-export const addLessonToPending = lessonToAdd => ({
-  type: RegisterActionTypes.ADD_LESSON_TO_PENDING,
+export const addPendingRegistration = lessonToAdd => ({
+  type: RegisterActionTypes.ADD_PENDING_REGISTRATION,
   payload: lessonToAdd
+});
+
+export const addPendingUnregistration = lessonToAdd => ({
+  type: RegisterActionTypes.ADD_PENDING_UNREGISTRATION,
+  payload: lessonToAdd
+});
+
+export const removePendingRegistration = lessonToRemove => ({
+  type: RegisterActionTypes.REMOVE_PENDING_REGISTRATION,
+  payload: lessonToRemove
+});
+
+export const removePendingUnregistration = lessonToRemove => ({
+  type: RegisterActionTypes.REMOVE_PENDING_UNREGISTRATION,
+  payload: lessonToRemove
 });
 
 export const updateRegisterRemovePending = lessonToRemove => ({
@@ -35,7 +50,10 @@ export const updateRegisterRemovePending = lessonToRemove => ({
   payload: lessonToRemove
 });
 
-export const removeLessonFromPending = lessonToRemove => ({
-  type: RegisterActionTypes.REMOVE_LESSON_FROM_PENDING,
-  payload: lessonToRemove
+export const updateRegisteredStatus = () => ({
+  type: RegisterActionTypes.UPDATE_REGISTERED_STATUS
+});
+
+export const clearPendingData = () => ({
+  type: RegisterActionTypes.CLEAR_PENDING_DATA
 });

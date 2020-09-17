@@ -3,21 +3,28 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import PendingLessonTimes from '../pending-lesson-times/pending-lesson-times.component';
-import RegisteredLessonTimes from '../registered-lesson-times/registered-lesson-times.component';
+import PendingUnregistration from '../pending-unregistration/pending-unregistration.component';
+import RegisteredLessonTimesContainer from '../registered-lesson-times/registered-lesson-times.container';
 
-import { selectLessonsFromPending } from '../../redux/register/register.selectors';
+import { selectPendingRegistration, selectPendingUnregistration } from '../../redux/register/register.selectors';
 
 import { RegisteredLessonTimesOverviewContainer } from './registered-lesson-times-overview.styles';
 
-const RegisteredLessonTimesOverview = ({ pendingLessons }) => (
+const RegisteredLessonTimesOverview = ({ pendingRegistration, pendingUnregistration }) => (
   <RegisteredLessonTimesOverviewContainer>
-    {pendingLessons.length ? <PendingLessonTimes pendingLessons={pendingLessons} /> : null}
-    <RegisteredLessonTimes />
+    {pendingRegistration.length ? ( 
+      <PendingLessonTimes pendingLessons={pendingRegistration} />
+    ) : null}
+    {pendingUnregistration.length ? ( 
+      <PendingUnregistration pendingLessons={pendingUnregistration} />
+    ) : null}
+    <RegisteredLessonTimesContainer />
   </RegisteredLessonTimesOverviewContainer>
 );
 
 const mapStateToProps = createStructuredSelector({
-  pendingLessons: selectLessonsFromPending
+  pendingRegistration: selectPendingRegistration,
+  pendingUnregistration: selectPendingUnregistration
 });
 
 export default connect(mapStateToProps)(RegisteredLessonTimesOverview);
