@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import {
-  RegistrationStatusContainer, /* div */
-  StatusHeaderContainer, /* div */
-  RegisteredLabel, /* span */
-  NotRegisteredLabel /* span */
+  RegistrationStatusContainer,
+  StatusHeaderContainer,
+  RegisteredLabel, 
+  NotRegisteredLabel 
 } from './registration-status.styles';
 
 const RegistrationStatus = ({ status }) => (

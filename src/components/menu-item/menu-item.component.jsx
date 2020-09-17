@@ -2,10 +2,10 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { 
-  MenuItemContainer, /* div */
-  BackgroundImageContainer, /* div */
-  ContentContainer, /* div */
-  TitleContainer, /* span */
+  MenuItemContainer,
+  BackgroundImageContainer,
+  ContentContainer,
+  TitleContainer, 
   SubtitleContainer
 } from './menu-item.styles';
 

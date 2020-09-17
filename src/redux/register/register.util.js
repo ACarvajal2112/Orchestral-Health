@@ -1,3 +1,5 @@
+/* Adds lesson to existing list of lessons, or adds time to existing lesson times.
+   Return current lessons with added or updated lesson. */
 export const addLessonToList = (currentLessons, lessonToAdd) => {
   // find lesson in current lessons list with matching title and day of week
   const existingLesson = currentLessons.find(
@@ -14,7 +16,7 @@ export const addLessonToList = (currentLessons, lessonToAdd) => {
         : lesson
     );
   };
-  // otherwise return current lessons with the new lesson to be added
+  // return current lessons with the new lesson to be added
   const { title, times, dayOfWeek } = lessonToAdd;
   return [...currentLessons, {
     title,
@@ -23,28 +25,31 @@ export const addLessonToList = (currentLessons, lessonToAdd) => {
    }];
 };
 
-/* returns array of times based on the lessons and day of week passed */
+// Returns array of times for the lesson matching the day of week passed.
 export const getTimesByDay = (lessons, dayOfWeek) => {
   if(!lessons.length) return [];
   const lessonsByDay = lessons.find(lesson => lesson.dayOfWeek === dayOfWeek);
   return lessonsByDay ? lessonsByDay.times : [];
 };
 
+// Adds each pending lesson to the list of registered lessons.
 export const registerPendingLessons = (registeredLessons, pendingLessons) => {
-  pendingLessons.forEach(pendingLesson => {
+  for (const pendingLesson of pendingLessons) {
     registeredLessons = addLessonToList(registeredLessons, pendingLesson);
-  });
+  }
   return registeredLessons;
 };
 
+// Removes each pending lesson from the list of registered lessons.
 export const unregisterPendingLessons = (registeredLessons, pendingLessons) => {
-
   for (const pendingLesson of pendingLessons) {
     registeredLessons = removeLessonFromList(registeredLessons, pendingLesson);
   }
   return registeredLessons;
 };
 
+/* Removes lesson from existing list of lessons, or removes times from existing lesson times.
+   Return current lessons with removed, or updated lesson */
 export const removeLessonFromList = (currentLessons, lessonToRemove) => {
 
   const existingLesson = currentLessons.find(({ title, dayOfWeek }) => {
@@ -52,22 +57,20 @@ export const removeLessonFromList = (currentLessons, lessonToRemove) => {
   });
 
   const tempLesson = {...existingLesson};
-
-  // if lesson has more than 1 time, return existing times without time to remove
+  
   if (tempLesson.times.length > 1) {
+    // remove times from existing lesson's times array
     tempLesson.times = tempLesson.times.filter(
       time => !lessonToRemove.times.includes(time)
     );
-
-    return tempLesson.times.length ? 
-      currentLessons.map(lesson => {
-      return lesson.title === tempLesson.title && lesson.dayOfWeek === tempLesson.dayOfWeek 
-        ? tempLesson
-        : lesson
-      })
-      : currentLessons.filter(lesson => {
-        return !(lesson.title === tempLesson.title && lesson.dayOfWeek === tempLesson.dayOfWeek)
-      })
+    // if any times remain, return new array with current lessons and updated lesson
+    if (tempLesson.times.length) {
+      return currentLessons.map(lesson => {
+        return lesson.title === tempLesson.title && lesson.dayOfWeek === tempLesson.dayOfWeek 
+          ? tempLesson
+          : lesson
+        });
+    }
   }
   // return lessons whose title and day don't match lesson to remove
   return currentLessons.filter(({ title, dayOfWeek }) =>

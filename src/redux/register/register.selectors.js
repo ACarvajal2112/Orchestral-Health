@@ -36,6 +36,8 @@ export const selectRegisteredLessonsByTitle = title => {
   );
 }
 
+/* Compares registered lessons against lessons pending unregistration.
+   Returns list of available registered lessons */
 export const selectRegisteredLessonsForPreview = title => {
   return createSelector(
     [selectPendingUnregistration, selectRegisteredLessonsByTitle(title)],

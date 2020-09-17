@@ -7,7 +7,7 @@ const INITIAL_STATE = {
   data: {},
   dayOfWeek: '',
   isFetching: false,
-  errorMessage: undefined
+  errorMessage: null
 };
 
 const lessonReducer = (state = INITIAL_STATE, action) => {

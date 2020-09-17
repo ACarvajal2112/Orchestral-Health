@@ -1,4 +1,4 @@
-// add or increase item in cart and return array of updated cart items
+// Add or increase item quantity in cart and return array of updated cart items.
 export const addItemToCart = (cartItems, itemToAdd) => {
   const cartItemExists = cartItems.find(
     item => item.id === itemToAdd.id
@@ -11,7 +11,7 @@ export const addItemToCart = (cartItems, itemToAdd) => {
   return [...cartItems, { ...itemToAdd, quantity: 1 }]
 };
 
-// remove or decrease item in cart, return update or cleared array
+// Remove or decrease item in cart, return update or cleared array.
 export const removeItemFromCart = (cartItems, itemToRemove) => {
   const existingCartItem = cartItems.find(
     cartItem => cartItem.id === itemToRemove.id

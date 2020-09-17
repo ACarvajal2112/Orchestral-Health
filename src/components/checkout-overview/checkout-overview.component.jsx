@@ -7,11 +7,11 @@ import CheckoutItem from '../../components/checkout-item/checkout-item.component
 import { selectTotalPrice } from '../../redux/cart/cart.selectors';
 
 import {
-  CheckoutOverviewContainer, /* div */
-  HeaderContainer, /* div */
-  HeaderBlock, /* div */
-  HeaderTitle, /* span */
-  ItemsTotalContainer /* div */
+  CheckoutOverviewContainer, 
+  HeaderContainer, 
+  HeaderBlock, 
+  HeaderTitle, 
+  ItemsTotalContainer
 } from './checkout-overview.styles';
 
 const CheckoutOverview = ({ cartItems, totalPrice }) => (

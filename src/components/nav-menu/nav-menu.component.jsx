@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { 
-  NavMenuContainer, /* div */
-  NavMenuOptionContainer /* div */
+  NavMenuContainer, 
+  NavMenuOptionContainer 
 } from './nav-menu.styles';
 
 class NavMenu extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       scrolled: false

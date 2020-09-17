@@ -9,10 +9,7 @@ import CustomButton from '../custom-button/custom-button.component';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { toggleCartHidden } from '../../redux/cart/cart.actions';
 
-import {
-  CartDropdownContainer, /* div */
-  CartItemsContainer /* div */
-} from './cart-dropdown.styles';
+import { CartDropdownContainer, CartItemsContainer } from './cart-dropdown.styles';
 
 const CartDropdown = ({ cartItems, history, dispatch }) => (
   <CartDropdownContainer>

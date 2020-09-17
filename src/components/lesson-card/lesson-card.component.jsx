@@ -6,13 +6,13 @@ import CustomButton from '../custom-button/custom-button.component';
 import { viewLessonTimes } from '../../redux/lesson/lesson.actions';
 
 import {
-  LessonCardContainer, /* div */
-  LessonImgContainer, /* div */
-  ContentContainer, /* div */
-  TitleContainer, /* span */
-  InstructorContainer, /* span */
-  DescriptionContainer, /* span */
-  SeeTimesContainer /* div */
+  LessonCardContainer, 
+  LessonImgContainer, 
+  ContentContainer, 
+  TitleContainer, 
+  InstructorContainer, 
+  DescriptionContainer,
+  SeeTimesContainer 
 } from './lessons-card.styles';
 
 const LessonCard = ({  

@@ -44,8 +44,7 @@ export const selectDayOfWeek = createSelector(
   lesson => lesson.dayOfWeek 
 );
 
-/* return array of available times based on current lesson data and day of week
-   e.g. [ '12:30pm - 1:30pm, 1:30pm - 2:30pm ] */
+// Return array of available times based on current lesson data and day of week.
 export const selectAvailabileTimesByDay = createSelector(
   [selectLessonData, selectDayOfWeek],
   (lessonData, dayOfWeek) => {
@@ -56,8 +55,8 @@ export const selectAvailabileTimesByDay = createSelector(
   }
 );
 
-/* compare available against registered, to-register, and to-unregister lesson times.
-   return array of unique available lesson times for the dayOfWeek selected. */
+/* Compare available against registered, to-register, and to-unregister lesson times.
+   Return array of unique available lesson times for the day of week selected. */
 export const selectAvailableTimesForPreview = createSelector(
   [
     selectAvailabileTimesByDay, 
@@ -87,7 +86,8 @@ const DAYS_OF_THE_WEEK = [
   'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
 ];
 
-/* return array indicating instructor availability for each day of the week
+
+/* Return array indicating instructor availability for each day of the week.
    e.g. { monday: false, tuesday: true, ... } */
 export const selectAvailabilityByWeek = createSelector(
   [selectAvailabilities],

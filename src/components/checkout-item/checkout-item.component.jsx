@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { removeItemFromCart } from '../../redux/cart/cart.actions'
 
 import {
-  CheckoutItemContainer, /* div */
-  DescriptionContainer, /* div */
-  QuantityContainer, /* div */
-  ProductImgContainer, /* div */
-  PriceContainer, /* div */
-  RemoveContainer /* div */
+  CheckoutItemContainer, 
+  DescriptionContainer, 
+  QuantityContainer, 
+  ProductImgContainer, 
+  PriceContainer, 
+  RemoveContainer
 } from './checkout-item.styles';
 
 const CheckoutItem = ({ item, removeItem }) => {

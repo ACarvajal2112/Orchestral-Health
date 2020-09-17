@@ -11,10 +11,10 @@ import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { signOutStart } from '../../redux/user/user.actions';
 
 import { 
-  HeaderContainer, /* div */
-  LogoContainer, /* div */
-  OptionsContainer, /* div */
-  OptionLink /* Link */
+  HeaderContainer,
+  LogoContainer, 
+  OptionsContainer, 
+  OptionLink 
 } from './header.styles';
 
 const Header = ({ hidden, currentUser, signOutStart }) => (

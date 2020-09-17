@@ -3,7 +3,7 @@ import DirectoryActionTypes from './directory.types'
 const INITIAL_STATE = ({
   families: null,
   isFetching: false,
-  errorMessage: undefined
+  errorMessage: null
 });
 
 const directoryReducer = (state = INITIAL_STATE, action) => {

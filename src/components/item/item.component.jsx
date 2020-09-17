@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { addItemToCart } from '../../redux/cart/cart.actions';
 
 import {
-  ItemContainer, /* div */
-  BackgroundImageContainer, /* div */
-  AddItemContainer, /* div */
-  ContentContainer, /* div */
-  NameContainer, /* span */
-  PriceContainer /* span */
+  ItemContainer, 
+  BackgroundImageContainer, 
+  AddItemContainer, 
+  ContentContainer, 
+  NameContainer, 
+  PriceContainer 
 } from './item.styles';
 
 const Item = ({ item, addItem }) => {
