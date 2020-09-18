@@ -7,7 +7,7 @@ import {
 
 const NavMenu = ({ isFooter, navItems, ...otherProps }) => {
 
-  const [scrolled, setScrolled] = useState({ isScrolled: false });
+  const [scrolled, setScrolled] = useState(false);
   
   // if nav menu is a footer, add scroll event listener
   useEffect(() => {
@@ -19,22 +19,21 @@ const NavMenu = ({ isFooter, navItems, ...otherProps }) => {
         window.removeEventListener('scroll', handleScroll);
       }
     }
-  }, []);
+  }, [isFooter]);
 
   // if user scrolls past header nav, set scrolled to true.
   const handleScroll = () => {
     const scrollTop = window.scrollY < 112;
     if (!scrollTop) {
-      setScrolled({ isScrolled: true });
+      setScrolled(true);
     }
     else {
-      setScrolled({ isScrolled: false });
+      setScrolled(false);
     }
   };
 
-  const { isScrolled } = scrolled;
   return (
-    <NavMenuContainer isScrolled={isScrolled} {...otherProps} isFooter={isFooter}>
+    <NavMenuContainer isScrolled={scrolled} {...otherProps} isFooter={isFooter}>
       {navItems.map(({ title, name }) => (
         <NavMenuOptionContainer key={title ? title : name} >
           <a href={`#${title ? title : name}`}>{title ? title : name}</a>

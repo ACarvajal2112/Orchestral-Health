@@ -1,5 +1,5 @@
-import React from "react";
-import { useHistory, useRouteMatch } from "react-router-dom";
+import React from 'react';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 
 import {
   MenuItemContainer,
@@ -7,14 +7,16 @@ import {
   ContentContainer,
   TitleContainer,
   SubtitleContainer,
-} from "./menu-item.styles";
+} from './menu-item.styles';
 
 const MenuItem = ({ title, name, urlLink, imgUrl, ...otherProps }) => {
   const history = useHistory();
   const match = useRouteMatch();
+  // directory items have title property, route to /shop/:itemName
+  // non-directory items have name property, append name to current route
   const path = otherProps.isDirectoryItem
-    ? `${match.path}shop/${title}`
-    : `${match.path}/${name}`;
+    ? `${match.path}shop/${title.toLowerCase()}`
+    : `${match.path}/${name.toLowerCase()}`;
 
   const handleClick = () => {
     history.push(path);
@@ -23,10 +25,10 @@ const MenuItem = ({ title, name, urlLink, imgUrl, ...otherProps }) => {
   return (
     <MenuItemContainer onClick={() => handleClick()} {...otherProps}>
       <BackgroundImageContainer
-        className="background-image"
-        style={{ backgroundImage: `url(${imgUrl})` }}
+        className='background-image'
+        style={{ backgroundImage: `url(${encodeURI(imgUrl)})` }}
       />
-      <ContentContainer className="content">
+      <ContentContainer>
         <TitleContainer>{title ? title : name}</TitleContainer>
         <SubtitleContainer>VIEW</SubtitleContainer>
       </ContentContainer>

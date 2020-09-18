@@ -6,13 +6,18 @@ import MenuItem from '../menu-item/menu-item.component';
 
 import { selectFamilies } from '../../redux/directory/directory.selectors';
 
-import { DirectoryContainer } from './directory.styles';
+import { DirectoryContainer, FamiliesContainer, FamiliesHeader } from './directory.styles';
 
 const Directory = ({ families }) => (
   <DirectoryContainer>
-    {families.map(({ id, ...otherFamilyProps }) => (
-      <MenuItem key={id} {...otherFamilyProps} isDirectoryItem />
-    ))}
+    <FamiliesHeader>
+      <h1>Instruments</h1>
+    </FamiliesHeader>
+    <FamiliesContainer>
+      {families.map(({ id, ...otherFamilyProps }) => (
+        <MenuItem key={id} {...otherFamilyProps} isDirectoryItem />
+      ))}
+    </FamiliesContainer>
   </DirectoryContainer>
 );
 

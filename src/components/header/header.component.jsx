@@ -6,6 +6,8 @@ import { createStructuredSelector } from 'reselect';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
+import { ReactComponent as Logo } from '../../assets/oh-with-drum.svg';
+
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { signOutStart } from '../../redux/user/user.actions';
@@ -21,10 +23,7 @@ const Header = ({ hidden, currentUser, signOutStart }) => (
   <HeaderContainer>
     <LogoContainer>
       <Link to='/'>
-        <img 
-          src={require('../../assets/drum-logo.png')} 
-          alt='drum logo' 
-        />
+        <Logo />
       </Link>
     </LogoContainer>
     <OptionsContainer>

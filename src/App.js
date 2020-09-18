@@ -24,17 +24,19 @@ const App = ({ checkUserSession, currentUser }) => {
   return (
     <div className='app'>
       <Header />
-      <Switch>
-        <Route exact path='/' component={HomePage} />
-        <Route path='/shop' component={ShopPage} />
-        <Route exact path='/checkout' component={CheckoutPage} />
-        <Route exact path='/lessons' component={LessonsPage} />
-        {currentUser ? (
-          <Redirect to='/'/>
-        ) : (
-          <Route path='/signin' component={SignInSignUpPage} />
-        )}
-      </Switch>
+      <div className='main'>
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+          <Route path='/shop' component={ShopPage} />
+          <Route exact path='/checkout' component={CheckoutPage} />
+          <Route exact path='/lessons' component={LessonsPage} />
+          {currentUser ? (
+            <Redirect to='/'/>
+          ) : (
+            <Route path='/signin' component={SignInSignUpPage} />
+          )}
+        </Switch>
+      </div>
     </div>
   );
 }

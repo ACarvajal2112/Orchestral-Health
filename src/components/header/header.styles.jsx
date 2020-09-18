@@ -2,20 +2,18 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const HeaderContainer = styled.div`
-  height: 70px;
+  height: 100px;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 25px; 
-  padding-right: 20px;
 `;
 
 export const LogoContainer = styled.div`
-  height: 100%;
-  width: 70px;
-  margin: 10px 0 0 25px;
+  height: 80%;
+  width: 32rem;
+  margin: auto 0 auto 2rem;
 
-  img {
+  svg {
     height: 100%;
     width: 100%;
   }
@@ -27,9 +25,21 @@ export const OptionsContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-right: 2rem;
 `;
 
 export const OptionLink = styled(Link)`
-  padding: 10px 15px;
+  padding: 0 20px;
   cursor: pointer;  
+  text-decoration: none;
+  color: #706000;
+  font-size: 1.2rem;
+
+  &:hover {
+    color: #514600;
+  }
+
+  &:active {
+    color: #ccad00;
+  }
 `;

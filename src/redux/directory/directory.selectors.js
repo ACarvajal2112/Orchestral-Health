@@ -7,12 +7,22 @@ export const selectIsDirectoryDataFetching = createSelector(
   directory => directory.isFetching
 );
 
-export const selectFamilies = createSelector(
+export const selectDirectoryData = createSelector(
   [selectDirectory],
-  directory => directory.families ? directory.families : []
+  directory => directory.data
+);
+
+export const selectFamilies = createSelector(
+  [selectDirectoryData],
+  data => data.families
+);
+
+export const selectLessonsData = createSelector(
+  [selectDirectoryData],
+  data => data.lessons
 );
 
 export const selectIsDirectoryLoaded = createSelector(
   [selectDirectory],
-  directory => !!directory.families
+  directory => !!directory.data
 );

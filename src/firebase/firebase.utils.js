@@ -39,16 +39,13 @@ export const createUserDocument = async (userAuth, additionalData) => {
   return userDocRef;
 };
 
-export const convertDirectorySnapshotToMap = directorySnap => 
-  directorySnap.docs.map(doc => {
-    const { title, imgUrl } = doc.data();
-    return {
-      id: doc.id,
-      urlLink: encodeURI(title.toLowerCase()),
-      title,
-      imgUrl
-    };
-  });
+export const convertDirectorySnapshotToMap = directorySnap => {
+  const { families, lessons } = directorySnap.docs[0].data();
+  return {
+    families,
+    lessons
+  }
+};
 
 export const convertShopSnapshotToMap = collectionSnap => 
   collectionSnap.docs.reduce((accumulatedShopMap, shopDoc) => {

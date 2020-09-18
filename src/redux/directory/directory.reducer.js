@@ -1,7 +1,7 @@
 import DirectoryActionTypes from './directory.types'
 
 const INITIAL_STATE = ({
-  families: null,
+  data: null,
   isFetching: false,
   errorMessage: null
 });
@@ -17,7 +17,7 @@ const directoryReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetching: false,
-        families: action.payload
+        data: action.payload
       };
     case DirectoryActionTypes.FETCH_DIRECTORY_DATA_FAILURE:
       return {

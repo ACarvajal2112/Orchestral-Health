@@ -7,6 +7,7 @@ export const CartIconContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  margin-left: 20px;
 
   &:hover {
     cursor: pointer;
