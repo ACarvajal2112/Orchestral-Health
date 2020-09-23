@@ -8,7 +8,7 @@ import {
 const WithSpinner = WrappedComponent => ({ isLoading, ...otherProps }) => {
   return isLoading ? (
     <SpinnerOverlay>
-      <SpinnerContainer />
+      <i className="fad fa-violin fa-10x"></i>
     </SpinnerOverlay>
   ) : (
     <WrappedComponent {...otherProps} />
