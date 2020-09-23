@@ -4,10 +4,12 @@ import { removeLessonFromList } from './register.util';
 
 const registerSelector = state => state.register;
 
-export const selectRegisterStatus = createSelector(
-  [registerSelector],
-  register => register.status
-);
+export const selectRegistrationStatus = title => {
+  return createSelector(
+    [selectRegisteredLessonsByTitle(title)],
+    registeredLessons => !!registeredLessons.length
+  );
+}
 
 export const selectLessonsPerWeek = createSelector(
   [registerSelector],

@@ -5,7 +5,6 @@ import RegisterActionTypes from './register.types';
 import { 
   registerPendingLessons,
   unregisterPendingLessons, 
-  updateRegisteredStatus, 
   addPendingRegistration,
   addPendingUnregistration,
   removePendingRegistration,
@@ -37,7 +36,6 @@ export function* updateRegisterRemovePending({ payload: { lessonToRemove, toRegi
 export function* confirmLessonRegistration() {
   yield put(unregisterPendingLessons());
   yield put(registerPendingLessons());
-  yield put(updateRegisteredStatus());
 }
 
 export function* onUpdateRegisterAddPending() {

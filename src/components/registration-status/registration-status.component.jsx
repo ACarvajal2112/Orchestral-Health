@@ -1,8 +1,7 @@
 import React from 'react';
-
-import { selectRegisterStatus } from '../../redux/register/register.selectors';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+
+import { selectRegistrationStatus } from '../../redux/register/register.selectors';
 
 import {
   RegistrationStatusContainer,
@@ -26,8 +25,8 @@ const RegistrationStatus = ({ status }) => (
   </RegistrationStatusContainer>
 );
 
-const mapStateToProps = createStructuredSelector({
-  status: selectRegisterStatus
+const mapStateToProps = (state, ownProps) => ({
+  status: selectRegistrationStatus(ownProps.title)(state)
 });
 
 export default connect(mapStateToProps)(RegistrationStatus);
