@@ -32,14 +32,14 @@ export const OptionLink = styled(Link)`
   padding: 0 20px;
   cursor: pointer;  
   text-decoration: none;
-  color: #706000;
+  color: #80451d;
   font-size: 1.2rem;
 
   &:hover {
-    color: #514600;
+    color: #4b2b11;
   }
 
   &:active {
-    color: #ccad00;
+    color: #cbae2d;
   }
 `;
