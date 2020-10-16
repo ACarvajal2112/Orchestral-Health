@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-export const FamilyOverviewContainer = styled.div`
+export const LessonsOverviewContainer = styled.div`
   margin-bottom: 3rem;
 `;

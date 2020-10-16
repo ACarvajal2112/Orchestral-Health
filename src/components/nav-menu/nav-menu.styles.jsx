@@ -2,13 +2,16 @@ import styled, { css } from 'styled-components';
 
 const footerNavStyles = css`
   position: fixed;
-  bottom: -40px;
-  left: 20%;
+  padding: 4px 0;
+  border: 1px solid black;
+  border-radius: 4px;
+  bottom: -60px;
+  left: 25%;
   transition: all 0.5s;
 `;
 
 const isScrolledAnimationStyles = css`
-  transform: translateY(-50px);
+  transform: translateY(-60px);
 `;
 
 // if component is a footer, styles will position component off screen
@@ -21,9 +24,8 @@ const getScrolledNavStyles = props =>
 
 
 export const NavMenuContainer = styled.div`
-  width: 60%;
-  margin-left: auto; 
-  margin-right: auto;
+  width: 50%;
+  margin: 1rem auto;
   display: flex;
   justify-content: space-evenly;
   background: white;
@@ -33,13 +35,12 @@ export const NavMenuContainer = styled.div`
 `;
 
 export const NavMenuOptionContainer = styled.div`
-  flex: 1;
+  flex: 2;
   display: flex;
   text-align: center;
 
   & a {
     flex: 1;
-    justify-self: flex-start;
     text-decoration: none;
   }
 
@@ -50,9 +51,11 @@ export const NavMenuOptionContainer = styled.div`
     flex: 1;
   }
 
-  /* add empty content after last child to maintain spacing of flex-items */
-  &:last-child::after {
-    content: '';
+  &:last-child {
     flex: 1;
+
+    & a { text-align: left; }
   }
+
+  &:first-child a { text-align: right; }
 `;

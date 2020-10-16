@@ -5,7 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import LessonsOverview from '../../components/lessons-overview/lessons-overview.component';
 import WithSpinner from '../../components/with-spinner/with-spinner.component';
 
-import { selectIsLessonDataFetching, selectIsLessonDataLoaded } from '../../redux/lesson/lesson.selectors';
+import { selectIsLessonDataLoaded } from '../../redux/lesson/lesson.selectors';
 import { fetchLessonDataStart } from '../../redux/lesson/lesson.actions';
 
 const LessonsOverviewWithSpinner = WithSpinner(LessonsOverview);
@@ -22,7 +22,6 @@ const LessonsPage = ({ fetchLessonDataStart, isLessonDataLoaded }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  isLessonDataFetching: selectIsLessonDataFetching,
   isLessonDataLoaded: selectIsLessonDataLoaded
 });
 

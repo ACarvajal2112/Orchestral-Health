@@ -9,13 +9,15 @@ const checkoutItemChildrenStyles = css`
 `;
 
 export const CheckoutItemContainer = styled.div`
-  width: 80%;
-  height: 150px;
+  width: 100%;
+  height: 8rem;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 1rem;
   display: flex;
   align-items: center;
   text-align: center;
+  border-bottom: 1px solid black;
 `;
 
 export const DescriptionContainer = styled.div`

@@ -27,7 +27,8 @@ const LessonTimesOverview = ({ closeLessonTimes, title, confirmRegistration }) =
       <LessonTimesOverviewContainer>
         <CloseOverlay onClick={handleCloseOverlay}>x</CloseOverlay>
         <LessonTimesHeader> 
-          <h1>{title}</h1>
+          {/* display title with first character uppercase */}
+          <h1>{`${title.charAt(0).toUpperCase()}${title.slice(1)}`}</h1>
           <HeaderSubtitle> 
             <i className='fad fa-long-arrow-right' />
             <span>Lesson Time Availability</span>

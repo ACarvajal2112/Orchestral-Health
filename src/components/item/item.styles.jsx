@@ -7,6 +7,8 @@ export const ItemContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 1px solid black;
+  background-color: lightgray;
 
   &:hover {
     & .add-item {  
@@ -19,7 +21,8 @@ export const BackgroundImageContainer = styled.div`
   width: 100%;
   height: 100%;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 `;
 
 export const AddItemContainer = styled.div`
@@ -38,6 +41,9 @@ export const AddItemContainer = styled.div`
 export const ContentContainer = styled.div`
   display: flex;
   width: 100%;
+  border-top: 1px solid black;
+  background: white;
+  padding: 2px;
 `;
 
 export const NameContainer = styled.span`

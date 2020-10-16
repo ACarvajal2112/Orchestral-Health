@@ -34,11 +34,12 @@ const NavMenu = ({ isFooter, navItems, ...otherProps }) => {
 
   return (
     <NavMenuContainer isScrolled={scrolled} {...otherProps} isFooter={isFooter}>
-      {navItems.map(({ title, name }) => (
-        <NavMenuOptionContainer key={title ? title : name} >
-          <a href={`#${title ? title : name}`}>{title ? title : name}</a>
+      {navItems.map(({ title, name }) => {
+        const titleOrName = title ? title : name;
+        return <NavMenuOptionContainer key={titleOrName} >
+          <a href={`#${titleOrName}`}>{titleOrName}</a>
         </NavMenuOptionContainer>
-      ))}
+      })}
     </NavMenuContainer>
   )
 };

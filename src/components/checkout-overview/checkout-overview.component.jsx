@@ -11,7 +11,8 @@ import {
   HeaderContainer, 
   HeaderBlock, 
   HeaderTitle, 
-  ItemsTotalContainer
+  ItemsTotalContainer,
+  CheckoutItemList
 } from './checkout-overview.styles';
 
 const CheckoutOverview = ({ cartItems, totalPrice }) => (
@@ -33,11 +34,15 @@ const CheckoutOverview = ({ cartItems, totalPrice }) => (
         <HeaderTitle>Remove</HeaderTitle>
       </HeaderBlock>
     </HeaderContainer>
-    {cartItems.map(item => (
-      <CheckoutItem key={item.id} item={item} />
-    ))}
+    <CheckoutItemList>
+      {cartItems.map(item => (
+        <li key={item.name}>
+          <CheckoutItem key={item.name} item={item} />
+        </li>
+      ))}
+    </CheckoutItemList>
     <ItemsTotalContainer>
-      <span>Total: ${totalPrice}</span>
+      <span>Total:</span> ${totalPrice}
     </ItemsTotalContainer>
   </CheckoutOverviewContainer>
 );

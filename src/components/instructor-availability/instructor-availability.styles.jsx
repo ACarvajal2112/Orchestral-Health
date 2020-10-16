@@ -7,5 +7,4 @@ export const InstructorAvailabilityContainer = styled.div`
   border-radius: 4px;
   width: 75%;
   margin-top: 20px;
-  padding-bottom: 6px;
 `;

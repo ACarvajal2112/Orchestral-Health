@@ -2,16 +2,16 @@ import styled from 'styled-components';
 
 export const LessonTimesOverviewContainer = styled.div`
   position: fixed;
-  top: 25px;
-  left: 25%;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-height: 650px;
-  width: 50%;
+  width: 60%;
   background: white;
   border: 1px solid black;
-  padding-bottom: 35px;
+  padding-bottom: 4rem;
   z-index: 10001;
 `;
 

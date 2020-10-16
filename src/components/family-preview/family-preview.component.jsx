@@ -1,31 +1,37 @@
 import React from 'react';
 import { useRouteMatch, useHistory } from 'react-router-dom';
 
-import { FamilyPreviewContainer } from './family-preview.styles';
-
 import MenuItem from '../menu-item/menu-item.component';
+import PreviewHeader from '../../components/preview-header/preview-header.component';
+
+import { 
+  FamilyPreviewContainer, 
+  MenuItemsPreviewContainer
+} from './family-preview.styles';
 
 const FamilyPreview = ({ title, instruments }) => {
   const match = useRouteMatch();
   const history = useHistory();
 
-  const handleClick = name => {
-    history.push(`${match.path}/${title}/${name}`)
+  const handleClick = () => {
+    history.push(`${match.path}/${title}`)
   }
 
   return (
     <FamilyPreviewContainer id={title}>
-    <h1 className='family-title'>{title}</h1>
-    <div className='menu-items-preview'>
+    <PreviewHeader isClickable>
+      <h1 onClick={handleClick}>{title}</h1>
+    </PreviewHeader>
+    <MenuItemsPreviewContainer>
       {instruments.slice(0,4).map(({ id, name, ...otherInstrumentProps }) => (
         <MenuItem 
           key={name}
-          onClick={() => handleClick(name)} 
           name={name}
+          title={title}
           {...otherInstrumentProps} 
           isInstrumentPreview />
       ))}
-    </div>
+    </MenuItemsPreviewContainer>
   </FamilyPreviewContainer>
   );
 };

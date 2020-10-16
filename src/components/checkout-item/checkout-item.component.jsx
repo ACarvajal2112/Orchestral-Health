@@ -13,14 +13,15 @@ import {
 } from './checkout-item.styles';
 
 const CheckoutItem = ({ item, removeItem }) => {
-  const { name, price, quantity, imgUrl } = item;
+  const { title, name, price, quantity, imgUrl } = item;
+  const description = `${name} ${title.slice(0,-1)}`;
   return (
     <CheckoutItemContainer>
     <ProductImgContainer
-      style={{ backgroundImage: `url(${imgUrl})` }} 
+      style={{ backgroundImage: `url(${encodeURI(imgUrl)})` }} 
     />
     <DescriptionContainer>
-      <span>{name}</span>
+      <span>{description.toUpperCase()}</span>
     </DescriptionContainer>
     <QuantityContainer>
       <span>{quantity}</span>
@@ -29,7 +30,7 @@ const CheckoutItem = ({ item, removeItem }) => {
       <span>${price * quantity}</span>
     </PriceContainer>
     <RemoveContainer>
-      <i className='fad fa-times' onClick={() => removeItem(item)} />
+      <i className='fad fa-times' onClick={() => removeItem({ ...item, title })} />
     </RemoveContainer>
   </CheckoutItemContainer>
   )

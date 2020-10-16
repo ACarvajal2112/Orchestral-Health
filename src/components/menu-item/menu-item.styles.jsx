@@ -9,14 +9,22 @@ const directoryItemStyles = css`
 
 const familyOverviewStyles = css`
   height: 250px;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 `;
 
-const getButtonStyles = props => 
-  props.isDirectoryItem ? directoryItemStyles : familyOverviewStyles;
+const instrumentPreviewStyles = css`
+  height: 250px;
+`;
+
+const getButtonStyles = props => {
+  if (props.isDirectoryItem) return directoryItemStyles;
+  if (props.isFamilyOverviewItem) return familyOverviewStyles;
+  return instrumentPreviewStyles;
+}
 
 export const MenuItemContainer = styled.div`
   border: 1px solid black;
+  background-clip: border-box;
   display: flex;
   justify-content: center;
   align-items: center;

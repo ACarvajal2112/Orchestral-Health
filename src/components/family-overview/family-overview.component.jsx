@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import MenuItem from '../menu-item/menu-item.component';
 import NavMenu from '../nav-menu/nav-menu.component';
+import PreviewHeader from '../preview-header/preview-header.component';
 
 import { selectFamily } from '../../redux/shop/shop.selectors';
 
@@ -13,13 +14,18 @@ const FamilyOverview = ({ family }) => {
   return (
     <FamilyOverviewContainer>
       <NavMenu navItems={instruments} />
-      <h1>{title.toUpperCase()}</h1>
-      {instruments.map(instrument => (
+      <PreviewHeader>
+        <h1>{title}</h1>
+      </PreviewHeader>
+      {instruments.map(({ name, ...otherInstrumentProps }) => (
         <MenuItem 
-          key={instrument.name} 
-          id={instrument.name} 
-          {...instrument} 
-          isFamilyOverviewItem />
+          key={name} 
+          id={name}
+          title={title}
+          name={name}
+          {...otherInstrumentProps}
+          isFamilyOverviewItem 
+        />
       ))}
       <NavMenu navItems={instruments} isFooter />
     </FamilyOverviewContainer>

@@ -13,7 +13,7 @@ import LessonsPage from './pages/lessons-page/lessons-page.component';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { checkUserSession } from './redux/user/user.actions';
 
-import './App.css';
+import { GlobalStyles, MainContentContainer } from './global.styles';
 
 const App = ({ checkUserSession, currentUser }) => {
 
@@ -22,9 +22,10 @@ const App = ({ checkUserSession, currentUser }) => {
   }, [checkUserSession]);
 
   return (
-    <div className='app'>
+    <div>
+      <GlobalStyles />
       <Header />
-      <div className='main'>
+      <MainContentContainer>
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
@@ -36,7 +37,7 @@ const App = ({ checkUserSession, currentUser }) => {
             <Route path='/signin' component={SignInSignUpPage} />
           )}
         </Switch>
-      </div>
+      </MainContentContainer>
     </div>
   );
 }

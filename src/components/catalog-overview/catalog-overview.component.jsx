@@ -7,14 +7,16 @@ import NavMenu from '../nav-menu/nav-menu.component';
 
 import { selectCatalogForPreview } from '../../redux/shop/shop.selectors';
 
+import { CatalogOverviewContainer } from './catalog-overview.styles';
+
 const CatalogOverview = ({ catalog }) => (
-  <div className='catalog-overview'>
+  <CatalogOverviewContainer>
     <NavMenu navItems={catalog} />
     {catalog.map(({ id, ...otherFamilyProps }) => (
       <FamilyPreview key={id} {...otherFamilyProps}/>
     ))}
     <NavMenu navItems={catalog} isFooter />
-  </div>
+  </CatalogOverviewContainer>
 );
 
 const mapStateToProps = createStructuredSelector({

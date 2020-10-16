@@ -12,16 +12,16 @@ import {
   PriceContainer 
 } from './item.styles';
 
-const Item = ({ item, addItem }) => {
+const Item = ({ title, item, addItem }) => {
   const { name, price, imgUrl } = item;
   return (
     <ItemContainer>
       <BackgroundImageContainer
         style={{
-          backgroundImage: `url(${imgUrl})`
+          backgroundImage: `url(${encodeURI(imgUrl)})`
         }}
       />
-      <AddItemContainer className='add-item' onClick={() => addItem(item)}>
+      <AddItemContainer className='add-item' onClick={() => addItem({...item, title})}>
         <h1>Add to Cart</h1>
       </AddItemContainer>
       <ContentContainer>

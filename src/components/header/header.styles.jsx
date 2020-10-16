@@ -33,7 +33,7 @@ export const OptionLink = styled(Link)`
   cursor: pointer;  
   text-decoration: none;
   color: #80451d;
-  font-size: 1.2rem;
+  font-size: 1rem;
 
   &:hover {
     color: #4b2b11;

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { useTransition, animated } from 'react-spring';
+import { useHistory } from 'react-router-dom';
+
+import CustomButton from '../custom-button/custom-button.component';
 
 import { selectLessonsData } from '../../redux/directory/directory.selectors';
 
@@ -17,6 +20,7 @@ import {
 const SlideshowCard = ({ lessonData }) => {
   
   const [index, setIndex] = useState(0);
+  const history = useHistory();
 
   useEffect(() => {
     const incrementer = window.setInterval(() => {
@@ -27,6 +31,10 @@ const SlideshowCard = ({ lessonData }) => {
       window.clearInterval(incrementer);
     }
   }, [lessonData]);
+
+  const handleClick = () => {
+    history.push('/lessons');
+  }
 
   // config to slow down transition animations evenly
   const config = { friction: 25, tension: 75 }
@@ -74,7 +82,9 @@ const SlideshowCard = ({ lessonData }) => {
         </TitleAnimationContainer>
         <SubcontentContainer>
           <Subtitle>Sign up today!</Subtitle>
-          <button>View Lessons</button>
+          <CustomButton onClick={handleClick}>
+            View Lessons
+          </CustomButton>
         </SubcontentContainer>
       </Content>
     </SlideshowCardContainer>

@@ -6,10 +6,9 @@ const contentSpanStyles = css`
 `;
 
 export const LessonCardContainer = styled.div`
-  margin: 10px auto 0 30px;
-  min-height: 250px;
-  width: 90%;
+  flex: 3;
   display: flex;
+  min-height: 250px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   
   &:hover {
@@ -25,37 +24,34 @@ export const LessonImgContainer = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-  padding: 10px 0 0 0.5rem;
   flex: 2;
-`;
-
-export const TitleContainer = styled.span`
-  ${contentSpanStyles}
-  font-weight: bold;
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 `;
 
 export const InstructorContainer = styled.span`
+  font-size: 130%;
+  margin-left: 2rem;
+  font-weight: lighter;
   ${contentSpanStyles}
-  font-size: 110%;
-  margin-left: 8px;
-  margin-bottom: 1rem;
 `;
 
 export const DescriptionContainer = styled.span`
+  width: 85%;
+  margin: 0 auto;
   ${contentSpanStyles}
 `;
 
 export const SeeTimesContainer = styled.div`
-  width: 100%;
-  padding-right: 0.5rem;
   display: flex;
   justify-content: flex-end;
+  width: 100%;
+  margin-top: 1rem;
 
   button {
     display: inline-block;
-    width: 10rem;
-    margin-right: 8px;
+    width: 50%;
+    margin: 0 auto;
   }
 `;

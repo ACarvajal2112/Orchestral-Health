@@ -10,7 +10,7 @@ export const DirectoryContainer = styled.div`
 `;
 export const FamiliesContainer = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
   height: 100%;
 `;

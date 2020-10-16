@@ -10,7 +10,6 @@ export const SlideshowCardContainer = styled.div`
 export const SlideshowContainer = styled.div`
   flex: 3;
   position: relative;
-  background-color: gray;
 
   .lesson-slideshow {
     position: absolute;

@@ -12,14 +12,18 @@ import {
 const MenuItem = ({ title, name, urlLink, imgUrl, ...otherProps }) => {
   const history = useHistory();
   const match = useRouteMatch();
-  // directory items have title property, route to /shop/:itemName
-  // non-directory items have name property, append name to current route
-  const path = otherProps.isDirectoryItem
-    ? `${match.path}shop/${title.toLowerCase()}`
-    : `${match.path}/${name.toLowerCase()}`;
+
+  /*
+   * Function returns url based on MenuItem props.
+   */
+  const getUrlFromProps = () => {
+    if (otherProps.isDirectoryItem) return `/shop/${title}`;
+    if (otherProps.isInstrumentPreview) return `${match.path}/${title}/${name}`;
+    return `/shop/${match.params.familyId}/${name}`;
+  }
 
   const handleClick = () => {
-    history.push(path);
+    history.push(getUrlFromProps());
   };
 
   return (
@@ -29,7 +33,7 @@ const MenuItem = ({ title, name, urlLink, imgUrl, ...otherProps }) => {
         style={{ backgroundImage: `url(${encodeURI(imgUrl)})` }}
       />
       <ContentContainer>
-        <TitleContainer>{title ? title : name}</TitleContainer>
+        <TitleContainer>{name ? name : title}</TitleContainer>
         <SubtitleContainer>VIEW</SubtitleContainer>
       </ContentContainer>
     </MenuItemContainer>
