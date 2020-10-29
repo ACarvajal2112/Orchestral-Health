@@ -9,18 +9,40 @@ export const LessonTimesOverviewContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 60%;
+  min-width: 320px;
   background: white;
   border: 1px solid black;
   padding-bottom: 4rem;
   z-index: 10001;
+
+  @media screen and (max-width:1024px){
+    width: 80%;
+  }
+
+  @media screen and (max-width:660px){
+    width: 98%;
+  }
 `;
 
-export const CloseOverlay = styled.span`
+export const CloseOverlay = styled.div`
   position: absolute;
-  right: 1rem;
+  width: 2rem;
+  right: .5rem;
   top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 150%;
+  padding-bottom: 3px;
   cursor: pointer;
+
+  &:hover {
+    background: lightgray;
+  }
+
+  &:active {
+    background: gray;
+  }
 `;
 
 export const RegisterButtonContainer = styled.div`

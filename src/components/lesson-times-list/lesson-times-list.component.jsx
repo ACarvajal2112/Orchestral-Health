@@ -13,7 +13,8 @@ import {
   LessonTimesListContainer,
   DayOfWeekContainer,
   AvailableTimesContainer,
-  AvailableTimeLabel 
+  AvailableTimeLabel,
+  NoAvailableTimesLabel
 } from './lesson-times-list.styles';
 
 const LessonTimesList = ({ dayOfWeek, title, availableTimes, updateRegisterAddPending }) => (
@@ -44,10 +45,8 @@ const LessonTimesList = ({ dayOfWeek, title, availableTimes, updateRegisterAddPe
         ))
       ) : (
         <div>
-          <span>Check another day for 
-            <span style={{ fontWeight: 'bold' }}> {title} </span> 
-            lesson availabilities!
-          </span>
+          <span style={{ fontWeight: 'bold' }}>Check another day</span> 
+          &nbsp;for {title} lesson availabilities!
         </div>
       )}
     </AvailableTimesContainer>

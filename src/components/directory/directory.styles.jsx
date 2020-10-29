@@ -5,22 +5,23 @@ export const DirectoryContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 10px;
-  z-index: 10;
+  z-index: 10; // animated h1 on homepage will move behind DirectoryContainer
   background-color: white;
+
+  // remove gap between directory & lessons slideshow on medium screen sizes
+  @media screen and (max-width: 1024px) {
+    margin-right: unset;
+  }
 `;
+
 export const FamiliesContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
   height: 100%;
-`;
 
-export const FamiliesHeader = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-
-  h1 {
-    margin: 0 0 0 .5rem;
+  // re-adjust grid on medium screen sizes
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: repeat(6, 1fr);
   }
 `;

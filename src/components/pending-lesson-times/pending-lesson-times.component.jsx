@@ -13,7 +13,7 @@ import {
 
 const PendingLessonTimes = ({ pendingLessons, title, updateRegisterRemovePending }) => (
   <PendingLessonTimesContainer>
-    <PendingTimesHeader>Pending Lesson Times</PendingTimesHeader>
+    <PendingTimesHeader>Pending Registration </PendingTimesHeader>
     <div>
       {pendingLessons.map(({ dayOfWeek, times }) => (
         <div key={dayOfWeek}>

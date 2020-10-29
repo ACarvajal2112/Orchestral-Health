@@ -16,7 +16,7 @@ const FamilyPreview = ({ title, instruments }) => {
   const handleClick = () => {
     history.push(`${match.path}/${title}`)
   }
-
+  
   return (
     <FamilyPreviewContainer id={title}>
     <PreviewHeader isClickable>

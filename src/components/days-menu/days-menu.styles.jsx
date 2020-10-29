@@ -16,5 +16,10 @@ export const DaysMenuContainer = styled.div`
     position: absolute;
     left: -40px;
     top: 4px;
+
+    // only show icon on medium-to-large screen sizes
+    @media screen and (max-width:480px){
+      display: none;
+    }
   }
 `;

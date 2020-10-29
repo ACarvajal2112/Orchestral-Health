@@ -5,11 +5,18 @@ export const SlideshowCardContainer = styled.div`
   flex-direction: column;
   height: 100%;
   width: 100%;
+
+  // slideshow card horizontal on small-to-medium screen sizes
+  @media screen and (max-width: 1024px) {
+    flex-direction: row;
+  }
 `;
 
 export const SlideshowContainer = styled.div`
   flex: 3;
   position: relative;
+  background-color: white;
+  z-index: 10; // animated h1 on homepage will move behind SlideshowContainer
 
   .lesson-slideshow {
     position: absolute;
@@ -20,6 +27,10 @@ export const SlideshowContainer = styled.div`
     background-position: center;
     border: 1px solid black;
   }
+
+  @media screen and (max-width: 1024px) {
+    flex: 2;
+  }
 `;
 
 export const Content = styled.div`
@@ -28,7 +39,10 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid black;
-  border-top: none;
+
+  @media screen and (max-width: 1024px) {
+    flex: 3;
+  }
 `;
 
 export const TitleAnimationContainer = styled.div`
@@ -40,6 +54,10 @@ export const TitleAnimationContainer = styled.div`
     position: absolute;
     margin: 0;
     margin-left: 1rem;
+
+    @media screen and (max-width:480px){
+      font-size: 1.75rem;
+    }
   }
 `;
 
@@ -60,4 +78,8 @@ export const Subtitle = styled.span`
   font-size: 1.4rem;
   display: block;
   margin-left: 1rem;
+
+  @media screen and (max-width:480px){
+    font-size: 1.2rem;
+  }
 `;

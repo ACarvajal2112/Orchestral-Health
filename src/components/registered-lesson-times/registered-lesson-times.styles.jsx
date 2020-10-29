@@ -15,13 +15,10 @@ export const RegisteredLessonTimesContainer = styled.div`
 export const RegisteredTimesHeader = styled.div`
   display: flex;
   justify-content: flex-end;
-  align-items: top;
-  padding-right: 4rem;
+  align-items: flex-start;
+  padding-right: 1.5rem;
+  text-align: right;
   font-weight: bold;
-`;
-
-export const LessonTimesResults = styled.div`
-  
 `;
 
 export const RegisteredTimeLabel = styled.span`
@@ -29,13 +26,13 @@ export const RegisteredTimeLabel = styled.span`
   position: relative;
   display: block;
 
-  /* Calendar icon - Regular */
+  /* Minus icon - Regular */
   &::before {
     font-family: 'Font Awesome 5 Pro';
     font-weight: 400;
     content: '\f056';
     position: absolute;
-    left: -24px;
+    left: -1.2rem;
     top: 2px;
     display: none;
   }
@@ -50,5 +47,12 @@ export const RegisteredTimeLabel = styled.span`
 
   &:active::before {
     color: red;
+  }
+`;
+
+export const LessonTimesList = styled.div`
+  // add margin top to divs which are not the first child
+  div:not(:first-child){
+    margin-top: .5rem;
   }
 `;

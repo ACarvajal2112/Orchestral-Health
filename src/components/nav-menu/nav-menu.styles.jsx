@@ -1,13 +1,24 @@
 import styled, { css } from 'styled-components';
 
+const headerNavStyles = css`
+    @media screen and (max-width: 1024px){
+    width: 100%;
+  }
+`;
+
 const footerNavStyles = css`
   position: fixed;
   padding: 4px 0;
   border: 1px solid black;
   border-radius: 4px;
   bottom: -60px;
-  left: 25%;
+  left: 20%;
   transition: all 0.5s;
+
+  @media screen and (max-width: 1024px){
+    left: 3%;
+    width: 94%;
+  }
 `;
 
 const isScrolledAnimationStyles = css`
@@ -15,8 +26,8 @@ const isScrolledAnimationStyles = css`
 `;
 
 // if component is a footer, styles will position component off screen
-const getFooterNavStyles = props => 
-  props.isFooter ? footerNavStyles : '';
+const getNavStyles = props => 
+  props.isFooter ? footerNavStyles : headerNavStyles;
 
 // if header nav is scrolled past, footer will translate onto screen
 const getScrolledNavStyles = props => 
@@ -24,38 +35,54 @@ const getScrolledNavStyles = props =>
 
 
 export const NavMenuContainer = styled.div`
-  width: 50%;
-  margin: 1rem auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
+  width: 60%;
+  margin: 1rem auto;
   background: white;
 
-  ${getFooterNavStyles}
+  & div:last-child span {
+    display: none;
+  }
+
+  ${getNavStyles}
   ${getScrolledNavStyles}
 `;
 
 export const NavMenuOptionContainer = styled.div`
-  flex: 2;
   display: flex;
+  flex: 2;
   text-align: center;
+  padding: 0 4px;
 
-  & a {
+  // last menu option does not have adjacent icon so it is smaller
+  &:last-of-type{
     flex: 1;
-    text-decoration: none;
+    // icons removed at small screen sizes, make all menu options the same size
+    @media screen and (max-width: 480px){
+      flex: 2;
+    }
   }
 
-  /* every link in nav besides last child will have icon after */
-  &:not(:last-child)::after {
-    font-family: 'Font Awesome 5 Pro';
-    content: '\f8cf';
-    flex: 1;
+  // all menu options except last replace icon with right border
+  @media screen and (max-width: 481px){
+    &:not(:last-of-type) {
+      border-right: 1px solid black;
+    }
   }
+`;
 
-  &:last-child {
-    flex: 1;
+export const TitleOrNameContainer = styled.a`
+  flex: 1;
+  text-decoration: none;
+`;
 
-    & a { text-align: left; }
+export const IconContainer = styled.span`
+  flex: 1;
+
+  // remove icon at small screens
+  @media screen and (max-width: 481px){
+    display: none;
   }
-
-  &:first-child a { text-align: right; }
 `;

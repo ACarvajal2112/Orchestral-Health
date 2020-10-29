@@ -16,7 +16,7 @@ export const PendingUnregistrationHeader = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: top;
-  padding-right: 4rem;
+  padding-right: 1.5rem;
   font-weight: bold;
 `;
 
@@ -25,13 +25,13 @@ export const UnregistrationTimeLabel = styled.span`
   position: relative;
   display: block;
 
-  /* Calendar icon - Regular */
+  /* Add icon - Regular */
   &::before {
     font-family: 'Font Awesome 5 Pro';
     font-weight: 400;
     content: '\f055';
     position: absolute;
-    left: -24px;
+    left: -1.2rem;
     top: 2px;
     display: none;
   }

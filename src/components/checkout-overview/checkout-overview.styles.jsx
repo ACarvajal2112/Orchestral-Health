@@ -2,25 +2,44 @@ import styled from 'styled-components';
 
 export const CheckoutOverviewContainer = styled.div`
   width: 100%;
+  /* min-width: 380px; */
 `;
 
 export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 1rem 0 0;
-  padding: 4px 0;
+  padding: 4px .5rem;
   background: #333;
   color: white;
+
+  @media screen and (max-width: 480px){
+    padding: 4px 0;
+  }
 `;
 
 export const HeaderBlock = styled.div`
   width: 20%;
   text-align: center;
+
+  &:first-of-type {
+    @media screen and (max-width:480px){
+      display: none;
+    }
+  }
+
+  @media screen and (max-width:480px){
+    width: 25%;
+  }
 `;
 
 export const HeaderTitle = styled.span`
   font-weight: bolder;
   font-size: 18px;
+
+  @media screen and (max-width:480px){
+    font-size: 0.9em;
+  }
 `;
 
 export const CheckoutItemList = styled.ul`

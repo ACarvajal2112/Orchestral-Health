@@ -49,7 +49,7 @@ const SlideshowCard = ({ lessonData }) => {
 
   // title text animation transitions
   const titleTransition = useTransition(lessonData[index], item => item.id, {
-    from: { opacity: 0, transform: 'translate(20rem, 0)'},
+    from: { opacity: 0, transform: 'translate(10vw, 0)'},
     enter: { opacity: 1, transform: 'translate(0, 0)'},
     leave: { opacity: 0, transform: 'translate(-50rem, 0)'},
     config

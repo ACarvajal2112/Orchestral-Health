@@ -6,8 +6,14 @@ export const FamilyPreviewContainer = styled.div`
 
 export const MenuItemsPreviewContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 5px;
+
+  // re-adjust grid on medium screen sizes
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+  }
 `;
 
 export const FamilyTitle = styled.div`
@@ -15,7 +21,7 @@ export const FamilyTitle = styled.div`
   background-color: #4b2b11;
   z-index: -1;
   margin: .5rem 0;
-
+  
   h1 {
     position: relative;
     margin: 0;

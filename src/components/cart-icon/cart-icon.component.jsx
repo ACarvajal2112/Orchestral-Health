@@ -11,7 +11,9 @@ const CartIcon = ({ itemCount, dispatch }) => (
   <CartIconContainer
     onClick={() => dispatch(toggleCartHidden())}>
       <i className='fal fa-shopping-cart fa-3x'></i>
-      <IncrementerContainer>{itemCount}</IncrementerContainer>
+      <IncrementerContainer itemCount={itemCount}>
+        {itemCount}
+      </IncrementerContainer>
   </CartIconContainer>
 );
 

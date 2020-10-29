@@ -1,9 +1,38 @@
 import styled, { css } from 'styled-components';
 
 const directoryItemStyles = css`
+  // first directory menu item will take up 2 columns on large screen sizes
   &:first-child {
     grid-column-start: 1;
     grid-column-end: 3;
+  }
+
+  // on small-to-medium screens 3 menu items in first row, 2 in second row
+  @media screen and (max-width: 1024px) {
+
+    // 1st row, 2nd item taking up 2 columns
+    &:nth-last-child(4) {
+      grid-column-start: 3;
+      grid-column-end: 5;
+    }
+
+    // 1st row, 3rd item taking up 2 columns
+    &:nth-last-child(3) {
+      grid-column-start: 5;
+      grid-column-end: 7;
+    }
+
+    // 2nd row, 1st item taking up 3 columns
+    &:nth-last-child(2) {
+      grid-column-start: 1;
+      grid-column-end: 4
+    }
+    
+    // 2nd row, last item taking up 3 columns
+    &:last-child {
+      grid-column-start: 4;
+      grid-column-end: 7;
+    }
   }
 `;
 
@@ -16,6 +45,7 @@ const instrumentPreviewStyles = css`
   height: 250px;
 `;
 
+// type of MenuItem passed as param determines distinct styling
 const getButtonStyles = props => {
   if (props.isDirectoryItem) return directoryItemStyles;
   if (props.isFamilyOverviewItem) return familyOverviewStyles;
@@ -25,6 +55,7 @@ const getButtonStyles = props => {
 export const MenuItemContainer = styled.div`
   border: 1px solid black;
   background-clip: border-box;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,7 +89,7 @@ export const BackgroundImageContainer = styled.div`
 
 export const ContentContainer = styled.div`
   height: 90px;
-  padding: 0 25px;
+  padding: 0 20px;
   background-color: white;
   border: 1px solid #262626;
   opacity: 0.7;
@@ -74,6 +105,10 @@ export const TitleContainer = styled.span`
   font-weight: bold;
   margin-bottom: 4px;
   text-transform: uppercase;
+
+  @media screen and (max-width: 481px){
+    font-size: 18px;
+  }
 `;
 
 export const SubtitleContainer = styled.span`

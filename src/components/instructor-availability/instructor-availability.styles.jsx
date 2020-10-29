@@ -5,6 +5,7 @@ export const InstructorAvailabilityContainer = styled.div`
   flex-direction: column;
   border: 1px solid black;
   border-radius: 4px;
-  width: 75%;
+  width: 80%;
+  min-width: 320px;
   margin-top: 20px;
 `;

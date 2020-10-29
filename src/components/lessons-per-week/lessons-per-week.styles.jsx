@@ -15,7 +15,7 @@ export const LessonsPerWeekHeader = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding-right: 4rem;
+  padding-right: 1.5rem;
   font-weight: bold;
 `;
 

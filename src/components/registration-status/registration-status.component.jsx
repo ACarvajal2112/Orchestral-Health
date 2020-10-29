@@ -12,9 +12,7 @@ import {
 
 const RegistrationStatus = ({ status }) => (
   <RegistrationStatusContainer>
-    <StatusHeaderContainer>
-      Registration status
-    </StatusHeaderContainer>
+    <StatusHeaderContainer>Registration Status</StatusHeaderContainer>
     <div>
       {!status ? ( 
         <RegisteredLabel>Not Registered</RegisteredLabel> 

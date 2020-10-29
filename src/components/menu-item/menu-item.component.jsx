@@ -32,7 +32,7 @@ const MenuItem = ({ title, name, urlLink, imgUrl, ...otherProps }) => {
         className='background-image'
         style={{ backgroundImage: `url(${encodeURI(imgUrl)})` }}
       />
-      <ContentContainer>
+      <ContentContainer className='content'>
         <TitleContainer>{name ? name : title}</TitleContainer>
         <SubtitleContainer>VIEW</SubtitleContainer>
       </ContentContainer>

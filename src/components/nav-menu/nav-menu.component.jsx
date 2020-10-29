@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 import { 
   NavMenuContainer, 
-  NavMenuOptionContainer 
+  NavMenuOptionContainer,
+  TitleOrNameContainer,
+  IconContainer
 } from './nav-menu.styles';
 
 const NavMenu = ({ isFooter, navItems, ...otherProps }) => {
@@ -37,7 +39,12 @@ const NavMenu = ({ isFooter, navItems, ...otherProps }) => {
       {navItems.map(({ title, name }) => {
         const titleOrName = title ? title : name;
         return <NavMenuOptionContainer key={titleOrName} >
-          <a href={`#${titleOrName}`}>{titleOrName}</a>
+          <TitleOrNameContainer href={`#${titleOrName}`}>
+            {titleOrName}
+          </TitleOrNameContainer>
+          <IconContainer>
+            <i className='far fa-music-alt'></i>
+          </IconContainer>
         </NavMenuOptionContainer>
       })}
     </NavMenuContainer>

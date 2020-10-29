@@ -6,16 +6,45 @@ export const HeaderContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 1024px){
+    height: 90px;
+  }
+
+  @media screen and (max-width:480px){
+    height: 60px;
+  }
 `;
 
 export const LogoContainer = styled.div`
   height: 80%;
   width: 32rem;
-  margin: auto 0 auto 2rem;
+  margin: auto 0 auto 1rem;
 
   svg {
     height: 100%;
     width: 100%;
+
+    // hide large SVG logo on small-to-medium screen sizes
+    &:first-of-type {
+      @media screen and (max-width: 1024px) {
+        display: none;
+      }
+    }
+
+    // show small SVG logo on small-to-medium screen sizes
+    &:last-of-type {
+      display: none;
+
+      @media screen and (max-width: 1024px) {
+        display: block;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 20%;
+    height: 100%;
   }
 `;
 
@@ -25,7 +54,15 @@ export const OptionsContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-right: 2rem;
+  margin-right: 3rem;
+  text-align: center;
+
+  // spread out links and cart icon container on small-to-medium screen sizes
+  @media screen and (max-width: 1024px) {
+    width: 80%;
+    margin-right: 0;
+    justify-content: space-evenly;
+  }
 `;
 
 export const OptionLink = styled(Link)`
@@ -41,5 +78,13 @@ export const OptionLink = styled(Link)`
 
   &:active {
     color: #cbae2d;
+  }
+
+  @media screen and (max-width:1024px){
+    padding: unset;
+  }
+
+  @media screen and (max-width:480px){
+    font-size: .75em;
   }
 `;

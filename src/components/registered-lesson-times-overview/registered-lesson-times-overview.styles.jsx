@@ -19,5 +19,10 @@ export const RegisteredLessonTimesOverviewContainer = styled.div`
     content: '\f274';
     position: absolute;
     left: -40px;
+
+    // only show icon on medium-to-large screen sizes
+    @media screen and (max-width:480px){
+      display: none;
+    }
   }
 `;

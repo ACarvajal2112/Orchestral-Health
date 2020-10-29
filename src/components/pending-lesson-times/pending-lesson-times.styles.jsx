@@ -16,7 +16,8 @@ export const PendingTimesHeader = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: top;
-  padding-right: 4rem;
+  padding-right: 1.5rem;
+  text-align: right;
   font-weight: bold;
 `;
 
@@ -25,13 +26,13 @@ export const RegisteredTimeLabel = styled.span`
   position: relative;
   display: block;
 
-  /* Calendar icon - Regular */
+  /* Minus icon - Regular */
   &::before {
     font-family: 'Font Awesome 5 Pro';
     font-weight: 400;
     content: '\f056';
     position: absolute;
-    left: -24px;
+    left: -1.2rem;
     top: 2px;
     display: none;
   }

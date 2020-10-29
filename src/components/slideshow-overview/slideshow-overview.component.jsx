@@ -1,16 +1,26 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import SlideshowCard from '../slideshow-card/slideshow-card.component';
+import PreviewHeader from '../preview-header/preview-header.component';
 
-import { SlideshowOverviewContainer, SlideshowHeader } from './slideshow-overview.styles';
+import { SlideshowOverviewContainer } from './slideshow-overview.styles';
 
-const SlideshowOverview = () => (
-  <SlideshowOverviewContainer>
-    <SlideshowHeader>
-      <h1>Lessons</h1>
-    </SlideshowHeader>
-    <SlideshowCard />
-  </SlideshowOverviewContainer>
-);
+const SlideshowOverview = () => {
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push('/lessons');
+  }
+
+  return (
+    <SlideshowOverviewContainer>
+      <PreviewHeader isClickable>
+        <h1 onClick={handleClick}>Lessons</h1>
+      </PreviewHeader>
+      <SlideshowCard />
+    </SlideshowOverviewContainer>
+  );
+};
 
 export default SlideshowOverview;

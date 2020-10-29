@@ -6,6 +6,10 @@ const checkoutItemChildrenStyles = css`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width:480px){
+    width: 25%;
+  }
 `;
 
 export const CheckoutItemContainer = styled.div`
@@ -13,11 +17,15 @@ export const CheckoutItemContainer = styled.div`
   height: 8rem;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 1rem;
+  padding: 0 .5rem;
   display: flex;
   align-items: center;
   text-align: center;
   border-bottom: 1px solid black;
+
+  @media screen and (max-width: 480px){
+    padding: 0;
+  }
 `;
 
 export const DescriptionContainer = styled.div`
@@ -37,6 +45,10 @@ export const ProductImgContainer = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   ${checkoutItemChildrenStyles}
+
+  @media screen and (max-width:480px){
+    display: none;
+  }
 `;
 
 export const RemoveContainer = styled.div`

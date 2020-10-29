@@ -7,14 +7,15 @@ import { updateRegisterAddPending } from '../../redux/register/register.actions'
 import { 
   RegisteredLessonTimesContainer, 
   RegisteredTimesHeader,
-  RegisteredTimeLabel
+  RegisteredTimeLabel, 
+  LessonTimesList
 } from './registered-lesson-times.styles';
 
 const RegisteredLessonTimes = ({ title, registeredLessons, updateRegisterAddPending }) => (
   <RegisteredLessonTimesContainer>
     <RegisteredTimesHeader>Registered Lesson Times</RegisteredTimesHeader>
     {registeredLessons.length ? (
-      <div>
+      <LessonTimesList>
         {registeredLessons.map(({ dayOfWeek, times }) => (
           <div key={dayOfWeek}>
             <span key={dayOfWeek} style={{ fontWeight: 'bold' }}>
@@ -37,7 +38,7 @@ const RegisteredLessonTimes = ({ title, registeredLessons, updateRegisterAddPend
             ))}
           </div>
         ))}
-      </div>
+      </LessonTimesList>
     ) : (
       <div>
         <span>You are not yet registered for  

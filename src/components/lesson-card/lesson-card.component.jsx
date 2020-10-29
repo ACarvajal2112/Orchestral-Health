@@ -2,9 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import CustomButton from '../custom-button/custom-button.component';
-import InstructorDetails from '../instructor-details/instructor-details.component';
-
-import { viewLessonTimes } from '../../redux/lesson/lesson.actions';
+import InstructorDetailsOverview from '../instructor-details-overview/instructor-details-overview.component';
 
 import {
   LessonCardContainer, 
@@ -15,10 +13,9 @@ import {
   SeeTimesContainer
 } from './lessons-card.styles';
 
-const LessonCard = ({  
-  instructor: { id, imgUrl, name, description, availabilities, ...otherInstructorProps }, 
-  title,
-  viewLessonTimes 
+const LessonCard = ({ 
+  instructor: { imgUrl, name, description, ...otherInstructorProps },
+  handleClick
 }) => (
   <LessonCardContainer>
     <LessonImgContainer
@@ -29,23 +26,14 @@ const LessonCard = ({
     <ContentContainer>
       <InstructorContainer>{name}</InstructorContainer>
       <DescriptionContainer>{description}</DescriptionContainer>
-      <InstructorDetails {...otherInstructorProps} />
+      <InstructorDetailsOverview {...otherInstructorProps} />
       <SeeTimesContainer>
         <CustomButton 
-          onClick={() => { 
-            viewLessonTimes({ 
-              lessonData: { title, availabilities }, 
-              instructorId: id
-            })
-          }}
+          onClick={handleClick}
         >SEE TIMES</CustomButton> 
       </SeeTimesContainer>  
     </ContentContainer>
   </LessonCardContainer>
 );
 
-const mapDispatchToProps = dispatch => ({
-  viewLessonTimes: lessonTimesParams => dispatch(viewLessonTimes(lessonTimesParams))
-});
-
-export default connect(null, mapDispatchToProps)(LessonCard);
+export default LessonCard;

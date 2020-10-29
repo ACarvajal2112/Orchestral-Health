@@ -1,21 +1,24 @@
 import styled, { css } from 'styled-components';
 
 const translateElemStyles = css`
-  top: -14px;
-  font-size: 12px;
-  color: black;
+  top: -16px;
+  font-size: 14px;
+  color: white;
 `;
 
 export const FormInputGroupContainer = styled.div`
   position: relative;
   margin: 45px 0;
+
+  @media screen and (max-width:480px){
+    margin: 25px 0;
+  }
 `;
 
 export const FormInputContainer = styled.input`
-  background: none;
-  background-color: white;
+  background: transparent;
   border: none;
-  border-bottom: 1px solid grey;
+  border-bottom: 2px solid #cbae2d;
   font-size: 18px;
   width: 100%;
   padding: 10px 10px 10px 5px;

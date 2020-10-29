@@ -13,7 +13,9 @@ import {
 
 const PendingUnregistration = ({ pendingLessons, updateRegisterRemovePending }) => (
   <PendingUnregistrationContainer>
-    <PendingUnregistrationHeader>Pending Unregistration</PendingUnregistrationHeader>
+    <PendingUnregistrationHeader>
+      Pending Unregistration
+    </PendingUnregistrationHeader>
     <div>
       {pendingLessons.map(({ dayOfWeek, times, title }) => (
         <div key={dayOfWeek}>

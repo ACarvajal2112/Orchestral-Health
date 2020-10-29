@@ -19,6 +19,11 @@ export const LessonTimesListContainer = styled.div`
     position: absolute;
     left: -40px;
     top: -2px;
+
+    // only show icon on medium-to-large screen sizes
+    @media screen and (max-width:480px){
+      display: none;
+    }
   }
 `;
 
@@ -26,7 +31,7 @@ export const DayOfWeekContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   font-weight: bold;
-  padding-right: 4rem;
+  padding-right: 1.5rem;
 `;
 
 export const AvailableTimesContainer = styled.div`
@@ -38,13 +43,13 @@ export const AvailableTimeLabel = styled.span`
   cursor: pointer;
   position: relative;
 
-  /* Calendar icon - Regular */
+  /* Add icon - Regular */
   &::before {
     font-family: 'Font Awesome 5 Pro';
     font-weight: 400;
     content: '\f055';
     position: absolute;
-    left: -24px;
+    left: -1.2rem;
     top: 2px;
     display: none;
   }

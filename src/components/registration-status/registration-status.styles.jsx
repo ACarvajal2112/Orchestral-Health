@@ -24,14 +24,19 @@ export const RegistrationStatusContainer = styled.div`
     content: '\f040';
     position: absolute;
     left: -40px;
+
+    // only show icon on medium-to-large screen sizes
+    @media screen and (max-width:480px){
+      display: none;
+    }
   }
 `;
 
 export const StatusHeaderContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  padding-right: 1.5rem;
   font-weight: bold;
-  padding-right: 4rem;
 `;
 
 export const RegisteredLabel = styled.span`

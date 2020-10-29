@@ -8,8 +8,9 @@ import {
   BackgroundImageContainer, 
   AddItemContainer, 
   ContentContainer, 
-  NameContainer, 
-  PriceContainer 
+  NameLabel, 
+  PriceLabel,
+  AddItemLabel
 } from './item.styles';
 
 const Item = ({ title, item, addItem }) => {
@@ -22,11 +23,11 @@ const Item = ({ title, item, addItem }) => {
         }}
       />
       <AddItemContainer className='add-item' onClick={() => addItem({...item, title})}>
-        <h1>Add to Cart</h1>
+        <AddItemLabel>Add to Cart</AddItemLabel>
       </AddItemContainer>
       <ContentContainer>
-        <NameContainer>{name.toUpperCase()}</NameContainer>
-        <PriceContainer>${price}</PriceContainer>
+        <NameLabel>{name.toUpperCase()}</NameLabel>
+        <PriceLabel>${price}</PriceLabel>
       </ContentContainer>
     </ItemContainer>
   );

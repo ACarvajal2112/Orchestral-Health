@@ -6,6 +6,8 @@ import CustomButton from '../custom-button/custom-button.component';
 
 import { signUpStart } from '../../redux/user/user.actions';
 
+import { SignUpContainer } from './sign-up.styles';
+
 const SignUp = ({ signUpStart }) => {
 
   const [userCredentials, setUserCredentials] = useState({
@@ -34,7 +36,7 @@ const SignUp = ({ signUpStart }) => {
   }
 
   return (
-    <div className='sign-up'>
+    <SignUpContainer>
       <h2>Don't have an account yet?</h2>
       <span>Sign up by filling out the form.</span>
       <form onSubmit={handleSubmit}>
@@ -42,7 +44,7 @@ const SignUp = ({ signUpStart }) => {
           type='text'
           name='displayName'
           value={displayName} 
-          label='Display Name'
+          label='display name'
           handleChange={handleChange}
           required
         />
@@ -50,7 +52,7 @@ const SignUp = ({ signUpStart }) => {
           type='email'
           name='email'
           value={email} 
-          label='Email'
+          label='email'
           handleChange={handleChange}
           required
         />
@@ -58,7 +60,7 @@ const SignUp = ({ signUpStart }) => {
           type='password'
           name='password'
           value={password} 
-          label='Password'
+          label='password'
           handleChange={handleChange}
           required
         />
@@ -66,13 +68,13 @@ const SignUp = ({ signUpStart }) => {
           type='password'
           name='confirmPassword'
           value={confirmPassword}
-          label='Confirm Password'
+          label='confirm Password'
           handleChange={handleChange}
           required
         />
         <CustomButton type='submit'>Sign Up</CustomButton>
       </form>
-    </div>
+    </SignUpContainer>
   )
 };
 
