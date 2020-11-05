@@ -76,6 +76,14 @@ export const NavMenuOptionContainer = styled.div`
 export const TitleOrNameContainer = styled.a`
   flex: 1;
   text-decoration: none;
+
+  &:hover {
+    color: #80451d;
+  }
+
+  &:active {
+    color: #4b2b11;
+  }
 `;
 
 export const IconContainer = styled.span`

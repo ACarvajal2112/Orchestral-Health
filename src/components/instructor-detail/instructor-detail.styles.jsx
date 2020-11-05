@@ -4,10 +4,7 @@ export const InstructorDetailContainer = styled.div`
   display: flex;
   position: relative;
   padding: 4px 0;
-
-  &:not(:last-of-type){
-    margin-right: 4px;
-  }
+  margin-right: 4px;
 `;
 
 export const DetailIcon = styled.span`
@@ -21,6 +18,7 @@ export const DetailIcon = styled.span`
     font-size: 1.5em;
   }
 
+  // shrink detail icon on small-to-medium screen sizes
   @media screen and (max-width: 1024px){
     transform: scale(.8)
   }

@@ -3,7 +3,8 @@ import {
   addLessonToList, 
   removeLessonFromList, 
   registerPendingLessons, 
-  unregisterPendingLessons 
+  unregisterPendingLessons,
+  getLessonsPerWeek
 } from './register.util';
 
 const INITIAL_STATE = ({
@@ -66,6 +67,7 @@ const registerReducer = (state = INITIAL_STATE, action) => {
     case RegisterActionTypes.CLEAR_PENDING_DATA:
       return {
         ...state,
+        lessonsPerWeek: getLessonsPerWeek(state.registeredLessons),
         pendingRegistration: [],
         pendingUnregistration: []
       };

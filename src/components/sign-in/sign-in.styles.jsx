@@ -3,20 +3,13 @@ import styled from 'styled-components';
 export const SignInContainer = styled.div`
   flex: 1;
   margin: 0 5px;
-  padding: 1rem;
-  background-color: #4b2b11;
-  color: #fff;
+  padding-bottom: 20px;
   align-self: flex-start;
+  text-align: center;
   border-radius: 10px;
-  -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.8);
-  -moz-box-shadow:    3px 3px 6px 0px rgba(0, 0, 0, 0.8);
-  box-shadow:         3px 3px 6px 0px rgba(0, 0, 0, 0.8); 
-
-  form {
-    input, input:focus {
-      color: #fff;
-    }
-  }
+  -webkit-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.7); 
+  -moz-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.7);
+  box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.7);
 
   @media screen and (max-width:480px){
     align-self: unset;
@@ -24,20 +17,6 @@ export const SignInContainer = styled.div`
   }
 `;
 
-export const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-
-  @media screen and (max-width:480px){
-    button {
-      padding: 8px 0;
-    }
-  }
-
-  @media screen and (min-width: 1024px){
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-  }
+export const SignInForm = styled.form`
+  padding: 0 1rem;
 `;

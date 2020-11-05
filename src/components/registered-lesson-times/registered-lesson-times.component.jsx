@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { selectRegisteredLessonsForPreview } from '../../redux/register/register.selectors';
 import { updateRegisterAddPending } from '../../redux/register/register.actions';
 
+import { ImportantText } from '../../global.styles';
+
 import { 
   RegisteredLessonTimesContainer, 
   RegisteredTimesHeader,
@@ -13,14 +15,16 @@ import {
 
 const RegisteredLessonTimes = ({ title, registeredLessons, updateRegisterAddPending }) => (
   <RegisteredLessonTimesContainer>
-    <RegisteredTimesHeader>Registered Lesson Times</RegisteredTimesHeader>
+    <RegisteredTimesHeader>
+      <ImportantText>Registered</ImportantText>&nbsp;Times
+    </RegisteredTimesHeader>
     {registeredLessons.length ? (
       <LessonTimesList>
         {registeredLessons.map(({ dayOfWeek, times }) => (
           <div key={dayOfWeek}>
-            <span key={dayOfWeek} style={{ fontWeight: 'bold' }}>
+            <ImportantText key={dayOfWeek}>
               {dayOfWeek}
-            </span>
+            </ImportantText>
             {times.map(time => (
               <RegisteredTimeLabel 
                 key={`${dayOfWeek}:${time}`}
@@ -41,10 +45,9 @@ const RegisteredLessonTimes = ({ title, registeredLessons, updateRegisterAddPend
       </LessonTimesList>
     ) : (
       <div>
-        <span>You are not yet registered for  
-          <span style={{ fontWeight: 'bold' }}> {title} </span> 
+        You are <ImportantText>not registered</ImportantText> for  
+          <ImportantText> {title} </ImportantText> 
           lessons!
-        </span>
       </div>
     )}
   </RegisteredLessonTimesContainer> 

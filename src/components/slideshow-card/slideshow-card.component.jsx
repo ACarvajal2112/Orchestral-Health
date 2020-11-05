@@ -82,7 +82,11 @@ const SlideshowCard = ({ lessonData }) => {
         </TitleAnimationContainer>
         <SubcontentContainer>
           <Subtitle>Sign up today!</Subtitle>
-          <CustomButton onClick={handleClick}>
+          <CustomButton 
+            onClick={handleClick} 
+            className='lesson-slideshow-btn' 
+            isSecondary
+          >
             View Lessons
           </CustomButton>
         </SubcontentContainer>

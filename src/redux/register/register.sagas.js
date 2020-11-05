@@ -13,6 +13,10 @@ import {
   removePendingUnregistration
 } from './register.actions';
 
+/* function adds lesson time to pending status in the register.
+ * if toRegister is true, lessonToAdd is added to pending-registration. Increases lessons-per-week.
+ * if toRegister is false, lessonToAdd is added to pending-unregistration. Decreases lessons-per-week.
+ */
 export function* updateRegisterAddPending({ payload: { lessonToAdd, toRegister } }) {
   if (toRegister) {
     yield put(addPendingRegistration(lessonToAdd));
@@ -23,13 +27,17 @@ export function* updateRegisterAddPending({ payload: { lessonToAdd, toRegister }
   }
 }
 
+/* function removes lesson time from pending status in the register.
+ * if toRegister is true, lessonToAdd is removed from pending registration. Decreases lessons-per-week.
+ * if toRegister is false, lessonToAdd is removed from pending unregistration. Increases lessons-per-week.
+ */
 export function* updateRegisterRemovePending({ payload: { lessonToRemove, toRegister } }) {
   if (toRegister) {
     yield put(removePendingRegistration(lessonToRemove));
     yield put(decrementLessonsPerWeek());
   } else {
     yield put(removePendingUnregistration(lessonToRemove));
-    yield put(decrementLessonsPerWeek());
+    yield put(incrementLessonsPerWeek());
   }
 }
 

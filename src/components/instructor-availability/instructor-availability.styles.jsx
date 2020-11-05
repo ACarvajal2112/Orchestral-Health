@@ -8,4 +8,5 @@ export const InstructorAvailabilityContainer = styled.div`
   width: 80%;
   min-width: 320px;
   margin-top: 20px;
+  background-color: #e2e2e2;
 `;

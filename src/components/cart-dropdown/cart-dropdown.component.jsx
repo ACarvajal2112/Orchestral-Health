@@ -26,9 +26,9 @@ const CartDropdown = ({ cartItems, dispatch }) => {
           <CartItem key={item.name} item={item} />
         ))
       ) : (
-        <span className='empty-msg'>
+        <>
           Your cart is empty!
-        </span>
+        </>
       )}
     </CartItemsContainer>
     <CustomButton 
@@ -36,7 +36,9 @@ const CartDropdown = ({ cartItems, dispatch }) => {
       onClick={() => { 
         handleClick();
         dispatch(toggleCartHidden())
-      }}>
+      }}
+      className='cart-dropdown-btn'
+      isSecondary>
       CHECKOUT
     </CustomButton>
   </CartDropdownContainer>

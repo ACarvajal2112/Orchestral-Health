@@ -17,7 +17,7 @@ const LessonPreview = ({ instructor, title, viewLessonTimes }) => {
   }
   
   return(
-    <div id={id}>
+    <div id={title}>
       <PreviewHeader isClickable>
         <h1 onClick={handleClick}>{title}</h1>
       </PreviewHeader>

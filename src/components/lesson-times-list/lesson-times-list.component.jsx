@@ -9,12 +9,13 @@ import {
 } from '../../redux/lesson/lesson.selectors';
 import { updateRegisterAddPending } from '../../redux/register/register.actions';
 
+import { ImportantText } from '../../global.styles';
+
 import {
   LessonTimesListContainer,
   DayOfWeekContainer,
   AvailableTimesContainer,
-  AvailableTimeLabel,
-  NoAvailableTimesLabel
+  AvailableTimeLabel
 } from './lesson-times-list.styles';
 
 const LessonTimesList = ({ dayOfWeek, title, availableTimes, updateRegisterAddPending }) => (
@@ -45,7 +46,7 @@ const LessonTimesList = ({ dayOfWeek, title, availableTimes, updateRegisterAddPe
         ))
       ) : (
         <div>
-          <span style={{ fontWeight: 'bold' }}>Check another day</span> 
+          <ImportantText>Check another day</ImportantText> 
           &nbsp;for {title} lesson availabilities!
         </div>
       )}

@@ -33,17 +33,21 @@ export const getTimesByDay = (lessons, dayOfWeek) => {
 };
 
 // Adds each pending lesson to the list of registered lessons.
-export const registerPendingLessons = (registeredLessons, pendingLessons) => {
-  for (const pendingLesson of pendingLessons) {
-    registeredLessons = addLessonToList(registeredLessons, pendingLesson);
+export const registerPendingLessons = (registeredLessons, pendingRegistration) => {
+  if (pendingRegistration.length) {
+    for (const pendingLesson of pendingRegistration) {
+      registeredLessons = addLessonToList(registeredLessons, pendingLesson);
+    }
   }
   return registeredLessons;
 };
 
 // Removes each pending lesson from the list of registered lessons.
-export const unregisterPendingLessons = (registeredLessons, pendingLessons) => {
-  for (const pendingLesson of pendingLessons) {
-    registeredLessons = removeLessonFromList(registeredLessons, pendingLesson);
+export const unregisterPendingLessons = (registeredLessons, pendingUnregistration) => {
+  if (pendingUnregistration.length){
+    for (const pendingLesson of pendingUnregistration) {
+      registeredLessons = removeLessonFromList(registeredLessons, pendingLesson);
+    }
   }
   return registeredLessons;
 };
@@ -76,4 +80,12 @@ export const removeLessonFromList = (currentLessons, lessonToRemove) => {
   return currentLessons.filter(({ title, dayOfWeek }) =>
     !(title === lessonToRemove.title && dayOfWeek === lessonToRemove.dayOfWeek)
   );
+}
+
+// returns number of lessons-per-week based on registerd lesson times
+export const getLessonsPerWeek = registeredLessons => {
+  return registeredLessons.reduce((accumulatedLessonsPerWeek, registeredLesson) => {
+    accumulatedLessonsPerWeek += registeredLesson.times.length;
+    return accumulatedLessonsPerWeek;
+  }, 0);
 }

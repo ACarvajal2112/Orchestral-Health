@@ -1,9 +1,4 @@
-import styled, { css } from 'styled-components';
-
-const contentSpanStyles = css`
-  display: block;
-  margin-bottom: 10px;
-`;
+import styled from 'styled-components';
 
 export const LessonCardContainer = styled.div`
   flex: 3;
@@ -16,8 +11,12 @@ export const LessonCardContainer = styled.div`
   
   &:hover {
     -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
-  -moz-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  @media screen and (max-width:1024px){
+    padding-bottom: 20px;
   }
 
   @media screen and (max-width:480px){
@@ -29,11 +28,10 @@ export const LessonImgContainer = styled.div`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  flex: 1;
+  flex: 2; 
 
   @media screen and (max-width:1024px){
     height: 200px;
-    width: 100%;
     align-self: flex-start;
   };
 
@@ -44,49 +42,40 @@ export const LessonImgContainer = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-  flex: 2;
+  flex: 3;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 `;
 
 export const InstructorContainer = styled.span`
+  display: block;
   font-size: 130%;
-  margin-left: 2rem;
+  width: 100%;
+  text-align: center;
   font-weight: lighter;
-  ${contentSpanStyles}
+
+  @media screen and (max-width:768px){
+    width: 85%;
+    margin: 8px auto 0;
+    padding-left: 1.5rem;
+    text-align: left;
+  }
 `;
 
 export const DescriptionContainer = styled.span`
   width: 85%;
-  margin: .5rem auto;
-  padding: 4px 6px;
   max-height: 5.5rem;
+  margin: .5rem auto;
+  line-height: normal;
   overflow: auto;
   border-radius: 10px;
 
-  @media screen and (max-width:480px){
+  @media screen and (max-width:768px){
     display: none;
   }
-`;
 
-export const SeeTimesContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  margin: .5rem 0;
-
-  button {
-    display: inline-block;
-    width: 50%;
-    margin: 0 auto;
-
-    @media screen and (max-width:1024px){
-      width: 80%;
-    }
-
-    @media screen and (max-width:481px){
-      width: 100%;
-    }
+  @media screen and (max-width:1024px){
+    text-align: center;
   }
 `;

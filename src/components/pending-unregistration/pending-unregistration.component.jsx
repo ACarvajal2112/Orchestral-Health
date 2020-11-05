@@ -5,23 +5,31 @@ import { createStructuredSelector } from 'reselect';
 import { selectLessonTitle } from '../../redux/lesson/lesson.selectors';
 import { updateRegisterRemovePending } from '../../redux/register/register.actions';
 
+import { ImportantText } from '../../global.styles';
+
 import { 
   PendingUnregistrationContainer, 
   PendingUnregistrationHeader, 
-  UnregistrationTimeLabel 
+  UnregistrationTimeLabel,
+  PendingUnregistrationList
 } from './pending-unregistration.styles';
 
 const PendingUnregistration = ({ pendingLessons, updateRegisterRemovePending }) => (
   <PendingUnregistrationContainer>
     <PendingUnregistrationHeader>
-      Pending Unregistration
+      <span>
+        Pending&nbsp;
+        <span style={{display: 'inline-block', fontWeight: 'bold' }}>
+          Unregistration
+        </span>
+      </span>
     </PendingUnregistrationHeader>
-    <div>
+    <PendingUnregistrationList>
       {pendingLessons.map(({ dayOfWeek, times, title }) => (
         <div key={dayOfWeek}>
-          <span key={dayOfWeek} style={{ fontWeight: 'bold' }}>
+          <ImportantText key={dayOfWeek}>
             {dayOfWeek}
-          </span>
+          </ImportantText>
           {times.map(time => (
             <UnregistrationTimeLabel
               key={`${dayOfWeek}:${time}`} 
@@ -41,7 +49,7 @@ const PendingUnregistration = ({ pendingLessons, updateRegisterRemovePending }) 
           ))}
         </div>
       ))}
-    </div>
+    </PendingUnregistrationList>
   </PendingUnregistrationContainer>
 );
 

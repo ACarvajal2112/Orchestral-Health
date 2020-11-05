@@ -19,8 +19,14 @@ export const LessonTimesOverviewContainer = styled.div`
     width: 80%;
   }
 
-  @media screen and (max-width:660px){
+  @media screen and (max-width:768px){
     width: 98%;
+  }
+  
+  @media screen and (max-width:480px){
+    top: 0;
+    bottom: 0;
+    justify-content: center;
   }
 `;
 
@@ -46,9 +52,15 @@ export const CloseOverlay = styled.div`
 `;
 
 export const RegisterButtonContainer = styled.div`
-  width: 75%;
+  width: 80%;
   margin-top: 6px;
   text-align: right;
+
+  button {
+    display: inline-block;
+    margin: 0 2px;
+    font-size: .7em;
+  }
 `;
 
 export const LessonTimesHeader = styled.div`

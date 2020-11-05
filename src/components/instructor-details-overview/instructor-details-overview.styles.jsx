@@ -10,8 +10,8 @@ export const InstructorDetailsOverviewContainer = styled.div`
   // elements with data-tool-tip after pseudo class tool-tip styles
   [data-tool-tip]::after {
     content: attr(data-tool-tip);
-    display: block;
     position: absolute;
+    pointer-events: none;
     background-color: gray;
     padding: 1rem 1.5rem;
     color: white;
@@ -34,6 +34,6 @@ export const InstructorDetailsOverviewContainer = styled.div`
   }
 
   @media screen and (max-width:1024px){
-      flex-direction: column;
-    }
+    flex-direction: column;
+  }
 `;

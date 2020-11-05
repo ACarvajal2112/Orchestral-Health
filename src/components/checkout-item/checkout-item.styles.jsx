@@ -7,8 +7,9 @@ const checkoutItemChildrenStyles = css`
   justify-content: center;
   align-items: center;
 
+  // 4 components at small screen sizes to take up full width
   @media screen and (max-width:480px){
-    width: 25%;
+    width: 25%; 
   }
 `;
 
@@ -46,6 +47,7 @@ export const ProductImgContainer = styled.div`
   background-repeat: no-repeat;
   ${checkoutItemChildrenStyles}
 
+  // remove product image for small screen sizes
   @media screen and (max-width:480px){
     display: none;
   }

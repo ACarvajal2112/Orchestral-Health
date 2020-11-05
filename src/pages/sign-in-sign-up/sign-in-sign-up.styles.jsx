@@ -5,7 +5,6 @@ export const SignInSignUpContainer = styled.div`
   margin: 30px auto 0 auto;
   display: flex;
   justify-content: space-evenly;
-  padding: 0 5px;
 
   @media screen and (max-width: 1024px){
     width: 100%;

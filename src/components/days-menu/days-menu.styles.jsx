@@ -5,7 +5,6 @@ export const DaysMenuContainer = styled.div`
   display: flex;
   position: relative; 
   flex-direction: row;
-  justify-content: space-around;
 
   /* Calendar icon - solid */
   &::before {

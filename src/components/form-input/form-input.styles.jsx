@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
 const translateElemStyles = css`
-  top: -16px;
+  top: -14px;
   font-size: 14px;
-  color: white;
+  color: #000;
 `;
 
 export const FormInputGroupContainer = styled.div`
@@ -18,11 +18,10 @@ export const FormInputGroupContainer = styled.div`
 export const FormInputContainer = styled.input`
   background: transparent;
   border: none;
-  border-bottom: 2px solid #cbae2d;
+  border-bottom: 1px solid #1f1f1f;
   font-size: 18px;
   width: 100%;
   padding: 10px 10px 10px 5px;
-  margin: 25px 0;
   display: block;
 
   &:focus {

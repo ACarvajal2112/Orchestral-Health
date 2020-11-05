@@ -6,9 +6,13 @@ export const NoItemsContainer = styled.div`
 
 export const CustomLink = styled.span`
   cursor: pointer;
-  color: blue;
+  color: #80451d;
+
+  &:hover {
+    color: #4b2b11;
+  }
 
   &:active {
-    color: red;
+    color: #cbae2d;
   }
 `;

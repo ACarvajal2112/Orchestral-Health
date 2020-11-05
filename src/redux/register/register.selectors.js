@@ -56,3 +56,9 @@ export const selectRegisteredLessonsForPreview = title => {
     }
   );
 }
+
+export const selectIsRegistrationEnabled = createSelector(
+  [selectPendingRegistration, selectPendingUnregistration],
+  (pendingRegistration, pendingUnregistration) => 
+    !!(pendingRegistration.length || pendingUnregistration.length)
+);

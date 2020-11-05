@@ -36,7 +36,7 @@ export const StatusHeaderContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   padding-right: 1.5rem;
-  font-weight: bold;
+  text-align: right;
 `;
 
 export const RegisteredLabel = styled.span`

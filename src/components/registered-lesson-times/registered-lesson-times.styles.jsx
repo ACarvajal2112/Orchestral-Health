@@ -18,7 +18,6 @@ export const RegisteredTimesHeader = styled.div`
   align-items: flex-start;
   padding-right: 1.5rem;
   text-align: right;
-  font-weight: bold;
 `;
 
 export const RegisteredTimeLabel = styled.span`
@@ -45,8 +44,8 @@ export const RegisteredTimeLabel = styled.span`
     display: inline;
   }
 
-  &:active::before {
-    color: red;
+  &:active {
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
   }
 `;
 

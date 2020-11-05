@@ -66,11 +66,6 @@ export const SubcontentContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-
-  button {
-    width: 80%;
-    align-self: center;
-  }
 `;
 
 export const Subtitle = styled.span`

@@ -12,13 +12,13 @@ import { RegisteredLessonTimesOverviewContainer } from './registered-lesson-time
 
 const RegisteredLessonTimesOverview = ({ pendingRegistration, pendingUnregistration }) => (
   <RegisteredLessonTimesOverviewContainer>
+    <RegisteredLessonTimesContainer />
     {pendingRegistration.length ? ( 
       <PendingLessonTimes pendingLessons={pendingRegistration} />
     ) : null}
     {pendingUnregistration.length ? ( 
       <PendingUnregistration pendingLessons={pendingUnregistration} />
     ) : null}
-    <RegisteredLessonTimesContainer />
   </RegisteredLessonTimesOverviewContainer>
 );
 

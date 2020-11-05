@@ -23,8 +23,8 @@ const InstructorDetailsOverview = ({ experienceInYears, styles, doesOfferOnline 
       fontAwesomeClasses='far fa-laptop'
       dataParam={
         doesOfferOnline 
-          ? 'Online and In-Person lessons available!' 
-          : 'Only In-Person lessons available!'
+          ? 'Online and In-Person!' 
+          : 'Only In-Person!'
       }
     >
       Online/In-Person

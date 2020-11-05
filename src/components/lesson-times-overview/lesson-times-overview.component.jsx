@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import InstructorAvailability from  '../instructor-availability/instructor-availability.component';
+import CustomButton from '../custom-button/custom-button.component';
+
+import { selectIsRegistrationEnabled, selectLessonsPerWeek } from '../../redux/register/register.selectors';
 
 import { closeLessonTimes } from '../../redux/lesson/lesson.actions';
 import { confirmRegistration } from '../../redux/register/register.actions';
@@ -16,8 +20,13 @@ import {
   RegisterButtonContainer
 } from './lesson-times-overview.styles';
 
-const LessonTimesOverview = ({ closeLessonTimes, title, confirmRegistration }) => {
-
+const LessonTimesOverview = ({ 
+  closeLessonTimes, 
+  title, 
+  confirmRegistration, 
+  isRegistrationEnabled,
+  numLessons
+}) => {
   const handleCloseOverlay = () => {
     closeLessonTimes();
   };
@@ -37,11 +46,18 @@ const LessonTimesOverview = ({ closeLessonTimes, title, confirmRegistration }) =
         </LessonTimesHeader>
         <InstructorAvailability />
         <RegisterButtonContainer>
-          <button onClick={() => {confirmRegistration()}}>
+          <CustomButton 
+            onClick={() => {confirmRegistration()}} 
+            className='lesson-times-overview-btn'
+            isPrimary
+            disabled={!isRegistrationEnabled || numLessons > 4}
+            isRegistrationEnabled={isRegistrationEnabled && numLessons <= 4}
+          >
             Confirm Registration
-          </button>
-          &nbsp;
-          <button onClick={handleCloseOverlay}>Cancel</button>
+          </CustomButton>
+          <CustomButton onClick={handleCloseOverlay} isSecondary>
+            Cancel
+          </CustomButton>
         </RegisterButtonContainer>
       </LessonTimesOverviewContainer>
     </LessonTimesOverlay>,
@@ -49,9 +65,14 @@ const LessonTimesOverview = ({ closeLessonTimes, title, confirmRegistration }) =
   );
 }
 
+const mapStateToProps = createStructuredSelector({
+  isRegistrationEnabled: selectIsRegistrationEnabled,
+  numLessons: selectLessonsPerWeek
+});
+
 const mapDispatchToProps = dispatch => ({
   confirmRegistration: () => dispatch(confirmRegistration()),
   closeLessonTimes: () => dispatch(closeLessonTimes())
 }); 
 
-export default connect(null, mapDispatchToProps)(LessonTimesOverview);
+export default connect(mapStateToProps, mapDispatchToProps)(LessonTimesOverview);

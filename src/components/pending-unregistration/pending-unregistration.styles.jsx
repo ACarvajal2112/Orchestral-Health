@@ -17,7 +17,7 @@ export const PendingUnregistrationHeader = styled.div`
   justify-content: flex-end;
   align-items: top;
   padding-right: 1.5rem;
-  font-weight: bold;
+  text-align: right;
 `;
 
 export const UnregistrationTimeLabel = styled.span`
@@ -44,7 +44,14 @@ export const UnregistrationTimeLabel = styled.span`
     display: inline;
   }
 
-  &:active::before {
-    color: red;
+  &:active {
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
+  }
+`;
+
+export const PendingUnregistrationList = styled.div`
+  // add margin top to divs which are not the first child
+  div:not(:first-child){
+    margin-top: .5rem;
   }
 `;

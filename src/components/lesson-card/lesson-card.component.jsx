@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import CustomButton from '../custom-button/custom-button.component';
 import InstructorDetailsOverview from '../instructor-details-overview/instructor-details-overview.component';
@@ -9,8 +8,7 @@ import {
   LessonImgContainer, 
   ContentContainer,
   InstructorContainer, 
-  DescriptionContainer,
-  SeeTimesContainer
+  DescriptionContainer
 } from './lessons-card.styles';
 
 const LessonCard = ({ 
@@ -27,11 +25,9 @@ const LessonCard = ({
       <InstructorContainer>{name}</InstructorContainer>
       <DescriptionContainer>{description}</DescriptionContainer>
       <InstructorDetailsOverview {...otherInstructorProps} />
-      <SeeTimesContainer>
-        <CustomButton 
-          onClick={handleClick}
-        >SEE TIMES</CustomButton> 
-      </SeeTimesContainer>  
+      <CustomButton onClick={handleClick} className='lesson-card-btn' isSecondary>
+        SEE TIMES
+      </CustomButton> 
     </ContentContainer>
   </LessonCardContainer>
 );

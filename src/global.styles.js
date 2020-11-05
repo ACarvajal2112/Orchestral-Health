@@ -7,18 +7,18 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box; 
   }
 
-  html, body, #root, .app {
+  body {
     height: 100%;
-    min-height: 100%;
+    margin: 0;
+    padding: 0;
   }
 `;
 
-export const MainContentContainer = styled.div`
-  width: 94%;
-  margin-left: auto;
-  margin-right: auto;
+export const MainContent = styled.div`
+  margin: 0;
+  padding: 0 2%;
+`;
 
-  @media screen and (max-width: 768px){
-    width: 98%;
-  }
+export const ImportantText = styled.span`
+  font-weight: bold;
 `;

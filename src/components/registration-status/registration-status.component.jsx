@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { selectRegistrationStatus } from '../../redux/register/register.selectors';
 
+import { ImportantText } from '../../global.styles';
+
 import {
   RegistrationStatusContainer,
   StatusHeaderContainer,
@@ -12,7 +14,10 @@ import {
 
 const RegistrationStatus = ({ status }) => (
   <RegistrationStatusContainer>
-    <StatusHeaderContainer>Registration Status</StatusHeaderContainer>
+    <StatusHeaderContainer>
+      Registration&nbsp;
+      <ImportantText>Status</ImportantText>
+    </StatusHeaderContainer>
     <div>
       {!status ? ( 
         <RegisteredLabel>Not Registered</RegisteredLabel> 

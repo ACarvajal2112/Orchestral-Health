@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const CheckoutOverviewContainer = styled.div`
-  width: 100%;
-  /* min-width: 380px; */
+  width: 100%;  
 `;
 
 export const HeaderContainer = styled.div`
@@ -19,15 +18,17 @@ export const HeaderContainer = styled.div`
 `;
 
 export const HeaderBlock = styled.div`
-  width: 20%;
+  width: 20%; 
   text-align: center;
 
+  // remove first header block for small screen sizes
   &:first-of-type {
     @media screen and (max-width:480px){
       display: none;
     }
   }
 
+  // 4 components at small screen sizes to take up full width
   @media screen and (max-width:480px){
     width: 25%;
   }

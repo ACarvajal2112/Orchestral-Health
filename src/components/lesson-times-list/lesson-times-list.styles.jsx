@@ -62,7 +62,7 @@ export const AvailableTimeLabel = styled.span`
     display: inline;
   }
 
-  &:active::before {
-    color: red;
+  &:active {
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
   }
 `;
