@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { Route, useRouteMatch } from 'react-router-dom';
 
-import CatalogOverviewContainer from '../../components/catalog-overview/catalog-overview.container';
-import FamilyOverviewContainer from '../../components/family-overview/family-overview.container';
-import ItemsOverviewContainer from '../../components/items-overview/items-overview.container';
+import Spinner from '../../components/spinner/spinner.component';
 
 import { fetchShopDataStart } from '../../redux/shop/shop.actions';
+
+const CatalogOverviewContainer = lazy(() => import('../../components/catalog-overview/catalog-overview.container'));
+const FamilyOverviewContainer = lazy(() => import ('../../components/family-overview/family-overview.container'));
+const ItemsOverviewContainer = lazy(() => import('../../components/items-overview/items-overview.container'));
 
 const ShopPage = ({ fetchShopDataStart }) => {
 
@@ -18,21 +20,23 @@ const ShopPage = ({ fetchShopDataStart }) => {
   const { path } = match;
   
   return (
-    <div className='shop-page'>
-      <Route 
-        exact 
-        path={`${path}`} 
-        component={CatalogOverviewContainer}
-      />
-      <Route 
-        exact 
-        path={`${path}/:familyId`} 
-        component={FamilyOverviewContainer} />
-      <Route 
-        path={`${path}/:familyId/:instrumentId`}
-        component={ItemsOverviewContainer}
-      />
-  </div>
+    <div>
+      <Suspense fallback={<Spinner />}>
+        <Route 
+          exact 
+          path={`${path}`} 
+          component={CatalogOverviewContainer}
+        />
+        <Route 
+          exact 
+          path={`${path}/:familyId`} 
+          component={FamilyOverviewContainer} />
+        <Route 
+          path={`${path}/:familyId/:instrumentId`}
+          component={ItemsOverviewContainer}
+        />
+      </Suspense>
+    </div>
   );
 }
 

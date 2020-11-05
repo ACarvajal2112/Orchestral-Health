@@ -15,7 +15,6 @@ const DirectoryWithSpinner = WithSpinner(Directory);
 const SlideshowOverviewWithSpinner = WithSpinner(SlideshowOverview);
 
 const HomePage = ({ fetchDirectoryDataStart, isDirectoryLoaded }) => {
-
   useEffect(() => {
     fetchDirectoryDataStart();
   }, [fetchDirectoryDataStart]);

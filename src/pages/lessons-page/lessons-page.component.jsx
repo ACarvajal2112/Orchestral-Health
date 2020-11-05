@@ -11,14 +11,11 @@ import { fetchLessonDataStart } from '../../redux/lesson/lesson.actions';
 const LessonsOverviewWithSpinner = WithSpinner(LessonsOverview);
 
 const LessonsPage = ({ fetchLessonDataStart, isLessonDataLoaded }) => {
-
   useEffect(() => {
     fetchLessonDataStart();
   }, [fetchLessonDataStart]);
   
-  return (
-    <LessonsOverviewWithSpinner isLoading={!isLessonDataLoaded} />
-  )
+  return <LessonsOverviewWithSpinner isLoading={!isLessonDataLoaded} />
 };
 
 const mapStateToProps = createStructuredSelector({
