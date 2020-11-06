@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const CheckoutOverviewContainer = styled.div`
   width: 100%;  
+
+  button {
+    float: right;
+  }
 `;
 
 export const HeaderContainer = styled.div`
@@ -59,9 +63,18 @@ export const CheckoutItemList = styled.ul`
 `;
 
 export const ItemsTotalContainer = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.5em;
+  margin: 1rem 0 0;
+  text-align: right;
 
   span { 
     font-weight: bold; 
   }
+`;
+
+export const TestCreditCardDetails = styled.div`
+  font-size: 1.2em;
+  margin: 1rem auto;
+  text-align: center;
+  color: red;
 `;
