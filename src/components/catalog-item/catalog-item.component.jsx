@@ -11,13 +11,14 @@ import {
   NameLabel, 
   PriceLabel,
   AddItemLabel
-} from './item.styles';
+} from './catalog-item.styles';
 
-const Item = ({ title, item, addItem }) => {
+const CatalogItem = ({ title, item, addItem }) => {
   const { name, price, imgUrl } = item;
   return (
     <ItemContainer onClick={() => addItem({...item, title})}>
       <BackgroundImageContainer
+        className='catalog-item-background-img'
         style={{
           backgroundImage: `url(${encodeURI(imgUrl)})`
         }}
@@ -37,4 +38,4 @@ const mapDispatchToProps = dispatch => ({
   addItem: item => dispatch(addItemToCart(item))
 });
 
-export default connect(null, mapDispatchToProps)(Item);
+export default connect(null, mapDispatchToProps)(CatalogItem);

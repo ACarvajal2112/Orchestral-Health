@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
 
-import Item from '../item/item.component';
+import CatalogItem from '../catalog-item/catalog-item.component';
 import PreviewHeader from '../preview-header/preview-header.component';
 
 import { selectItemsForPreview } from '../../redux/shop/shop.selectors';
@@ -19,7 +19,7 @@ const ItemsOverview = ({ items }) => {
       </PreviewHeader>
       <ItemsPreviewContainer>
         {items.map(item => (
-          <Item key={item.name} item={item} title={title}/>
+          <CatalogItem key={item.name} item={item} title={title}/>
         ))}
       </ItemsPreviewContainer>
     </div>

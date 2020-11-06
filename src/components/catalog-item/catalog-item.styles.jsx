@@ -12,8 +12,13 @@ export const ItemContainer = styled.div`
 
   &:hover {
     cursor: pointer;
-    .add-item {  
-      opacity: 0.7;
+
+    .catalog-item-background-img {
+      opacity: 0.8;
+    }
+
+    .add-item {
+      opacity: 0.8;
     }
   }
 
