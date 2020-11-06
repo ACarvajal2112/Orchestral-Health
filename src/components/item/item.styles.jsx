@@ -11,8 +11,15 @@ export const ItemContainer = styled.div`
   background-color: lightgray;
 
   &:hover {
-    & .add-item {  
+    cursor: pointer;
+    .add-item {  
       opacity: 0.7;
+    }
+  }
+
+  &:active {
+    .add-item {
+      opacity: 0.9;
     }
   }
 
